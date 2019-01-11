@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace Word2Rtf.Models
 {
     public enum Language
@@ -11,4 +13,5 @@ namespace Word2Rtf.Models
         Title,
         Content,
     }
+
 }

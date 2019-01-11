@@ -14,30 +14,14 @@ namespace Word2Rtf.Parsers
     {
         public IEnumerable<Element> Parse(string[] input)
         {
-            var elements = input.Select(line => new Element 
-            {
-                Input = line, 
-            }).ToList();
+            var elements = input.Select(line => new Element { Input = line }).ToList();
 
             elements.ForEach(element => 
             {
-                if (IsTitle(element))
-                {
-                    element.ElementType = ElementType.Title;
-                    element.Verses = ParseTitle(element.Input);
-                }
-                else
-                {
-                    element.ElementType = ElementType.Content;
-                    element.Verses = new [] 
-                    {
-                        new Verse 
-                        {
-                            Language = element.Input.GetLanguage(),
-                            Content = element.Input,
-                        }
-                    };
-                }
+                if (IsTitle(element)) 
+                    ParseTitle(element); 
+                else 
+                    ParseContent(element); 
             });
 
             return elements;
@@ -48,11 +32,25 @@ namespace Word2Rtf.Parsers
             return input.Input.Contains("【");
         }
 
-        IEnumerable<Verse> ParseTitle(string input)
+        Element ParseTitle(Element element)
         {
-            throw new NotImplementedException();
+            element.ElementType = ElementType.Title;
+            element.Verses = element.Input.SplitByLanguage();
+            return element;
+        }
+
+        Element ParseContent(Element element)
+        {
+            element.ElementType = ElementType.Content;
+            element.Verses = new [] 
+            {
+                new Verse 
+                {
+                    Language = element.Input.GetLanguage(),
+                    Content = element.Input,
+                }
+            };
+            return element;
         }
     }
-
-
 }

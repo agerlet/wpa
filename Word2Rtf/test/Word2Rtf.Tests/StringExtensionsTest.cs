@@ -14,6 +14,8 @@ namespace Word2Rtf.Tests
 {
     public class StringExtensionTest
     {
+        const string _source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26 ,Luke路2:10b-11,14";
+
         [Fact]
         public void Test_Break()
         {
@@ -50,8 +52,95 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Test_Purify()
         {
-            var actual = "【宣告/Proclaim】《詩篇/Psalm 50：23》，《希伯來書/Hebrew 13:15》".Purify();
-            var expected = "宣告 Proclaim  詩篇 Psalm 50:23   希伯來書 Hebrew 13:15";
+            var actual = _source.Purify();
+            var expected = "【宣告 Call to worship】 詩篇 Song of Songs50:10,23-26 ,Luke路2:10b-11,14";
+            Assert.Equal(expected, actual);
+
+            actual = "【Hymn唱詩】You Are My All In All《你是我的一切》".Purify();
+            expected = "【Hymn唱詩】You Are My All In All 你是我的一切";
+            Assert.Equal(expected, actual);
+
+            actual = "【Call To Worship宣告】Luke路2:10b-11,14".Purify();
+            expected = "【Call To Worship宣告】Luke路2:10b-11,14";
+            Assert.Equal(expected, actual);
+
+            actual = "【Hymn唱詩】SASB82 Joy To The World《普世歡騰》".Purify();
+            expected = "【Hymn唱詩】SASB82 Joy To The World 普世歡騰";
+            Assert.Equal(expected, actual);
+
+            actual = "【Benediction/Sending祝福/差遣】".Purify();
+            expected = "【Benediction Sending祝福 差遣】";
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Test_SplitByLanguage_BibleVerse()
+        {
+            var actual = _source.SplitByLanguage();
+
+            var expectedLength = 2;
+            var expectedVerse1Language = Language.English;
+            var expectedVerse2Language = Language.Chinese;
+            var expectedVerse1Content = "Call to worship\nSong of Songs50:10,23-26 ,Luke 2:10b-11,14";
+            var expectedVerse2Content = "宣告\n詩篇 50:10,23-26\n路 2:10b-11,14";
+
+            Assert.Equal(expectedLength, actual.Length);
+            Assert.Equal(expectedVerse1Language, actual[0].Language);
+            Assert.Equal(expectedVerse2Language, actual[1].Language);
+            Assert.Equal(expectedVerse1Content, actual[0].Content);
+            Assert.Equal(expectedVerse2Content, actual[1].Content);
+        }
+
+        [Fact]
+        public void Test_SplitByLanguage_Song()
+        {
+            var source = "【唱詩/Song】因著十架愛/Love From The Cross";
+            var actual = source.SplitByLanguage();
+
+            var expectedLength = 2;
+            var expectedVerse1Language = Language.English;
+            var expectedVerse2Language = Language.Chinese;
+            var expectedVerse1Content = "Song\nLove From The Cross";
+            var expectedVerse2Content = "唱詩\n因著十架愛";
+
+            Assert.Equal(expectedLength, actual.Length);
+            Assert.Equal(expectedVerse1Language, actual[0].Language);
+            Assert.Equal(expectedVerse2Language, actual[1].Language);
+            Assert.Equal(expectedVerse1Content, actual[0].Content);
+            Assert.Equal(expectedVerse2Content, actual[1].Content);
+        }
+        [Fact]
+        public void Test_IsBibleReadingTitle()
+        {
+            Assert.True(_source.IsBibleReadingTitle());
+            Assert.False("【唱詩/Song】因著十架愛/Love From The Cross".IsBibleReadingTitle());
+        }    
+
+        [Fact]
+        public void Test_GetEnglishAndVerseNumber()
+        {
+            var expected = new [] { "Call to worship", "Song of Songs50:10,23-26 ,Luke 2:10b-11,14" };
+            var actual = _source.GetEnglishAndVerseNumber().ToArray();
+            for(var i = 0; i < expected.Length; i++)
+            {
+                Assert.Equal(expected[i], actual[i]);
+            }
+        }
+
+        [Fact]
+        public void Test_GetChinese()
+        {
+            var expected = new [] { "宣告", "詩篇", "路"};
+            var actual = _source.GetChinese();
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Test_GetVerseNumbers()
+        {
+            string source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26 ,Luke路2:10b-11,14";
+            var expected = new [] { "50:10,23-26", "2:10b-11,14"};
+            var actual = source.GetVerseNumbers();
             Assert.Equal(expected, actual);
         }
     }
