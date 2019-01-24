@@ -1,0 +1,18 @@
+{
+    "program": [
+        {
+            "input": "【Welcome歡迎】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Welcome"
+                },
+                {
+                    "Language": 0,
+                    "Content": "歡迎"
+                }
+            ],
+            "contentType": "Title"
+        }
+    ]
+}  

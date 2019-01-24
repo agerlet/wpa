@@ -11,7 +11,7 @@ namespace Word2Rtf
     {
         public static string[] Break(this string input)
         {
-            return input.Split(new [] { '\r', '\n' })
+            return input.Split(new [] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(s => s.Trim())
                         .Where(s => !string.IsNullOrWhiteSpace(s))
                         .ToArray();

@@ -16,8 +16,9 @@ namespace Word2Rtf
         {
             program = elements.Select(element => new
             {
-                content = element.Input,
-                contentType = element.ElementType,
+                input = element.Input,
+                output = element.Verses,
+                contentType = element.ElementType.ToString(),
             })
         };
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Amazon.Lambda.Core;
-
+using Word2Rtf.Models;
 using Word2Rtf.Parsers;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
@@ -22,9 +22,9 @@ namespace Word2Rtf
         /// <param name="context"></param>
         /// <returns></returns>
         [LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
-        public object FunctionHandler(string input, ILambdaContext context)
+        public object FunctionHandler(Payload input, ILambdaContext context)
         {
-            var json = input.Break().Parse().Combine();
+            var json = input.Input.Break().Parse().Combine();
             return json;
         }
 
