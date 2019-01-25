@@ -13,6 +13,20 @@
                 }
             ],
             "contentType": "Title"
+        },
+        {
+            "input": "【Call To Worship宣告】Luke路3:4,6;Habakkuk哈巴谷書 2:20b",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Call To Worship\nLuke 3:4,6\nHabakkuk 2:20b"
+                },
+                {
+                    "Language": 0,
+                    "Content": "宣告\n路 3:4,6\n哈巴谷書 2:20b"
+                }
+            ],
+            "contentType": "Title"
         }
     ]
 }  

@@ -76,7 +76,7 @@ namespace Word2Rtf
                 var chineseTerms = input.GetChinese().ToArray();
                 var englishTerms = input.GetEnglishAndVerseNumber();
                 var verseNumberTerms = input.GetVerseNumbers().ToArray();
-                for(var i = verseNumberTerms.Count(); i > 0; i --)
+                for(var i = verseNumberTerms.Count(); i > 0; i--)
                 {
                     chineseTerms[i] = $"{chineseTerms[i]} {verseNumberTerms[i-1]}";
                 }
@@ -105,31 +105,39 @@ namespace Word2Rtf
 
         public static IEnumerable<string> GetEnglishAndVerseNumber(this string input)
         {
-            return string.Join(' ', string.Concat(input.Purify().Select(c => 
+            var purified = input.Purify();
+            var englishAndVerseNumbersLine = string.Concat(purified.Select(c => 
             {
                 if (c >= 'a' && c <= 'z' 
                     || c >= 'A' && c <= 'Z' 
                     || c >= '0' && c <= '9'
                     || c == ':' || c == ',' || c == '-' 
+                    || c == ';' || c == '；'
                     || c == '【' || c == '】')
                 {
                     return c;
                 }
                 return ' ';
-            })).Split(' ', StringSplitOptions.RemoveEmptyEntries))
-            .Split(new [] { '【', '】' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(phrase => phrase.Trim());
+            }));
+            var removeExtraSpaces = englishAndVerseNumbersLine.RemoveDuplicateSpaces();
+            var splitedTitleAndBody = removeExtraSpaces.Split(new [] { '【', '】', ';', '；' }, StringSplitOptions.RemoveEmptyEntries);
+            var processed = splitedTitleAndBody.Select(phrase => phrase.Trim());
+            
+            return processed;
         }
 
         public static IEnumerable<string> GetChinese(this string input)
         {
+            var purified = input.Purify();
+
             return string
-                .Concat(input.Purify().Select(c => 
+                .Concat(purified.Select(c => 
                 {
                     if (c >= 'a' && c <= 'z' 
                         || c >= 'A' && c <= 'Z' 
                         || c >= '0' && c <= '9'
                         || c == ':' || c == ',' || c == '-'
+                        || c == ';' || c == '；' 
                         || c == '【' || c == '】')
                     {
                         return ' ';
@@ -141,30 +149,44 @@ namespace Word2Rtf
 
         public static IEnumerable<string> GetVerseNumbers(this string input)
         {
-            var verses = input.GetEnglishAndVerseNumber().LastOrDefault();
+            var verses = input.GetEnglishAndVerseNumber().Skip(1); // skip the title
 
-            var filtered = string.Concat(verses.Select(term => 
-                term >= 'a' && term <= 'z' || term >= 'A' && term <= 'Z'
-                ? term
-                : ' '
+            var filtered = string.Concat(verses.Select(verse => 
+                string.Concat(verse.Select(term => 
+                    term >= 'a' && term <= 'z' || term >= 'A' && term <= 'Z'
+                    ? term
+                    : ' '
+                ))
             ));
 
-            var pureEnglish = string.Join(' ', filtered.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+            var pureEnglish = filtered.RemoveDuplicateSpaces()
                 .Split(' ', StringSplitOptions.RemoveEmptyEntries)
                 .Where(term => term.Length > 1) // this might lost "a"
                 .OrderByDescending(term => term.Length)
                 .ToList();
 
-            var withoutEnglishWords = new StringBuilder(verses);
-            foreach (var word in pureEnglish)
-            {
-                withoutEnglishWords.Replace(word, " ");
-            }
+            var verseNumbers = verses.Select(verse => {
+                var withoutEnglishWords = new StringBuilder(verse);
+                foreach (var word in pureEnglish)
+                {
+                    withoutEnglishWords.Replace(word, " ");
+                }
 
-            return withoutEnglishWords
-                .ToString()
-                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-                .Where(term => term.Length > 1);
+                var verseNumber = string.Concat(withoutEnglishWords
+                    .ToString()
+                    .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                    .Where(term => term.Length > 1)
+                );
+                
+                return verseNumber;
+            });
+
+            return verseNumbers;
+        }
+
+        public static string RemoveDuplicateSpaces(this string input)
+        {
+            return string.Join(' ', input.Split(' ', StringSplitOptions.RemoveEmptyEntries));
         }
     } 
 }

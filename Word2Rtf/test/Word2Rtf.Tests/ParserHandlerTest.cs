@@ -19,7 +19,7 @@ namespace Word2Rtf.Tests
         {
             var input = new [] 
             {
-                "【宣告/Proclaim】《詩篇/Psalm 50:23》，《希伯來書/Hebrew 13:15b》"
+                "【宣告/Proclaim】《詩篇/Psalm 50:23》;《希伯來書/Hebrew 13:15b》"
             };
             var element = ParserHandler.Parse(input).FirstOrDefault();
             Assert.NotNull(element);
@@ -27,7 +27,7 @@ namespace Word2Rtf.Tests
             Assert.True(element.Pass);
             Assert.Equal(2, element.Verses.Count());
             Assert.Equal(ElementType.Title, element.ElementType);
-            Assert.Equal("Proclaim\nPsalm 50:23 , Hebrew 13:15b", element.Verses.First().Content);
+            Assert.Equal("Proclaim\nPsalm 50:23\nHebrew 13:15b", element.Verses.First().Content);
             Assert.Equal(Language.English, element.Verses.First().Language);
             Assert.Equal("宣告\n詩篇 50:23\n希伯來書 13:15b", element.Verses.Last().Content);
             Assert.Equal(Language.Chinese, element.Verses.Last().Language);            

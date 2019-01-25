@@ -14,7 +14,7 @@ namespace Word2Rtf.Tests
 {
     public class StringExtensionTest
     {
-        const string _source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26 ,Luke路2:10b-11,14";
+        const string _source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26；Luke路2:10b-11,14";
 
         [Fact]
         public void Test_Break()
@@ -53,7 +53,7 @@ namespace Word2Rtf.Tests
         public void Test_Purify()
         {
             var actual = _source.Purify();
-            var expected = "【宣告 Call to worship】 詩篇 Song of Songs50:10,23-26 ,Luke路2:10b-11,14";
+            var expected = "【宣告 Call to worship】 詩篇 Song of Songs50:10,23-26；Luke路2:10b-11,14";
             Assert.Equal(expected, actual);
 
             actual = "【Hymn唱詩】You Are My All In All《你是我的一切》".Purify();
@@ -81,7 +81,7 @@ namespace Word2Rtf.Tests
             var expectedLength = 2;
             var expectedVerse1Language = Language.English;
             var expectedVerse2Language = Language.Chinese;
-            var expectedVerse1Content = "Call to worship\nSong of Songs50:10,23-26 ,Luke 2:10b-11,14";
+            var expectedVerse1Content = "Call to worship\nSong of Songs50:10,23-26\nLuke 2:10b-11,14";
             var expectedVerse2Content = "宣告\n詩篇 50:10,23-26\n路 2:10b-11,14";
 
             Assert.Equal(expectedLength, actual.Length);
@@ -119,8 +119,9 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Test_GetEnglishAndVerseNumber()
         {
-            var expected = new [] { "Call to worship", "Song of Songs50:10,23-26 ,Luke 2:10b-11,14" };
-            var actual = _source.GetEnglishAndVerseNumber().ToArray();
+            var source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26 ;Luke路2:10b-11,14";
+            var expected = new [] { "Call to worship", "Song of Songs50:10,23-26", "Luke 2:10b-11,14" };
+            var actual = source.GetEnglishAndVerseNumber().ToArray();
             for(var i = 0; i < expected.Length; i++)
             {
                 Assert.Equal(expected[i], actual[i]);
@@ -130,16 +131,17 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Test_GetChinese()
         {
-            var expected = new [] { "宣告", "詩篇", "路"};
-            var actual = _source.GetChinese();
+            var source = "【Call To Worship宣告】Luke路3:4,6;Habakkuk哈巴谷書 2:20b";
+            var expected = new [] { "宣告", "路", "哈巴谷書"};
+            var actual = source.GetChinese();
             Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void Test_GetVerseNumbers()
         {
-            string source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26 ,Luke路2:10b-11,14";
-            var expected = new [] { "50:10,23-26", "2:10b-11,14"};
+            string source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26;Luke路2:10b-11,14";
+            var expected = new [] { "50:10,23-26", "2:10b-11,14" };
             var actual = source.GetVerseNumbers();
             Assert.Equal(expected, actual);
         }
