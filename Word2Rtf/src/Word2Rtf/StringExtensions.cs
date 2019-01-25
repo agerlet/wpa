@@ -21,7 +21,7 @@ namespace Word2Rtf
         {
             char[] symbels = new char[] 
             {
-                ' ', ';', ',', '(', ')', '!', '.'
+                ' ', ';', '；', ',', '(', ')', '!', '.', '\'', '’'
             };
 
             return input.All(c => c >= 'a' && c <= 'z' 
