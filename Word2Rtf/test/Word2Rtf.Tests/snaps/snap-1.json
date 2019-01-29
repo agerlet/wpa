@@ -1,0 +1,116 @@
+{
+    "program": [
+        {
+            "input": "【Welcome歡迎】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Welcome"
+                },
+                {
+                    "Language": 0,
+                    "Content": "歡迎"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Call To Worship宣告】Luke路3:4,6;Habakkuk哈巴谷書 2:20b",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Call To Worship\nLuke 3:4,6\nHabakkuk 2:20b"
+                },
+                {
+                    "Language": 0,
+                    "Content": "宣告\n路 3:4,6\n哈巴谷書 2:20b"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "4 As it is written in the book of the words of Isaiah the prophet:“A voice of one calling in the wilderness,‘Prepare the way for the Lord, make straight paths for him.\n4 正如以賽亞先知書上所記的話：「在曠野有聲音呼喊着：預備主的道，修直他的路！",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "4 As it is written in the book of the words of Isaiah the prophet:“A voice of one calling in the wilderness,‘Prepare the way for the Lord, make straight paths for him."
+                },
+                {
+                    "Language": 0,
+                    "Content": "4 正如以賽亞先知書上所記的話：「在曠野有聲音呼喊着：預備主的道，修直他的路！"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "6 And all people will see God’s salvation.’”\n6 凡有血肉之軀的，都要看見　神的救恩！」",
+            "output":[
+                {
+                    "Language": 1,
+                    "Content": "6 And all people will see God’s salvation.’”"
+                },
+                {
+                    "Language": 0,
+                    "Content": "6 凡有血肉之軀的，都要看見　神的救恩！」"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "20 The Lord is in his holy temple\n20 惟耶和華在他的聖殿中",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "20 The Lord is in his holy temple"
+                },
+                {
+                    "Language": 0,
+                    "Content": "20 惟耶和華在他的聖殿中"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Hymn唱詩】Be Still,For the Presence of the Lord《靜默在至聖主跟前》",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Hymn\nBe Still,For the Presence of the Lord"
+                },
+                {
+                    "Language": 0,
+                    "Content": "唱詩\n靜默在至聖主跟前"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "Be still, for the presence of the Lord, the Holy one is here.\n靜默在至聖的主跟前，主今親臨同在，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the presence of the Lord, the Holy one is here."
+                },
+                {
+                    "Language": 0,
+                    "Content": "靜默在至聖的主跟前，主今親臨同在，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Come bow before him now, with reverence and fear.\n這是神聖之地，主聖潔無瑕疵；",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Come bow before him now, with reverence and fear."
+                },
+                {
+                    "Language": 0,
+                    "Content": "這是神聖之地，主聖潔無瑕疵；"
+                }
+            ],
+            "contentType": "Content"
+        }
+    ]
+}  

@@ -3,8 +3,9 @@ using Word2Rtf.Models;
 
 namespace Word2Rtf.Parsers
 {
-    internal interface IParser
+    internal interface IParser<T>
     {
-        IEnumerable<Element> Parse(string[] input);
+        bool CanHandle(T input);
+        IEnumerable<Element> Parse(T input);
     }
 }

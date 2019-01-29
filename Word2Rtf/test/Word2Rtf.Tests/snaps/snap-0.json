@@ -29,26 +29,6 @@
             "contentType": "Title"
         },
         {
-            "input": "Prepare the way for the Lord,make straight paths for him. And all people will see God’s salvation.’ Let all the earth be still before Him.",
-            "output": [
-                {
-                    "Language": 1,
-                    "Content": "Prepare the way for the Lord,make straight paths for him. And all people will see God’s salvation.’ Let all the earth be still before Him."
-                }
-            ],
-            "contentType": "Content"
-        },
-        {
-            "input": "預備主的道，修直祂的路。凡有血氣的，都要見上帝的救恩。全地的人都當在祂面前肅敬靜默。",
-            "output": [
-                {
-                    "Language": 0,
-                    "Content": "預備主的道，修直祂的路。凡有血氣的，都要見上帝的救恩。全地的人都當在祂面前肅敬靜默。"
-                }
-            ],
-            "contentType": "Content"
-        },
-        {
             "input": "【Hymn唱詩】Be Still,For the Presence of the Lord《靜默在至聖主跟前》",
             "output": [
                 {
