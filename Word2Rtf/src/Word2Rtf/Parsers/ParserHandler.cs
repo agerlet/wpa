@@ -20,10 +20,9 @@ namespace Word2Rtf.Parsers
 
         public static IEnumerable<Element> Parse(this string[] input)
         {
-            var handlers = new [] { new BracketParser() };
-            return handlers.Select(handler => handler.Parse(input))
-                           .Where(elements => elements.All(element => element.Pass))
-                           .FirstOrDefault();
+            var handler = new BracketParser();
+            handler.Parse(input);
+            return handler.Elements.Where(element => element.Pass);
         }
 
         internal static bool IsTitle(this Element element)
@@ -33,7 +32,9 @@ namespace Word2Rtf.Parsers
 
         internal static IEnumerable<Element> ParseTitle(this Element title)
         {
-            return _titleParser.Parse(title);
+            _titleParser.Flush();
+            _titleParser.Parse(title);
+            return _titleParser.Elements;
         }
     }
 }

@@ -5,18 +5,22 @@ using Word2Rtf.Models;
 
 namespace Word2Rtf.Parsers
 {
-    internal class TitleParser : IParser<Element>
+    internal class TitleParser : ParserBase<Element>
     {
-        public bool CanHandle(Element input)
+        public TitleParser() : base()
+        {
+        }
+
+        public override bool CanHandle(Element input)
         {
             return input.Input.Contains("【");
         }
 
-        public IEnumerable<Element> Parse(Element input)
+        public override void Parse(Element input)
         {
             input.ElementType = ElementType.Title;
             input.Verses = input.Input.SplitByLanguage();
-            return new [] { input };
+            Elements.Add(input);
         }
     }
 }

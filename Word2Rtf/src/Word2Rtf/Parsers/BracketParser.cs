@@ -10,26 +10,28 @@ namespace Word2Rtf.Parsers
     ///
     /// Assuming there are brackets in the title elements
     ///
-    internal class BracketParser : IParser<string[]>
+    internal class BracketParser : ParserBase<string[]>
     {
-        public bool CanHandle(string[] input)
+        public BracketParser() : base()
+        {
+        }
+
+        public override bool CanHandle(string[] input)
         {
             return input.Any(line => line.Contains("【"));
         }
 
-        public IEnumerable<Element> Parse(string[] input)
+        public override void Parse(string[] input)
         {
-            var elements = input.Select(line => new Element { Input = line }).ToList();
+            Elements.AddRange(input.Select(line => new Element { Input = line }));
 
-            elements.ForEach(element => 
+            Elements.ForEach(element => 
             {
                 if (element.IsTitle()) 
                     element.ParseTitle(); 
                 else 
                     ParseContent(element); // Awaiting to be handled by actual handlers
             });
-
-            return elements;
         }
 
         Element ParseContent(Element element)
