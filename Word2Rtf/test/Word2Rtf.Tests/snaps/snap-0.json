@@ -43,28 +43,12 @@
             "contentType": "Title"
         },
         {
-            "input": "Be still, for the presence of the Lord, the Holy one is here.",
+            "input": "Be still, for the presence of the Lord, the Holy one is here.\n靜默在至聖的主跟前，主今親臨同在，",
             "output": [
                 {
                     "Language": 1,
                     "Content": "Be still, for the presence of the Lord, the Holy one is here."
-                }
-            ],
-            "contentType": "Content"
-        },
-        {
-            "input": "Come bow before him now, with reverence and fear.",
-            "output": [
-                {
-                    "Language": 1,
-                    "Content": "Come bow before him now, with reverence and fear."
-                }
-            ],
-            "contentType": "Content"
-        },
-        {
-            "input": "靜默在至聖的主跟前，主今親臨同在，",
-            "output": [
+                },
                 {
                     "Language": 0,
                     "Content": "靜默在至聖的主跟前，主今親臨同在，"
@@ -73,8 +57,12 @@
             "contentType": "Content"
         },
         {
-            "input": "這是神聖之地，主聖潔無瑕疵；",
+            "input": "Come bow before him now, with reverence and fear.\n這是神聖之地，主聖潔無瑕疵；",
             "output": [
+                {
+                    "Language": 1,
+                    "Content": "Come bow before him now, with reverence and fear."
+                },
                 {
                     "Language": 0,
                     "Content": "這是神聖之地，主聖潔無瑕疵；"

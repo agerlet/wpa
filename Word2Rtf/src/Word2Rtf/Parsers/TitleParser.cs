@@ -7,9 +7,7 @@ namespace Word2Rtf.Parsers
 {
     internal class TitleParser : ParserBase<Element>
     {
-        public TitleParser() : base()
-        {
-        }
+        public TitleParser() : base() { }
 
         public override bool CanHandle(Element input)
         {

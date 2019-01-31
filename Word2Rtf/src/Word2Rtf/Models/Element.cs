@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -7,8 +8,9 @@ namespace Word2Rtf.Models
 {
     internal class Element
     {
-        public ElementType ElementType { get; set; }
         public string Input { get; set; }
+        public int TitleId { get; set; }
+        public ElementType ElementType { get; set; }
         public IEnumerable<Verse> Verses { get; set; }
         public bool Pass
         {

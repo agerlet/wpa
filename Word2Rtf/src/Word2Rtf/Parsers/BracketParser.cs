@@ -12,9 +12,7 @@ namespace Word2Rtf.Parsers
     ///
     internal class BracketParser : ParserBase<string[]>
     {
-        public BracketParser() : base()
-        {
-        }
+        public BracketParser() : base() { }
 
         public override bool CanHandle(string[] input)
         {
@@ -25,27 +23,29 @@ namespace Word2Rtf.Parsers
         {
             Elements.AddRange(input.Select(line => new Element { Input = line }));
 
-            Elements.ForEach(element => 
+            int titleId = new int();
+
+            foreach(var element in Elements)
             {
                 if (element.IsTitle()) 
-                    element.ParseTitle(); 
-                else 
-                    ParseContent(element); // Awaiting to be handled by actual handlers
-            });
-        }
+                    titleId = element.ParseTitle().TitleId; 
+                else
+                    element.ParseContent(titleId);
+            }
 
-        Element ParseContent(Element element)
-        {
-            element.ElementType = ElementType.Content;
-            element.Verses = new [] 
-            {
-                new Verse 
+            var elements = Elements
+                .GroupBy(element => element.TitleId)
+                .SelectMany(group => 
                 {
-                    Language = element.Input.GetLanguage(),
-                    Content = element.Input,
-                }
-            };
-            return element;
+                    if (group.All(g => g.ElementType == ElementType.Title))
+                        return group;
+                    
+                    return group.ParseContent();
+                })
+                .ToList();
+
+            Elements.Clear();
+            Elements.AddRange(elements);
         }
     }
 }
