@@ -21,7 +21,7 @@ namespace Word2Rtf.Tests
         }
 
         [Fact]
-        public async void SnapTestFunction()
+        public async void Snap_0_TestFunction()
         {
             string input = await "samples/sample-0.txt".LoadAsync();
             // Invoke the lambda function and confirm the string was upper cased.
@@ -35,5 +35,19 @@ namespace Word2Rtf.Tests
             Assert.Equal(expected, actual);
         }
 
+        //[Fact]
+        public async void Snap_1_TestFunction()
+        {
+            string input = await "samples/sample-1.txt".LoadAsync();
+            // Invoke the lambda function and confirm the string was upper cased.
+            var json = _function.FunctionHandler(new Models.Payload { Input = input }, _context);
+            string actual = await _jsonSerializer.GetJsonString(json);
+
+            string snap = await "snaps/snap-1.json".LoadAsync();
+            object o = _jsonSerializer.GetJsonObject(snap);
+            string expected = await _jsonSerializer.GetJsonString(o);
+            
+            Assert.Equal(expected, actual);
+        }
     }
 }

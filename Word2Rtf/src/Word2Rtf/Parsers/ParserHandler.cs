@@ -19,8 +19,8 @@ namespace Word2Rtf.Parsers
             _titleParser = new TitleParser();
             _contentParsers = new IParser<IGrouping<int, Element>>[]
             {
-                new BibleVerseParser(),
                 new ResponsiveBibleReadingParser(),
+                new BibleVerseParser(),
                 new LyricsParser(),
             };
         }
@@ -31,6 +31,8 @@ namespace Word2Rtf.Parsers
             handler.Parse(input);
             return handler.Elements.Where(element => element.Pass);
         }
+
+        #region Element processes
 
         internal static bool IsTitle(this Element element)
         {
@@ -60,6 +62,10 @@ namespace Word2Rtf.Parsers
             return content;
         }
 
+        #endregion Element processes
+
+        #region IGrouping<int, Element> processes
+
         internal static IEnumerable<Element> ParseContent(this IGrouping<int, Element> group)
         {
             foreach (var parser in _contentParsers)
@@ -74,5 +80,14 @@ namespace Word2Rtf.Parsers
 
             throw new NotImplementedException($"Cannot handle this group {group.First().Input}.");
         }
+
+        internal static IEnumerable<Element> Get(this IGrouping<int, Element> input, ElementType elementType) => 
+            input.Where(element => element.ElementType == elementType);
+
+        internal static IEnumerable<Element> Get(this IEnumerable<Element> content, Language language) => 
+            content.Where(element => element.Verses.First().Language == language);
+
+        
+        #endregion IGrouping<int, Element> processes
     }
 }

@@ -12,6 +12,9 @@ namespace Word2Rtf.Models
     {
         Title,
         Content,
+        Lyrics,
+        BibleVerses,
+        YouTubeLink,
     }
 
 }

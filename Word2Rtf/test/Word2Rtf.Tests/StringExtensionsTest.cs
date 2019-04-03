@@ -50,6 +50,15 @@ namespace Word2Rtf.Tests
         }
 
         [Fact]
+        public void Test_Language_RealCase()
+        {
+            var text = "1Ascribe to the LORD , O mighty ones, ascribe to the LORD glory and strength. 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.3The voice of the LORD is over the waters; the God of glory thunders, the LORD thunders over the mighty waters.4The voice of the LORD is powerful; the voice of the LORD is majestic.5	The voice of the LORD breaks the cedars; the LORD breaks in pieces the cedars of Lebanon.6He makes Lebanon skip like a calf, Sirion like a young wild ox.7	The voice of the LORD strikes with flashes of lightning.8The voice of the LORD shakes the desert; the LORD shakes the Desert of Kadesh.9The voice of the LORD twists the oaks and strips the forests bare. And in his temple all cry, \"Glory!\"10The LORD sits enthroned over the flood; the LORD is enthroned as King forever.11The LORD gives strength to his people; the LORD blesses his people with peace.";
+            var actual = text.GetLanguage();
+
+            Assert.Equal(Language.English, actual);
+        }
+
+        [Fact]
         public void Test_Purify()
         {
             var actual = _source.Purify();
@@ -144,6 +153,24 @@ namespace Word2Rtf.Tests
             var expected = new [] { "50:10,23-26", "2:10b-11,14" };
             var actual = source.GetVerseNumbers();
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Test_BreakByVerseNumbers()
+        {
+            string source = "1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。12. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。123. 耶和華的聲音發在水上，榮耀的神打雷，耶和華打雷在大水之上。";
+            var expected = new [] 
+            {
+                "1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。",
+                "12. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。",
+                "123. 耶和華的聲音發在水上，榮耀的神打雷，耶和華打雷在大水之上。"
+            };
+
+            var actual = source.SplitByVerseNumbers().ToArray();
+            for (int i = 0; i < expected.Length; i ++)
+            {
+                Assert.Equal(expected[i], actual[i]);
+            }
         }
     }
 }

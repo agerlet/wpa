@@ -21,13 +21,15 @@ namespace Word2Rtf
         {
             char[] symbels = new char[] 
             {
-                ' ', ';', '；', ',', '(', ')', '!', '.', '\'', '’'
+                '；', '（', '）', '(', ')',
+                ',', '.', ';', '!', '\"', '\\'
             };
 
-            return input.All(c => c >= 'a' && c <= 'z' 
-                               || c >= 'A' && c <= 'Z'
-                               || c >= '0' && c <= '9'
-                               || symbels.Contains(c)) 
+            return input.All(c => Char.IsLetter(c) 
+                                || Char.IsNumber(c)
+                                || Char.IsWhiteSpace(c)
+                                || Char.IsSymbol(c)
+                                || symbels.Contains(c)) 
                  ? Language.English : Language.Chinese;
         }
 
@@ -187,6 +189,35 @@ namespace Word2Rtf
         public static string RemoveDuplicateSpaces(this string input)
         {
             return string.Join(' ', input.Split(' ', StringSplitOptions.RemoveEmptyEntries));
+        }
+
+        public static IEnumerable<string> SplitByVerseNumbers(this string input)
+        {
+            ///
+            /// sample:
+            /// "1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。12. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。123. 耶和華的聲音發在水上，榮耀的神打雷，耶和華打雷在大水之上。"
+            /// break into
+            /// "1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。"
+            /// "12. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。"
+            /// "123. 耶和華的聲音發在水上，榮耀的神打雷，耶和華打雷在大水之上。"
+            ///
+
+            var temp = new StringBuilder();
+
+            temp.Append(input[0]);
+            for(int i = 1; i < input.Length; i ++)
+            {
+                if (Char.IsNumber(input[i]) && !Char.IsNumber(input[i-1]))
+                {
+                    temp.Append("\r\n");
+                }
+                temp.Append(input[i]);
+            }
+
+            return temp.ToString()
+                .Split(new [] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(v => v.Trim());
+
         }
     } 
 }

@@ -1,9 +1,11 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Word2Rtf.Models;
 
 namespace Word2Rtf.Parsers
 {
-    internal class BibleVerseParser : ParserBase<IGrouping<int, Element>>
+    internal class BibleVerseParser : GroupingParserBase
     {
         public BibleVerseParser() : base() { }
         
@@ -13,13 +15,18 @@ namespace Word2Rtf.Parsers
                 .FirstOrDefault(g => g.ElementType == ElementType.Title)
                 .Input;
                 
-            //var isBibleReading = input.Contains("");
-            return false;
+            var isCallToWorship = input.Contains("Call To Worship", StringComparison.InvariantCultureIgnoreCase);
+            var isTithe = input.Contains("Tithe", StringComparison.InvariantCultureIgnoreCase);
+            var isScripture = input.Contains("Scripture", StringComparison.InvariantCultureIgnoreCase);
+            var isBibleReading = input.Contains("Bible Reading", StringComparison.InvariantCultureIgnoreCase);
+            var isLordsPrayer = input.Contains("主禱文", StringComparison.InvariantCultureIgnoreCase);
+
+            return isCallToWorship || isTithe || isScripture || isLordsPrayer;
         }
 
-        public override void Parse(IGrouping<int, Element> group)
+        internal virtual bool IsBibleVerse(Element element)
         {
-            throw new System.NotImplementedException();
+            return Char.IsNumber(element.Input.Trim().First());
         }
     }
 }
