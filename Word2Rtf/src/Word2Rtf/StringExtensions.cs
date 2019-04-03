@@ -193,15 +193,6 @@ namespace Word2Rtf
 
         public static IEnumerable<string> SplitByVerseNumbers(this string input)
         {
-            ///
-            /// sample:
-            /// "1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。12. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。123. 耶和華的聲音發在水上，榮耀的神打雷，耶和華打雷在大水之上。"
-            /// break into
-            /// "1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。"
-            /// "12. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。"
-            /// "123. 耶和華的聲音發在水上，榮耀的神打雷，耶和華打雷在大水之上。"
-            ///
-
             var temp = new StringBuilder();
 
             temp.Append(input[0]);

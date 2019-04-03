@@ -24,9 +24,29 @@ namespace Word2Rtf.Parsers
             return isCallToWorship || isTithe || isScripture || isLordsPrayer;
         }
 
-        internal virtual bool IsBibleVerse(Element element)
+        internal override void Adjust(List<Element> elements)
         {
-            return Char.IsNumber(element.Input.Trim().First());
+            var raw = new List<Element>(elements);
+            elements.Clear();
+
+            var results = raw.SelectMany(element => 
+                element.Input.SplitByVerseNumbers().Select(verse => new Element 
+                {
+                    Input = verse,
+                    TitleId = element.TitleId,
+                    ElementType = element.ElementType,
+                    Verses = new List<Verse> 
+                    {
+                        new Verse 
+                        {
+                            Content = verse.Trim(),
+                            Language = verse.GetLanguage()
+                        } 
+                    }
+                })
+            );
+
+            elements.AddRange(results);
         }
     }
 }

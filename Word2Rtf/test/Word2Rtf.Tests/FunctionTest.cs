@@ -35,7 +35,7 @@ namespace Word2Rtf.Tests
             Assert.Equal(expected, actual);
         }
 
-        //[Fact]
+        [Fact]
         public async void Snap_1_TestFunction()
         {
             string input = await "samples/sample-1.txt".LoadAsync();
