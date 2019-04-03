@@ -19,7 +19,6 @@ namespace Word2Rtf.Parsers
             _titleParser = new TitleParser();
             _contentParsers = new IParser<IGrouping<int, Element>>[]
             {
-                new ResponsiveBibleReadingParser(),
                 new BibleVerseParser(),
                 new LyricsParser(),
             };
