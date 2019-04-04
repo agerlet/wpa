@@ -1,0 +1,102 @@
+{
+    "program": [
+        {
+            "input": "【Welcome歡迎】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Welcome"
+                },
+                {
+                    "Language": 0,
+                    "Content": "歡迎"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Call To Worship宣告】Luke路3:4,6;Habakkuk哈巴谷書 2:20b",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Call To Worship\nLuke 3:4,6\nHabakkuk 2:20b"
+                },
+                {
+                    "Language": 0,
+                    "Content": "宣告\n路 3:4,6\n哈巴谷書 2:20b"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "12 Saying with a great voice, It is right to give to the Lamb who was put to death, power and wealth and wisdom and strength and honour and glory and blessing.\n12 大聲說、曾被殺的羔羊、是配得權柄、豐富、智慧、能力、尊貴、榮耀、頌讚的。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "12 Saying with a great voice, It is right to give to the Lamb who was put to death, power and wealth and wisdom and strength and honour and glory and blessing."
+                },
+                {
+                    "Language": 0,
+                    "Content": "12 大聲說、曾被殺的羔羊、是配得權柄、豐富、智慧、能力、尊貴、榮耀、頌讚的。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "13 And to my ears came the voice of everything in heaven and on earth and under the earth and in the sea, and of all things which are in them, saying, To him who is seated on the high seat, and to the Lamb, may blessing and honour and glory and power be given for ever and ever.\n13我又聽見、在天上、地上、地底下、滄海裡、和天地間一切所有被造之物、都說、但願頌讚、尊貴、榮耀、權勢、都歸給坐寶座的和羔羊、直到永永遠遠。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "13 And to my ears came the voice of everything in heaven and on earth and under the earth and in the sea, and of all things which are in them, saying, To him who is seated on the high seat, and to the Lamb, may blessing and honour and glory and power be given for ever and ever."
+                },
+                {
+                    "Language": 0,
+                    "Content": "13我又聽見、在天上、地上、地底下、滄海裡、和天地間一切所有被造之物、都說、但願頌讚、尊貴、榮耀、權勢、都歸給坐寶座的和羔羊、直到永永遠遠。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Hymn唱詩】Be Still,For the Presence of the Lord《靜默在至聖主跟前》",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Hymn\nBe Still,For the Presence of the Lord"
+                },
+                {
+                    "Language": 0,
+                    "Content": "唱詩\n靜默在至聖主跟前"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "Be still, for the presence of the Lord, the Holy one is here.\n靜默在至聖的主跟前，主今親臨同在，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the presence of the Lord, the Holy one is here."
+                },
+                {
+                    "Language": 0,
+                    "Content": "靜默在至聖的主跟前，主今親臨同在，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Come bow before him now, with reverence and fear.\n這是神聖之地，主聖潔無瑕疵；",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Come bow before him now, with reverence and fear."
+                },
+                {
+                    "Language": 0,
+                    "Content": "這是神聖之地，主聖潔無瑕疵；"
+                }
+            ],
+            "contentType": "Content"
+        }
+    ]
+}  

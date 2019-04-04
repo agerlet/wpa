@@ -1,0 +1,1456 @@
+{
+    "program": [
+        {
+            "input": "【Welcome歡迎】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Welcome"
+                },
+                {
+                    "Language": 0,
+                    "Content": "歡迎"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Call To Worship宣告】Luke路3:4,6;Habakkuk哈巴谷書 2:20b",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Call To Worship\nLuke 3:4,6\nHabakkuk 2:20b"
+                },
+                {
+                    "Language": 0,
+                    "Content": "宣告\n路 3:4,6\n哈巴谷書 2:20b"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "Prepare the way for the Lord,make straight paths for him. And all people will see God’s salvation.’ Let all the earth be still before Him.\n預備主的道，修直祂的路。凡有血氣的，都要見上帝的救恩。全地的人都當在祂面前肅敬靜默。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Prepare the way for the Lord,make straight paths for him. And all people will see God’s salvation.’ Let all the earth be still before Him."
+                },
+                {
+                    "Language": 0,
+                    "Content": "預備主的道，修直祂的路。凡有血氣的，都要見上帝的救恩。全地的人都當在祂面前肅敬靜默。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Hymn唱詩】Be Still,For the Presence of the Lord《靜默在至聖主跟前》",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Hymn\nBe Still,For the Presence of the Lord"
+                },
+                {
+                    "Language": 0,
+                    "Content": "唱詩\n靜默在至聖主跟前"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "Be still, for the presence of the Lord, the Holy one is here.\n靜默在至聖的主跟前，主今親臨同在，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the presence of the Lord, the Holy one is here."
+                },
+                {
+                    "Language": 0,
+                    "Content": "靜默在至聖的主跟前，主今親臨同在，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Come bow before him now, with reverence and fear.\n這是神聖之地，主聖潔無瑕疵；",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Come bow before him now, with reverence and fear."
+                },
+                {
+                    "Language": 0,
+                    "Content": "這是神聖之地，主聖潔無瑕疵；"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "In him no sin is found, we stand on holy ground.\n你當尊他為聖，向他屈膝敬拜，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "In him no sin is found, we stand on holy ground."
+                },
+                {
+                    "Language": 0,
+                    "Content": "你當尊他為聖，向他屈膝敬拜，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Be still, for the presence of the Lord, the Holy one is here.\n肅靜在至聖的主跟前，主今親臨同在。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the presence of the Lord, the Holy one is here."
+                },
+                {
+                    "Language": 0,
+                    "Content": "肅靜在至聖的主跟前，主今親臨同在。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Be still, for the glory of the Lord is shining all around;\n靜默在榮耀的主跟前，主光輝今環繞，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the glory of the Lord is shining all around;"
+                },
+                {
+                    "Language": 0,
+                    "Content": "靜默在榮耀的主跟前，主光輝今環繞，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "he burns with Holy fire, with splendour he is crowned.\n榮耀至尊君王，主威榮誰能瞻？",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "he burns with Holy fire, with splendour he is crowned."
+                },
+                {
+                    "Language": 0,
+                    "Content": "榮耀至尊君王，主威榮誰能瞻？"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "How awesome is the sight, our radiant Kind of light!\n主以光輝為冕，聖火不熄常燃，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "How awesome is the sight, our radiant Kind of light!"
+                },
+                {
+                    "Language": 0,
+                    "Content": "主以光輝為冕，聖火不熄常燃，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Be still, for the glory of the Lord is shining all around.\n肅靜在榮耀的主跟前，主光輝今環繞。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the glory of the Lord is shining all around."
+                },
+                {
+                    "Language": 0,
+                    "Content": "肅靜在榮耀的主跟前，主光輝今環繞。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Be still, for the power of the Lord is moving in this place;\n靜默在全能的主跟前，主施大能權柄，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the power of the Lord is moving in this place;"
+                },
+                {
+                    "Language": 0,
+                    "Content": "靜默在全能的主跟前，主施大能權柄，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "he comes to cleanse and heal to minister his grace.\n主來潔淨、醫治，來祝福賜宏恩；",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "he comes to cleanse and heal to minister his grace."
+                },
+                {
+                    "Language": 0,
+                    "Content": "主來潔淨、醫治，來祝福賜宏恩；"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "No work too hard for him, in faith receive from him.\n以信心瞻望主，萬事他皆能成，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "No work too hard for him, in faith receive from him."
+                },
+                {
+                    "Language": 0,
+                    "Content": "以信心瞻望主，萬事他皆能成，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Be still, for the power of the Lord is moving in this place.\n肅靜在全能的主跟前，主施大能權柄。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the power of the Lord is moving in this place."
+                },
+                {
+                    "Language": 0,
+                    "Content": "肅靜在全能的主跟前，主施大能權柄。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Praise & Prayer讚美禱告】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Praise & Prayer"
+                },
+                {
+                    "Language": 0,
+                    "Content": "讚美禱告"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Responsive Reading啟應讀經】Romans羅馬書 15:4-13",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Responsive Reading\nRomans 15:4-13"
+                },
+                {
+                    "Language": 0,
+                    "Content": "啟應讀經\n羅馬書 15:4-13"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "(Lead) For everything that was written in the past was written to teach us, so that through the endurance taught in the Scriptures and the encouragement they provide we might have hope.\n（領）從前所寫的聖經，都是為教訓我們寫的，叫我們因聖經所生的忍耐和安慰，可以得著盼望。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "(Lead) For everything that was written in the past was written to teach us, so that through the endurance taught in the Scriptures and the encouragement they provide we might have hope."
+                },
+                {
+                    "Language": 0,
+                    "Content": "（領）從前所寫的聖經，都是為教訓我們寫的，叫我們因聖經所生的忍耐和安慰，可以得著盼望。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "(Congregation) May the God who gives endurance and encouragement give us the same attitude of mind toward each other that Christ Jesus had, so that with one mind and one voice you may glorify the God and Father of our Lord Jesus Christ.\n(眾)但願賜忍耐安慰的神，叫我們彼此同心，效法基督耶穌，一心一口榮耀神我們主耶穌基督的父!",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "(Congregation) May the God who gives endurance and encouragement give us the same attitude of mind toward each other that Christ Jesus had, so that with one mind and one voice you may glorify the God and Father of our Lord Jesus Christ."
+                },
+                {
+                    "Language": 0,
+                    "Content": "(眾)但願賜忍耐安慰的神，叫我們彼此同心，效法基督耶穌，一心一口榮耀神我們主耶穌基督的父!"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "(Lead) Accept one another, then, just as Christ accepted you, in order to bring praise to God. 8 For I tell you that Christ has become a servant of the Jews on behalf of God’s truth, so that the promises made to the patriarchs might be confirmed\n(領)所以，你們要彼此接納，如同基督接納你們一樣，使榮耀歸與神。我說，基督是為神真理作了受割禮人的執事，要證實所應許列祖的話，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "(Lead) Accept one another, then, just as Christ accepted you, in order to bring praise to God. 8 For I tell you that Christ has become a servant of the Jews on behalf of God’s truth, so that the promises made to the patriarchs might be confirmed"
+                },
+                {
+                    "Language": 0,
+                    "Content": "(領)所以，你們要彼此接納，如同基督接納你們一樣，使榮耀歸與神。我說，基督是為神真理作了受割禮人的執事，要證實所應許列祖的話，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "(Lead) For everything that was written in the past was written to teach us, so that through the endurance taught in the Scriptures and the encouragement they provide we might have hope.\n（領）從前所寫的聖經，都是為教訓我們寫的，叫我們因聖經所生的忍耐和安慰，可以得著盼望。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "(Lead) For everything that was written in the past was written to teach us, so that through the endurance taught in the Scriptures and the encouragement they provide we might have hope."
+                },
+                {
+                    "Language": 0,
+                    "Content": "（領）從前所寫的聖經，都是為教訓我們寫的，叫我們因聖經所生的忍耐和安慰，可以得著盼望。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "(Congregation)  and, moreover, that the Gentiles might glorify God for his mercy. As it is written:“Therefore I will praise you among the Gentiles; I will sing the praises of your name.”\n(眾)並叫外邦人因他的憐憫榮耀神。如經上所記:“因此，我要在外邦中稱讚你，歌頌你的名;”",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "(Congregation)  and, moreover, that the Gentiles might glorify God for his mercy. As it is written:“Therefore I will praise you among the Gentiles; I will sing the praises of your name.”"
+                },
+                {
+                    "Language": 0,
+                    "Content": "(眾)並叫外邦人因他的憐憫榮耀神。如經上所記:“因此，我要在外邦中稱讚你，歌頌你的名;”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "(Lead)Again, it says,“Rejoice, you Gentiles, with his people.”And again,“Praise the Lord, all you Gentiles;let all the peoples extol him.”And again, Isaiah says,“The Root of Jesse will spring up,one who will arise to rule over the nations;in him the Gentiles will hope.”\n(領)又說:“列邦啊，當與主的百姓一同歡樂;“ 又說:”萬國啊，你們當讚美主!願萬民都頌讚他!”又有以賽亞說:“將來有耶西的根，就是那興起來要治理外邦的; 列邦都寄望於他。”",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "(Lead)Again, it says,“Rejoice, you Gentiles, with his people.”And again,“Praise the Lord, all you Gentiles;let all the peoples extol him.”And again, Isaiah says,“The Root of Jesse will spring up,one who will arise to rule over the nations;in him the Gentiles will hope.”"
+                },
+                {
+                    "Language": 0,
+                    "Content": "(領)又說:“列邦啊，當與主的百姓一同歡樂;“ 又說:”萬國啊，你們當讚美主!願萬民都頌讚他!”又有以賽亞說:“將來有耶西的根，就是那興起來要治理外邦的; 列邦都寄望於他。”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "(Congregation) May the God of hope fill us with all joy and peace as we trust in him, so that we may overflow with hope by the power of the Holy Spirit.\n(眾)但願使人有盼望的神，因信將諸般的喜樂、平安，充滿我們的心， 使我們藉著聖靈的能力，大有盼望。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "(Congregation) May the God of hope fill us with all joy and peace as we trust in him, so that we may overflow with hope by the power of the Holy Spirit."
+                },
+                {
+                    "Language": 0,
+                    "Content": "(眾)但願使人有盼望的神，因信將諸般的喜樂、平安，充滿我們的心， 使我們藉著聖靈的能力，大有盼望。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Hymn唱詩】O Come, All Ye Faithful《齊來宗主信徒》",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Hymn\nO Come, All Ye Faithful"
+                },
+                {
+                    "Language": 0,
+                    "Content": "唱詩\n齊來宗主信徒"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "1. O come, all ye faithful Joyful and triumphant\n1. 齊來宗主信徒，快樂又歡欣，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "1. O come, all ye faithful Joyful and triumphant"
+                },
+                {
+                    "Language": 0,
+                    "Content": "1. 齊來宗主信徒，快樂又歡欣，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "O come ye, o come ye to Bethlehem\n齊來一齊來大家上伯利恆，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "O come ye, o come ye to Bethlehem"
+                },
+                {
+                    "Language": 0,
+                    "Content": "齊來一齊來大家上伯利恆，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Come and behold Him Born the King of Angels!\n來朝見聖嬰，天使王已降生，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Come and behold Him Born the King of Angels!"
+                },
+                {
+                    "Language": 0,
+                    "Content": "來朝見聖嬰，天使王已降生，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "O come, let us adore Him O come, let us adore Him\n齊來虔誠同崇拜，齊來虔誠同崇拜，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "O come, let us adore Him O come, let us adore Him"
+                },
+                {
+                    "Language": 0,
+                    "Content": "齊來虔誠同崇拜，齊來虔誠同崇拜，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "O come, let us adore Him Christ the Lord\n齊來虔誠同崇拜，主基督。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "O come, let us adore Him Christ the Lord"
+                },
+                {
+                    "Language": 0,
+                    "Content": "齊來虔誠同崇拜，主基督。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "2. Sing, choirs of angels, Sing in exultation;\n2. 天上結成樂隊，歡然同歌唱，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "2. Sing, choirs of angels, Sing in exultation;"
+                },
+                {
+                    "Language": 0,
+                    "Content": "2. 天上結成樂隊，歡然同歌唱，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Sing, all ye citizens of heaven above!\n光明眾天軍來高聲同讚揚，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Sing, all ye citizens of heaven above!"
+                },
+                {
+                    "Language": 0,
+                    "Content": "光明眾天軍來高聲同讚揚，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Glory to God, Glory in the highest;\n在至高之處，榮耀歸於真神，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Glory to God, Glory in the highest;"
+                },
+                {
+                    "Language": 0,
+                    "Content": "在至高之處，榮耀歸於真神，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "O come, let us adore Him O come, let us adore Him\n齊來虔誠同崇拜，齊來虔誠同崇拜，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "O come, let us adore Him O come, let us adore Him"
+                },
+                {
+                    "Language": 0,
+                    "Content": "齊來虔誠同崇拜，齊來虔誠同崇拜，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "O come, let us adore Him Christ the Lord\n齊來虔誠同崇拜，主基督。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "O come, let us adore Him Christ the Lord"
+                },
+                {
+                    "Language": 0,
+                    "Content": "齊來虔誠同崇拜，主基督。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "3. Yea, Lord, we greet thee, Born this happy morning;\n3. 救主生於今晨，我眾來歡迎，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "3. Yea, Lord, we greet thee, Born this happy morning;"
+                },
+                {
+                    "Language": 0,
+                    "Content": "3. 救主生於今晨，我眾來歡迎，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Jesus, to thee be all glory given.\n天上諸榮耀完全歸主一身，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Jesus, to thee be all glory given."
+                },
+                {
+                    "Language": 0,
+                    "Content": "天上諸榮耀完全歸主一身，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Son of the Father, Now in flesh appearing;\n大哉父真道，藉肉體來顯明，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Son of the Father, Now in flesh appearing;"
+                },
+                {
+                    "Language": 0,
+                    "Content": "大哉父真道，藉肉體來顯明，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "O come, let us adore Him O come, let us adore Him\n齊來虔誠同崇拜，齊來虔誠同崇拜，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "O come, let us adore Him O come, let us adore Him"
+                },
+                {
+                    "Language": 0,
+                    "Content": "齊來虔誠同崇拜，齊來虔誠同崇拜，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "O come, let us adore Him Christ the Lord\n齊來虔誠同崇拜，主基督。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "O come, let us adore Him Christ the Lord"
+                },
+                {
+                    "Language": 0,
+                    "Content": "齊來虔誠同崇拜，主基督。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Hymn唱詩】You Are My All In All《你是我的一切》",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Hymn\nYou Are My All In All"
+                },
+                {
+                    "Language": 0,
+                    "Content": "唱詩\n你是我的一切"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "You are my strength when I am weak,\n你是我依靠的力量， 你是我尋求的寶藏，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "You are my strength when I am weak,"
+                },
+                {
+                    "Language": 0,
+                    "Content": "你是我依靠的力量， 你是我尋求的寶藏，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "You are my strength when I am weak, You are the treasure that I seek\n你是我依靠的力量， 你是我尋求的寶藏，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "You are my strength when I am weak, You are the treasure that I seek"
+                },
+                {
+                    "Language": 0,
+                    "Content": "你是我依靠的力量， 你是我尋求的寶藏，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "You are my all in all , Seeking You as a precious jewel\n你是我的一切。 你好比贵重的珠宝，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "You are my all in all , Seeking You as a precious jewel"
+                },
+                {
+                    "Language": 0,
+                    "Content": "你是我的一切。 你好比贵重的珠宝，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Lord, to give up I'd be a fool , You are my all in all\n我怎能放弃你不要， 你是我的一切。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Lord, to give up I'd be a fool , You are my all in all"
+                },
+                {
+                    "Language": 0,
+                    "Content": "我怎能放弃你不要， 你是我的一切。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Jesus, Lamb of God Worthy is Your name\n耶稣神羔羊，配得大赞美，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Jesus, Lamb of God Worthy is Your name"
+                },
+                {
+                    "Language": 0,
+                    "Content": "耶稣神羔羊，配得大赞美，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Jesus, Lamb of God Worthy is Your name\n耶稣神羔羊，配得大赞美，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Jesus, Lamb of God Worthy is Your name"
+                },
+                {
+                    "Language": 0,
+                    "Content": "耶稣神羔羊，配得大赞美。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Taking my sin, my cross, my shame;\n担当我罪债和羞辱，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Taking my sin, my cross, my shame;"
+                },
+                {
+                    "Language": 0,
+                    "Content": "担当我罪债和羞辱，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Rising up again I bless Your name\n死里复活我蒙救赎，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Rising up again I bless Your name"
+                },
+                {
+                    "Language": 0,
+                    "Content": "死里复活我蒙救赎，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "You are my all in all , When I fall down You pick me up\n你是我的一切。 當我跌倒，你扶持我，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "You are my all in all , When I fall down You pick me up"
+                },
+                {
+                    "Language": 0,
+                    "Content": "你是我的一切。 當我跌倒，你扶持我，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "When I am dry You fill my cup , You are my all in all\n當我乾渴，你充滿我，你是我的一切。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "When I am dry You fill my cup , You are my all in all"
+                },
+                {
+                    "Language": 0,
+                    "Content": "當我乾渴，你充滿我，你是我的一切。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Jesus, Lamb of God Worthy is Your name\n耶稣神羔羊，配得大赞美，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Jesus, Lamb of God Worthy is Your name"
+                },
+                {
+                    "Language": 0,
+                    "Content": "耶稣神羔羊，配得大赞美，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Jesus, Lamb of God Worthy is Your name\n耶稣神羔羊，配得大赞美，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Jesus, Lamb of God Worthy is Your name"
+                },
+                {
+                    "Language": 0,
+                    "Content": "耶稣神羔羊，配得大赞美。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Fundraising for Kenya肯尼亞籌款活動】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Fundraising for Kenya"
+                },
+                {
+                    "Language": 0,
+                    "Content": "肯尼亞籌款活動"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Welcome New Friends歡迎新朋友】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Welcome New Friends"
+                },
+                {
+                    "Language": 0,
+                    "Content": "歡迎新朋友"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Welcome Song歡迎歌】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Welcome Song"
+                },
+                {
+                    "Language": 0,
+                    "Content": "歡迎歌"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "There’s welcome here,a welcome here, There’s Christian welcome here, Hallelu! Welcome here, a welcome here, There’s a Christian welcome here.\n我們歡迎您，真歡迎你，在主裡誠心歡迎；哈利路亞，我們歡迎你，真歡迎你，在主裡誠心歡迎。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "There’s welcome here,a welcome here, There’s Christian welcome here, Hallelu! Welcome here, a welcome here, There’s a Christian welcome here."
+                },
+                {
+                    "Language": 0,
+                    "Content": "我們歡迎您，真歡迎你，在主裡誠心歡迎；哈利路亞，我們歡迎你，真歡迎你，在主裡誠心歡迎。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Tithe十一奉獻】奉獻是對神愛的回應，如不明白奉獻的意義,無需參與。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Tithe"
+                },
+                {
+                    "Language": 0,
+                    "Content": "十一奉獻\n奉獻是對神愛的回應，如不明白奉獻的意義,無需參與。"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "Sacrifice thank offerings to God, fulfill your vows to the Most High,\n你們要以感謝為祭獻給神，又要向至高者還你的願，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Sacrifice thank offerings to God, fulfill your vows to the Most High,"
+                },
+                {
+                    "Language": 0,
+                    "Content": "你們要以感謝為祭獻給神，又要向至高者還你的願，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "（Psalm 詩篇50:14）",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Psalm 50:14"
+                },
+                {
+                    "Language": 0,
+                    "Content": "詩篇50:14"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Offering Prayer奉獻禱告】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Offering Prayer"
+                },
+                {
+                    "Language": 0,
+                    "Content": "奉獻禱告"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Offering Prayer奉獻禱告】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Offering Prayer"
+                },
+                {
+                    "Language": 0,
+                    "Content": "奉獻禱告"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Announcements報告】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Announcements"
+                },
+                {
+                    "Language": 0,
+                    "Content": "報告"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Scripture證道經文】Luke路加福音3:1-16",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Scripture\nLuke 3:1-16"
+                },
+                {
+                    "Language": 0,
+                    "Content": "證道經文\n路加福音3:1-16"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "1 In the fifteenth year of the reign of Tiberius Caesar—when Pontius Pilate was governor of Judea, Herod tetrarch of Galilee, his brother Philip tetrarch of Iturea and Traconitis, and Lysanias tetrarch of Abilene.\n1凱撒提庇留執政第十五年，本丟·彼拉多任猶太總督，希律做加利利的分封王，他的弟弟腓力做以土利亞和特拉可尼兩地的分封王，呂撒聶做亞比利尼的分封王，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "1 In the fifteenth year of the reign of Tiberius Caesar—when Pontius Pilate was governor of Judea, Herod tetrarch of Galilee, his brother Philip tetrarch of Iturea and Traconitis, and Lysanias tetrarch of Abilene."
+                },
+                {
+                    "Language": 0,
+                    "Content": "1凱撒提庇留執政第十五年，本丟·彼拉多任猶太總督，希律做加利利的分封王，他的弟弟腓力做以土利亞和特拉可尼兩地的分封王，呂撒聶做亞比利尼的分封王，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "2 during the high-priesthood of Annas and Caiaphas, the word of God came to John son of Zechariah in the wilderness.\n2 亞那和該亞法當大祭司。當時，撒迦利亞的兒子約翰住在曠野，上帝向他說話。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "2 during the high-priesthood of Annas and Caiaphas, the word of God came to John son of Zechariah in the wilderness."
+                },
+                {
+                    "Language": 0,
+                    "Content": "2 亞那和該亞法當大祭司。當時，撒迦利亞的兒子約翰住在曠野，上帝向他說話。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "3 He went into all the country around the Jordan, preaching a baptism of repentance for the forgiveness of sins.\n3 他就到約旦河附近宣講悔改的洗禮，使人的罪得到赦免。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "3 He went into all the country around the Jordan, preaching a baptism of repentance for the forgiveness of sins."
+                },
+                {
+                    "Language": 0,
+                    "Content": "3 他就到約旦河附近宣講悔改的洗禮，使人的罪得到赦免。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "4 As it is written in the book of the words of Isaiah the prophet:“A voice of one calling in the wilderness,‘Prepare the way for the Lord,make straight paths for him.\n4 這正應驗了以賽亞先知書上的話：“在曠野有人大聲呼喊，預備主的道，修直祂的路。”",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "4 As it is written in the book of the words of Isaiah the prophet:“A voice of one calling in the wilderness,‘Prepare the way for the Lord,make straight paths for him."
+                },
+                {
+                    "Language": 0,
+                    "Content": "4 這正應驗了以賽亞先知書上的話：“在曠野有人大聲呼喊，預備主的道，修直祂的路。”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "5 ‘Every valley shall be filled in,every mountain and hill made low. The crooked roads shall become straight,the rough ways smooth.\n5“一切山谷將被填滿，大山小丘將被削平，彎曲的道路要被修直，崎嶇的路徑要被鋪平。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "5 ‘Every valley shall be filled in,every mountain and hill made low. The crooked roads shall become straight,the rough ways smooth."
+                },
+                {
+                    "Language": 0,
+                    "Content": "5“一切山谷將被填滿，大山小丘將被削平，彎曲的道路要被修直，崎嶇的路徑要被鋪平。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "6 And all people will see God’s salvation.’\n2 亞那和該亞法當大祭司。當時，撒迦利亞的兒子約翰住在曠野，上帝向他說話。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "6 And all people will see God’s salvation.’"
+                },
+                {
+                    "Language": 0,
+                    "Content": "6 世人都要看見上帝的救恩。”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "7 John said to the crowds coming out to be baptized by him, “You brood of vipers!Who warned you to flee from the coming wrath?\n6 世人都要看見上帝的救恩。”",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "7 John said to the crowds coming out to be baptized by him, “You brood of vipers!Who warned you to flee from the coming wrath?"
+                },
+                {
+                    "Language": 0,
+                    "Content": "7 約翰對前來接受他洗禮的人群說：“你們這些毒蛇的後代！誰指示你們逃避那將臨的烈怒呢？ ”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "8 Produce fruit in keeping with repentance. And do not begin to say to yourselves, ‘We have Abraham as our father.’ For I tell you that out of these stones God can raise up children for Abraham.\n8 你們要結出與悔改相稱的果子。不要心裡說，“我們是亞伯拉罕的子孫。”我告訴你們，上帝可以從這些石頭中興起亞伯拉罕的子孫。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "8 Produce fruit in keeping with repentance. And do not begin to say to yourselves, ‘We have Abraham as our father.’ For I tell you that out of these stones God can raise up children for Abraham."
+                },
+                {
+                    "Language": 0,
+                    "Content": "8 你們要結出與悔改相稱的果子。不要心裡說，“我們是亞伯拉罕的子孫。”我告訴你們，上帝可以從這些石頭中興起亞伯拉罕的子孫。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "9 The ax is already at the root of the trees, and every tree that does not produce good fruit will be cut down and thrown into the fire.”\n9 現在斧頭已經放在樹根上了，不結好果子的樹都要被砍下丟在火裡。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "9 The ax is already at the root of the trees, and every tree that does not produce good fruit will be cut down and thrown into the fire.”"
+                },
+                {
+                    "Language": 0,
+                    "Content": "9 現在斧頭已經放在樹根上了，不結好果子的樹都要被砍下丟在火裡。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "10 “What should we do then?” the crowd asked.\n10 眾人問道：“那麼，我們該怎麼辦呢？”",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "10 “What should we do then?” the crowd asked."
+                },
+                {
+                    "Language": 0,
+                    "Content": "10 眾人問道：“那麼，我們該怎麼辦呢？”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "11 John answered, “Anyone who has two shirts should share with the one who has none, and anyone who has food should do the same.”\n11 約翰回答說：“有兩件衣服的，應當分一件給沒有的；食物充裕的，應當分些給饑餓的。”",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "11 John answered, “Anyone who has two shirts should share with the one who has none, and anyone who has food should do the same.”"
+                },
+                {
+                    "Language": 0,
+                    "Content": "11 約翰回答說：“有兩件衣服的，應當分一件給沒有的；食物充裕的，應當分些給饑餓的。”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "12 Even tax collectors came to be baptized. “Teacher,” they asked, “what should we do?”\n12 有些稅吏也來受洗，並問約翰：“老師，我們該怎麼辦呢？”",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "12 Even tax collectors came to be baptized. “Teacher,” they asked, “what should we do?”"
+                },
+                {
+                    "Language": 0,
+                    "Content": "12 有些稅吏也來受洗，並問約翰：“老師，我們該怎麼辦呢？”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "13 “Don’t collect any more than you are required to,” he told them.\n13 約翰說：“除了規定的稅以外，一分錢也不可多收。”",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "13 “Don’t collect any more than you are required to,” he told them."
+                },
+                {
+                    "Language": 0,
+                    "Content": "13 約翰說：“除了規定的稅以外，一分錢也不可多收。”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "14 Then some soldiers asked him, “And what should we do?” He replied, “Don’t extort money and don’t accuse people falsely—be content with your pay.”\n14 有些軍人問：“我們該怎麼辦呢？”約翰說：“不可敲詐勒索，自己有糧餉就當知足。”",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "14 Then some soldiers asked him, “And what should we do?” He replied, “Don’t extort money and don’t accuse people falsely—be content with your pay.”"
+                },
+                {
+                    "Language": 0,
+                    "Content": "14 有些軍人問：“我們該怎麼辦呢？”約翰說：“不可敲詐勒索，自己有糧餉就當知足。”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "15 The people were waiting expectantly and were all wondering in their hearts if John might possibly be the Messiah.\n15 當時的百姓正期待著基督的來臨，大家心裡都在猜想，也許約翰就是基督。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "15 The people were waiting expectantly and were all wondering in their hearts if John might possibly be the Messiah."
+                },
+                {
+                    "Language": 0,
+                    "Content": "15 當時的百姓正期待著基督的來臨，大家心裡都在猜想，也許約翰就是基督。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "16 John answered them all, “I baptize you with water. But one who is more powerful than I will come, the straps of whose sandals I am not worthy to untie. He will baptize you with the Holy Spirit and fire.\n16 約翰對眾人說：“我是用水給你們施洗，但有一位能力比我更大的快來了，我就是給祂解鞋帶也不配。祂要用聖靈和火給你們施洗。”",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "16 John answered them all, “I baptize you with water. But one who is more powerful than I will come, the straps of whose sandals I am not worthy to untie. He will baptize you with the Holy Spirit and fire."
+                },
+                {
+                    "Language": 0,
+                    "Content": "16 約翰對眾人說：“我是用水給你們施洗，但有一位能力比我更大的快來了，我就是給祂解鞋帶也不配。祂要用聖靈和火給你們施洗。”"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Message證道】Hope after repent《悔改後的盼望》",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Message\nHope after repent"
+                },
+                {
+                    "Language": 0,
+                    "Content": "證道\n悔改後的盼望"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Mercy Seat Appeal恩座呼召】A Kernel Wheat《一粒麥子》",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Mercy Seat Appeal\nA Kernel Wheat"
+                },
+                {
+                    "Language": 0,
+                    "Content": "恩座呼召\n一粒麥子"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "https://www.youtube.com/watch?v=nmYOIJL0geA",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "https://www.youtube.com/watch?v=nmYOIJL0geA"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Responding Song回應詩歌】O Boundless Salvation《美哉無窮救恩》",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Responding Song\nO Boundless Salvation"
+                },
+                {
+                    "Language": 0,
+                    "Content": "回應詩歌\n美哉無窮救恩"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "1. O BOUNDLESS salvation! deep ocean of love,\n1. 美哉無窮救恩，如大海深淵，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "1. O BOUNDLESS salvation! deep ocean of love,"
+                },
+                {
+                    "Language": 0,
+                    "Content": "1. 美哉無窮救恩，如大海深淵，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "O fulness of mercy, Christ brought from above,\n奇哉豐富慈愛，救主帶自天；",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "O fulness of mercy, Christ brought from above,"
+                },
+                {
+                    "Language": 0,
+                    "Content": "奇哉豐富慈愛，救主帶自天；"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "The whole world redeeming, so rich and so free,\n普救天下罪人，廣沾神厚恩，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "The whole world redeeming, so rich and so free,"
+                },
+                {
+                    "Language": 0,
+                    "Content": "普救天下罪人，廣沾神厚恩，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Now flowing for all men, Now flowing for all men ,\n既已福蔭萬民，既已福蔭萬民，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Now flowing for all men, Now flowing for all men ,"
+                },
+                {
+                    "Language": 0,
+                    "Content": "既已福蔭萬民，既已福蔭萬民，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Now flowing for all men come, roll over me!\n既已福蔭萬民，求惠臨我身！",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Now flowing for all men come, roll over me!"
+                },
+                {
+                    "Language": 0,
+                    "Content": "既已福蔭萬民，求惠臨我身！"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "2. My sins they are many, their stains are so deep,\n2. 我的罪惡甚多，孽海十分深，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "2. My sins they are many, their stains are so deep,"
+                },
+                {
+                    "Language": 0,
+                    "Content": "2. 我的罪惡甚多，孽海十分深，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "And bitter the tears of remorse that I weep;\n痛悔哭泣呼喊，其苦如刺心；",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "And bitter the tears of remorse that I weep;"
+                },
+                {
+                    "Language": 0,
+                    "Content": "痛悔哭泣呼喊，其苦如刺心；"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "But useless is weeping; thou great crimson sea,\n哭泣皆是無用，惟求主憐憫，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "But useless is weeping; thou great crimson sea,"
+                },
+                {
+                    "Language": 0,
+                    "Content": "哭泣皆是無用，惟求主憐憫，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Thy waters can cleanse me, Thy waters can cleanse me\n主血能洗我心，主血能洗我心，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Thy waters can cleanse me, Thy waters can cleanse me"
+                },
+                {
+                    "Language": 0,
+                    "Content": "主血能洗我心，主血能洗我心，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Thy waters can cleanse me come, roll over me!\n主血能洗我心，求惠臨我身！",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Thy waters can cleanse me come, roll over me!"
+                },
+                {
+                    "Language": 0,
+                    "Content": "主血能洗我心，求惠臨我身！"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "And now, hallelujah! the rest of my days\n齊唱哈利路亞! 我天天頌唱",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "And now, hallelujah! the rest of my days"
+                },
+                {
+                    "Language": 0,
+                    "Content": "齊唱哈利路亞! 我天天頌唱"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Shall gladly be spent in promoting his praise\n頌讚我的救主，祂美好救恩!",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Shall gladly be spent in promoting his praise"
+                },
+                {
+                    "Language": 0,
+                    "Content": "頌讚我的救主，祂美好救恩!"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Who opened his bosom to pour out this sea\n主打開拯救門， 主降世捨命",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Who opened his bosom to pour out this sea"
+                },
+                {
+                    "Language": 0,
+                    "Content": "主打開拯救門， 主降世捨命"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Of boundless salvation, Of boundless salvation\n美哉無窮救恩，美哉無窮救恩，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Of boundless salvation, Of boundless salvation"
+                },
+                {
+                    "Language": 0,
+                    "Content": "美哉無窮救恩，美哉無窮救恩，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Of boundless salvation , for you and for me.\n美哉無窮救恩， 為了你和我。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Of boundless salvation , for you and for me."
+                },
+                {
+                    "Language": 0,
+                    "Content": "美哉無窮救恩， 為了你和我。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Benediction祝福】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Benediction"
+                },
+                {
+                    "Language": 0,
+                    "Content": "祝福"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Sending Song 差遣詩歌】Where He Leads Me I Will Follow《主領何處我必跟隨》",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Sending Song\nWhere He Leads Me I Will Follow"
+                },
+                {
+                    "Language": 0,
+                    "Content": "差遣詩歌\n主領何處我必跟隨"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "Where he leads me I will follow, Where he leads me I will follow\n主領何往我必跟隨，主領何往我必跟隨，",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Where he leads me I will follow, Where he leads me I will follow"
+                },
+                {
+                    "Language": 0,
+                    "Content": "主領何往我必跟隨，主領何往我必跟隨，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Where he leads me I will follow, I’ll go with Him, all the way.\n主領何往我必跟隨，我必隨主而行，到各處。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Where he leads me I will follow, I’ll go with Him, all the way."
+                },
+                {
+                    "Language": 0,
+                    "Content": "主領何往我必跟隨，我必隨主而行，到各處。"
+                }
+            ],
+            "contentType": "Content"
+        }
+    ]
+}  
