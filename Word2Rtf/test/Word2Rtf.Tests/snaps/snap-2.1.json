@@ -1,0 +1,144 @@
+{
+    "program": [
+        {
+            "input": "【Welcome歡迎】",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Welcome"
+                },
+                {
+                    "Language": 0,
+                    "Content": "歡迎"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "【Call To Worship宣告】Luke路3:4,6;Habakkuk哈巴谷書 2:20b",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Call To Worship\nLuke 3:4,6\nHabakkuk 2:20b"
+                },
+                {
+                    "Language": 0,
+                    "Content": "宣告\n路 3:4,6\n哈巴谷書 2:20b"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "Prepare the way for the Lord,make straight paths for him. And all people will see God’s salvation.’ Let all the earth be still before Him.\n預備主的道，修直祂的路。凡有血氣的，都要見上帝的救恩。全地的人都當在祂面前肅敬靜默。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Prepare the way for the Lord,make straight paths for him. And all people will see God’s salvation.’ Let all the earth be still before Him."
+                },
+                {
+                    "Language": 0,
+                    "Content": "預備主的道，修直祂的路。凡有血氣的，都要見上帝的救恩。全地的人都當在祂面前肅敬靜默。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "【Hymn唱詩】Be Still,For the Presence of the Lord《靜默在至聖主跟前》",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Hymn\nBe Still,For the Presence of the Lord"
+                },
+                {
+                    "Language": 0,
+                    "Content": "唱詩\n靜默在至聖主跟前"
+                }
+            ],
+            "contentType": "Title"
+        },
+        {
+            "input": "Be still, for the presence of the Lord, the Holy one is here.\nCome bow before him now, with reverence and fear.\n靜默在至聖的主跟前，主今親臨同在，\n這是神聖之地，主聖潔無瑕疵；",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the presence of the Lord, the Holy one is here."
+                },
+                {
+                    "Language": 0,
+                    "Content": "靜默在至聖的主跟前，主今親臨同在，"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "In him no sin is found, we stand on holy ground.\nBe still, for the presence of the Lord, the Holy one is here.\n你當尊他為聖，向他屈膝敬拜，\n肅靜在至聖的主跟前，主今親臨同在。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "In him no sin is found, we stand on holy ground.\nBe still, for the presence of the Lord, the Holy one is here."
+                },
+                {
+                    "Language": 0,
+                    "Content": "你當尊他為聖，向他屈膝敬拜，\n肅靜在至聖的主跟前，主今親臨同在。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Be still, for the glory of the Lord is shining all around;\nhe burns with Holy fire, with splendour he is crowned.\n靜默在榮耀的主跟前，主光輝今環繞，\n榮耀至尊君王，主威榮誰能瞻？",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the glory of the Lord is shining all around;\nhe burns with Holy fire, with splendour he is crowned."
+                },
+                {
+                    "Language": 0,
+                    "Content": "靜默在榮耀的主跟前，主光輝今環繞，\n榮耀至尊君王，主威榮誰能瞻？"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "How awesome is the sight, our radiant Kind of light!\nBe still, for the glory of the Lord is shining all around.\n主以光輝為冕，聖火不熄常燃，\n肅靜在榮耀的主跟前，主光輝今環繞。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "How awesome is the sight, our radiant Kind of light!\nBe still, for the glory of the Lord is shining all around."
+                },
+                {
+                    "Language": 0,
+                    "Content": "主以光輝為冕，聖火不熄常燃，\n肅靜在榮耀的主跟前，主光輝今環繞。"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "Be still, for the power of the Lord is moving in this place;\nhe comes to cleanse and heal to minister his grace.\n靜默在全能的主跟前，主施大能權柄，\n主來潔淨、醫治，來祝福賜宏恩；",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "Be still, for the power of the Lord is moving in this place;\nhe comes to cleanse and heal to minister his grace."
+                },
+                {
+                    "Language": 0,
+                    "Content": "靜默在全能的主跟前，主施大能權柄，\n主來潔淨、醫治，來祝福賜宏恩；"
+                }
+            ],
+            "contentType": "Content"
+        },
+        {
+            "input": "No work too hard for him, in faith receive from him.\nBe still, for the power of the Lord is moving in this place.\n以信心瞻望主，萬事他皆能成，\n肅靜在全能的主跟前，主施大能權柄。",
+            "output": [
+                {
+                    "Language": 1,
+                    "Content": "No work too hard for him, in faith receive from him.\nBe still, for the power of the Lord is moving in this place."
+                },
+                {
+                    "Language": 0,
+                    "Content": "以信心瞻望主，萬事他皆能成，\n肅靜在全能的主跟前，主施大能權柄。"
+                }
+            ],
+            "contentType": "Content"
+        }
+    ]
+}  

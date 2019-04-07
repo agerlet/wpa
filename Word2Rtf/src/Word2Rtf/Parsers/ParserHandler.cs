@@ -11,17 +11,24 @@ namespace Word2Rtf.Parsers
 {
     internal static class ParserHandler
     {
-        readonly static IParser<Element> _titleParser;
-        readonly static IParser<IGrouping<int, Element>>[] _contentParsers;
+        static IParser<Element> _getTitleParser()
+        {
+            return new TitleParser();
+        }
+
+        static IParser<IGrouping<int, Element>>[] _getContentParsers()
+        {
+            return new IParser<IGrouping<int, Element>>[]
+            {
+                new BibleVerseParser(),
+                new LyricsWithVersesParagraphsParser(),
+                new LyricsWithLanguageParagraphsParser(),
+                new LyricsParser(),
+            };
+        }
 
         static ParserHandler()
         {
-            _titleParser = new TitleParser();
-            _contentParsers = new IParser<IGrouping<int, Element>>[]
-            {
-                new BibleVerseParser(),
-                new LyricsParser(),
-            };
         }
 
         public static IEnumerable<Element> Parse(this string[] input)
@@ -35,13 +42,13 @@ namespace Word2Rtf.Parsers
 
         internal static bool IsTitle(this Element element)
         {
-            return _titleParser.CanHandle(element);
+            return _getTitleParser().CanHandle(element);
         }
 
         internal static Element ParseTitle(this Element title)
         {
-            _titleParser.Flush();
-            _titleParser.Parse(title);
+            _getTitleParser().Flush();
+            _getTitleParser().Parse(title);
             title.TitleId = title.GetHashCode();
             return title;
         }
@@ -50,14 +57,17 @@ namespace Word2Rtf.Parsers
         {
             content.TitleId = id;
             content.ElementType = ElementType.Content;
-            content.Verses = new [] 
-            {
-                new Verse 
+            content.Verses =
+                string.IsNullOrWhiteSpace(content.Input)
+                ? new Verse[] { }
+                : new [] 
                 {
-                    Language = content.Input.GetLanguage(),
-                    Content = content.Input,
-                }
-            };
+                    new Verse 
+                    {
+                        Language = content.Input.GetLanguage(),
+                        Content = content.Input,
+                    }
+                };
             return content;
         }
 
@@ -67,7 +77,8 @@ namespace Word2Rtf.Parsers
 
         internal static IEnumerable<Element> ParseContent(this IGrouping<int, Element> group)
         {
-            foreach (var parser in _contentParsers)
+            var contentParsers = _getContentParsers();
+            foreach (var parser in contentParsers)
             {
                 if (parser.CanHandle(group))
                 {
@@ -84,7 +95,9 @@ namespace Word2Rtf.Parsers
             input.Where(element => element.ElementType == elementType);
 
         internal static IEnumerable<Element> Get(this IEnumerable<Element> content, Language language) => 
-            content.Where(element => element.Verses.First().Language == language);
+            content.Where(element => !element.Verses.Any() 
+                                  || element.Verses.First().Language == language
+                         );
 
         
         #endregion IGrouping<int, Element> processes

@@ -17,6 +17,5 @@ namespace Word2Rtf.Parsers
             var isMercySeat = input.Contains("Mercy Seat Appeal", StringComparison.InvariantCultureIgnoreCase);
             return isHymn || isSong || isMercySeat;
         }
-
     }
 }

@@ -19,18 +19,20 @@ namespace Word2Rtf
 
         public static Language GetLanguage(this string input)
         {
-            char[] symbels = new char[] 
-            {
-                '；', '（', '）', '(', ')',
-                ',', '.', ';', '!', '\"', '\\'
-            };
+            if (string.IsNullOrWhiteSpace(input)) 
+                throw new ArgumentNullException();
 
-            return input.All(c => Char.IsLetter(c) 
-                                || Char.IsNumber(c)
-                                || Char.IsWhiteSpace(c)
-                                || Char.IsSymbol(c)
-                                || symbels.Contains(c)) 
-                 ? Language.English : Language.Chinese;
+            var totalLength = input.Length;
+            var numberOfEnglishLetters = input.ToCharArray()
+                .Select(c => c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z'
+                          || Char.IsNumber(c)
+                          || Char.IsSymbol(c))
+                .Count(b => b);
+
+            return numberOfEnglishLetters * 1.0 / totalLength > 0.65
+                   ? Language.English 
+                   : Language.Chinese
+                   ;
         }
 
         public static string Purify(this string input)

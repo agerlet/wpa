@@ -17,10 +17,15 @@
 
     <None Include="samples/sample-0.txt" CopyToOutputDirectory="Always" />
     <None Include="snaps/snap-0.json" CopyToOutputDirectory="Always" />
+
     <None Include="samples/sample-1.txt" CopyToOutputDirectory="Always" />
     <None Include="snaps/snap-1.json" CopyToOutputDirectory="Always" />
+    
     <None Include="samples/sample-2.txt" CopyToOutputDirectory="Always" />
     <None Include="snaps/snap-2.json" CopyToOutputDirectory="Always" />
+    
+    <None Include="samples/sample-2.1.txt" CopyToOutputDirectory="Always" />
+    <None Include="snaps/snap-2.1.json" CopyToOutputDirectory="Always" />
     
   </ItemGroup>
 

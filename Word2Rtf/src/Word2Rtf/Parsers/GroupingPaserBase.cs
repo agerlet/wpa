@@ -14,6 +14,8 @@ namespace Word2Rtf.Parsers
             var title = group.Get(ElementType.Title);
             var content = group.Get(ElementType.Content);
 
+            content = Adjust(content);
+
             var main = content.Get(Language.English).ToList();
             var overlay = content.Get(Language.Chinese).ToList();
 
@@ -28,5 +30,9 @@ namespace Word2Rtf.Parsers
         }
 
         internal virtual void Adjust(List<Element> verses) { }
+        internal virtual IEnumerable<Element> Adjust(IEnumerable<Element> verses) 
+        {
+            return verses;
+        }
     }
 }

@@ -35,9 +35,7 @@ namespace Word2Rtf.Tests
             line2
 
             line3";
-
             var broken = input.Break();
-
             Assert.Equal(new [] { "line1", "line2", "line3" }, broken);
         }
 
@@ -45,8 +43,13 @@ namespace Word2Rtf.Tests
         public void Test_Language_TextWithSymbols()
         {
             var actual = "1.Hello(World);".GetLanguage();
-
             Assert.Equal(Language.English, actual);
+
+            actual = "Prepare the way for the Lord,make straight paths for him. And all people will see God’s salvation.’ Let all the earth be still before Him. ".GetLanguage();
+            Assert.Equal(Language.English, actual);
+
+            actual = "12 大聲說、曾被殺的羔羊、是配得權柄、豐富、智慧、能力、尊貴、榮耀、頌讚的。13我又聽見、在天上、地上、地底下、滄海裡、和天地間一切所有被造之物、都說、但願頌讚、尊貴、榮耀、權勢、都歸給坐寶座的和羔羊、直到永永遠遠。".GetLanguage();
+            Assert.Equal(Language.Chinese, actual);
         }
 
         [Fact]

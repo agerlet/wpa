@@ -107,5 +107,88 @@ namespace Word2Rtf.Tests
             Assert.Equal("11\"耶和華必賜力量給他的百姓，耶和華必賜平安的福給他的百姓。\"", elements[11].Verses.Skip(1).First().Content);
 
         } 
+    
+        [Fact]
+        public void LyricsWithVersesParagraphsParser()
+        {
+            var input = new [] 
+            {
+                "【Hymn唱詩】Be Still,For the Presence of the Lord《靜默在至聖主跟前》",
+                "Be still, for the presence of the Lord, the Holy one is here. ",
+                "Come bow before him now, with reverence and fear.",
+                "靜默在至聖的主跟前，主今親臨同在，",
+                "這是神聖之地，主聖潔無瑕疵；",
+                "In him no sin is found, we stand on holy ground.",
+                "Be still, for the presence of the Lord, the Holy one is here. ",
+                "你當尊他為聖，向他屈膝敬拜，",
+                "肅靜在至聖的主跟前，主今親臨同在。"
+            };
+
+            var elements = ParserHandler.Parse(input).ToArray();
+            Assert.NotNull(elements);
+            Assert.Equal(3, elements.Count());
+
+            Assert.True(elements[0].Pass);
+            Assert.Equal(2, elements[0].Verses.Count());
+            Assert.Equal("Hymn\nBe Still,For the Presence of the Lord", elements[0].Verses.First().Content);
+            Assert.Equal("唱詩\n靜默在至聖主跟前", elements[0].Verses.Skip(1).First().Content);
+
+            Assert.True(elements[1].Pass);
+            Assert.Equal(2, elements[1].Verses.Count());
+            Assert.Equal("Be still, for the presence of the Lord, the Holy one is here. \nCome bow before him now, with reverence and fear.", elements[1].Verses.First().Content);
+            Assert.Equal("靜默在至聖的主跟前，主今親臨同在，\n這是神聖之地，主聖潔無瑕疵；", elements[1].Verses.Skip(1).First().Content);
+
+            Assert.True(elements[2].Pass);
+            Assert.Equal(2, elements[2].Verses.Count());
+            Assert.Equal("In him no sin is found, we stand on holy ground.\nBe still, for the presence of the Lord, the Holy one is here. ", elements[2].Verses.First().Content);
+            Assert.Equal("你當尊他為聖，向他屈膝敬拜，\n肅靜在至聖的主跟前，主今親臨同在。", elements[2].Verses.Skip(1).First().Content);
+
+        }
+        [Fact]
+        public void LyricsWithLanguageParagraphsParser()
+        {
+            var input = new [] 
+            {
+                "【Hymn唱詩】Be Still,For the Presence of the Lord《靜默在至聖主跟前》",
+                "Be still, for the presence of the Lord, the Holy one is here.",
+                "Come bow before him now, with reverence and fear.",
+                "In him no sin is found, we stand on holy ground.",
+                "Be still, for the presence of the Lord, the Holy one is here.",
+                "靜默在至聖的主跟前，主今親臨同在，",
+                "這是神聖之地，主聖潔無瑕疵；",
+                "你當尊他為聖，向他屈膝敬拜，",
+                "肅靜在至聖的主跟前，主今親臨同在。"
+            };
+
+            var elements = ParserHandler.Parse(input).ToArray();
+            Assert.NotNull(elements);
+            Assert.Equal(5, elements.Count());
+
+            Assert.True(elements[0].Pass);
+            Assert.Equal(2, elements[0].Verses.Count());
+            Assert.Equal("Hymn\nBe Still,For the Presence of the Lord", elements[0].Verses.First().Content);
+            Assert.Equal("唱詩\n靜默在至聖主跟前", elements[0].Verses.Skip(1).First().Content);
+
+            Assert.True(elements[1].Pass);
+            Assert.Equal(2, elements[1].Verses.Count());
+            Assert.Equal("Be still, for the presence of the Lord, the Holy one is here.", elements[1].Verses.First().Content);
+            Assert.Equal("靜默在至聖的主跟前，主今親臨同在，", elements[1].Verses.Skip(1).First().Content);
+
+            Assert.True(elements[2].Pass);
+            Assert.Equal(2, elements[2].Verses.Count());
+            Assert.Equal("Come bow before him now, with reverence and fear.", elements[2].Verses.First().Content);
+            Assert.Equal("這是神聖之地，主聖潔無瑕疵；", elements[2].Verses.Skip(1).First().Content);
+
+            Assert.True(elements[3].Pass);
+            Assert.Equal(2, elements[3].Verses.Count());
+            Assert.Equal("In him no sin is found, we stand on holy ground.", elements[3].Verses.First().Content);
+            Assert.Equal("你當尊他為聖，向他屈膝敬拜，", elements[3].Verses.Skip(1).First().Content);
+
+            Assert.True(elements[4].Pass);
+            Assert.Equal(2, elements[4].Verses.Count());
+            Assert.Equal("Be still, for the presence of the Lord, the Holy one is here.", elements[4].Verses.First().Content);
+            Assert.Equal("肅靜在至聖的主跟前，主今親臨同在。", elements[4].Verses.Skip(1).First().Content);
+
+        }
     }
 }
