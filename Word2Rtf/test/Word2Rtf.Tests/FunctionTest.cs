@@ -45,7 +45,7 @@ namespace Word2Rtf.Tests
             Assert.Equal(expected, actual);
         }
 
-        //[Fact]
+        [Fact]
         public async void Snap_2_Title_Bible_Verse_and_One_Paragraph_of_Lyrics()
         {
             var jsonSerializer = new Amazon.Lambda.Serialization.Json.JsonSerializer();
@@ -61,7 +61,7 @@ namespace Word2Rtf.Tests
             Assert.Equal(expected, actual);
         }
 
-        //[Fact]
+        [Fact]
         public async void Snap_2_1_Title_Bible_Verse_and_Multiple_Paragraphs_of_Lyrics()
         {
             var jsonSerializer = new Amazon.Lambda.Serialization.Json.JsonSerializer();
