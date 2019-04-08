@@ -11,20 +11,21 @@ namespace Word2Rtf.Parsers
 {
     internal static class ParserHandler
     {
+        static Mixers.MixerFactory _mixerFactory = new Mixers.MixerFactory();
         static IParser<Element> _getTitleParser()
         {
-            return new TitleParser();
+            return new TitleParser(_mixerFactory);
         }
 
         static IParser<IGrouping<int, Element>>[] _getContentParsers()
         {
             return new IParser<IGrouping<int, Element>>[]
             {
-                new ResponsiveReadingVersesParser(),
-                new BibleVerseParser(),
-                new LyricsWithVersesParagraphsParser(),
-                new LyricsWithLanguageParagraphsParser(),
-                new LyricsParser(),
+                new ResponsiveReadingVersesParser(_mixerFactory),
+                new BibleVerseParser(_mixerFactory),
+                new LyricsWithVersesParagraphsParser(_mixerFactory),
+                new LyricsWithLanguageParagraphsParser(_mixerFactory),
+                new LyricsParser(_mixerFactory),
             };
         }
 
@@ -34,7 +35,7 @@ namespace Word2Rtf.Parsers
 
         public static IEnumerable<Element> Parse(this string[] input)
         {
-            var handler = new BracketParser();
+            var handler = new BracketParser(_mixerFactory);
             handler.Parse(input);
             return handler.Elements.Where(element => element.Pass);
         }

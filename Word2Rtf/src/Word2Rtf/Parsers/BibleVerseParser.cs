@@ -5,9 +5,10 @@ using Word2Rtf.Models;
 
 namespace Word2Rtf.Parsers
 {
-    internal class BibleVerseParser : GroupingParserBase
+    
+    class BibleVerseParser : GroupingParserBase
     {
-        public BibleVerseParser() : base() { }
+        public BibleVerseParser(Mixers.MixerFactory mixerFactory) : base(mixerFactory) { }
         
         public override bool CanHandle(IGrouping<int, Element> group)
         {

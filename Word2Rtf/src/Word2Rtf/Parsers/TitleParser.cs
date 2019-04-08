@@ -5,9 +5,9 @@ using Word2Rtf.Models;
 
 namespace Word2Rtf.Parsers
 {
-    internal class TitleParser : ParserBase<Element>
+    class TitleParser : ParserBase<Element>
     {
-        public TitleParser() : base() { }
+        public TitleParser(Mixers.MixerFactory mixerFactory) : base(mixerFactory) { }
 
         public override bool CanHandle(Element input)
         {

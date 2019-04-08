@@ -138,7 +138,31 @@ namespace Word2Rtf.Tests
             Assert.Equal("(C) 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.", elements[2].Verses.First().Content);
             Assert.Equal("(眾) 2. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。", elements[2].Verses.Skip(1).First().Content);
         }
+        //[Fact]
+        public void BibleVersesParser_WithUnknownVerseNumbers() 
+        {
+            var input = new [] 
+            {
+                "【Call To Worship宣告】Luke路2:10b-11,14. ",
+                "I bring you good news that will cause great joy for all the people. 11 Today in the town of David a Savior has been born to you; he is the Messiah, the Lord. “Glory to God in the highest heaven, and on earth peace to those on whom his favor rests.”",
+                "我報給你們大喜的信息、 是關乎萬民的.因今天在大衛的城裡、 為你們生了救主、 就是主基督。在至高之處榮耀歸與上帝!在地上平安歸 與祂所喜悅的人!"
+            };
+            var elements = ParserHandler.Parse(input).ToArray();
+            Assert.NotNull(elements);
+            Assert.Equal(2, elements.Count());
 
+            Assert.True(elements[0].Pass);
+            Assert.Equal("【Call To Worship宣告】Luke路2:10b-11,14.", elements[0].Input);
+            Assert.Equal(2, elements[0].Verses.Count());
+            Assert.Equal("Call To Worship\nLuke 2:10b-11,14.", elements[0].Verses.First().Content);
+            Assert.Equal("宣告\n路 2:10b-11,14.", elements[0].Verses.Skip(1).First().Content);
+
+            Assert.True(elements[1].Pass);
+            Assert.Equal("【Call To Worship宣告】Luke路2:10b-11,14.", elements[1].Input);
+            Assert.Equal(2, elements[1].Verses.Count());
+            Assert.Equal("I bring you good news that will cause great joy for all the people. 11 Today in the town of David a Savior has been born to you; he is the Messiah, the Lord. “Glory to God in the highest heaven, and on earth peace to those on whom his favor rests.”", elements[1].Verses.First().Content);
+            Assert.Equal("我報給你們大喜的信息、 是關乎萬民的.因今天在大衛的城裡、 為你們生了救主、 就是主基督。在至高之處榮耀歸與上帝!在地上平安歸 與祂所喜悅的人!", elements[1].Verses.Skip(1).First().Content);
+        }
         [Fact]
         public void LyricsWithVersesParagraphsParser()
         {
@@ -219,6 +243,29 @@ namespace Word2Rtf.Tests
             Assert.Equal(2, elements[4].Verses.Count());
             Assert.Equal("Be still, for the presence of the Lord, the Holy one is here.", elements[4].Verses.First().Content);
             Assert.Equal("肅靜在至聖的主跟前，主今親臨同在。", elements[4].Verses.Skip(1).First().Content);
+
+        }
+        [Fact]
+        public void YouTubeLink_After_Title()
+        {
+            var input = new [] 
+            {
+                "【Mercy Seat Appeal恩座呼召】A Gift《一件禮物》",
+                "https://www.youtube.com/watch?v=_Ayo8Yjuj88"
+            };
+
+            var elements = ParserHandler.Parse(input).ToArray();
+            Assert.NotNull(elements);
+            Assert.Equal(2, elements.Count());
+
+            Assert.True(elements[0].Pass);
+            Assert.Equal(2, elements[0].Verses.Count());
+            Assert.Equal("Mercy Seat Appeal\nA Gift", elements[0].Verses.First().Content);
+            Assert.Equal("恩座呼召\n一件禮物", elements[0].Verses.Skip(1).First().Content);
+
+            Assert.True(elements[1].Pass);
+            Assert.Single(elements[1].Verses);
+            Assert.Equal("https://www.youtube.com/watch?v=_Ayo8Yjuj88", elements[1].Verses.First().Content);
 
         }
     }

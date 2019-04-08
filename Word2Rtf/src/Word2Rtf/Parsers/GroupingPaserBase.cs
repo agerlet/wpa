@@ -5,9 +5,10 @@ using Word2Rtf.Models;
 
 namespace Word2Rtf.Parsers
 {
-    internal abstract class GroupingParserBase : ParserBase<IGrouping<int, Element>>
+    abstract class GroupingParserBase : ParserBase<IGrouping<int, Element>>
     {
-        public GroupingParserBase() : base() { }
+        public GroupingParserBase(Mixers.MixerFactory mixerFactory) 
+            : base(mixerFactory) { }
 
         public sealed override void Parse(IGrouping<int, Element> group)
         {
@@ -22,7 +23,8 @@ namespace Word2Rtf.Parsers
             Adjust(main);
             Adjust(overlay);
 
-            Mix(main, overlay);
+            var mixer = _mixerFactory.GetMixer(main, overlay);
+            mixer.Mix(main, overlay);
 
             Elements.Clear();
             Elements.AddRange(title);

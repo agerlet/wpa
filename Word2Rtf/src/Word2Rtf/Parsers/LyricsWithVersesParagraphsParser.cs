@@ -5,9 +5,9 @@ using Word2Rtf.Models;
 
 namespace Word2Rtf.Parsers
 {
-    internal class LyricsWithVersesParagraphsParser : LyricsWithParagraphsParser
+    class LyricsWithVersesParagraphsParser : LyricsWithParagraphsParser
     {
-        public LyricsWithVersesParagraphsParser() : base() { }
+        public LyricsWithVersesParagraphsParser(Mixers.MixerFactory mixerFactory) : base(mixerFactory) { }
 
         public override bool CanHandle(IGrouping<int, Element> group)
         {

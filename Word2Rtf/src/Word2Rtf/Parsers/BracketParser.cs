@@ -10,9 +10,9 @@ namespace Word2Rtf.Parsers
     ///
     /// Assuming there are brackets in the title elements
     ///
-    internal class BracketParser : ParserBase<string[]>
+    class BracketParser : ParserBase<string[]>
     {
-        public BracketParser() : base() { }
+        public BracketParser(Mixers.MixerFactory mixerFactory) : base(mixerFactory) { }
 
         public override bool CanHandle(string[] input)
         {
