@@ -24,7 +24,8 @@ namespace Word2Rtf.Parsers
 
         internal override void Adjust(List<Element> elements)
         {
-            base.Adjust(elements);
+            if (elements.Count == 1)
+                base.Adjust(elements);
 
             if (elements.Any(element => element.Verses.Any(verse => 
                 false
@@ -36,6 +37,10 @@ namespace Word2Rtf.Parsers
                 || verse.Content.StartsWith("(眾)")
                 || verse.Content.StartsWith("(領會)")
                 || verse.Content.StartsWith("(會眾)")
+            )))
+                return;
+            if (elements.Any(element => element.Verses.Any(verse => 
+                false
                 || verse.Content.StartsWith("（L）", StringComparison.InvariantCultureIgnoreCase)
                 || verse.Content.StartsWith("（Leader）", StringComparison.InvariantCultureIgnoreCase)
                 || verse.Content.StartsWith("（C）", StringComparison.InvariantCultureIgnoreCase)
@@ -45,7 +50,19 @@ namespace Word2Rtf.Parsers
                 || verse.Content.StartsWith("（領會）")
                 || verse.Content.StartsWith("（會眾）")
                 )))
-                return;
+                {
+                    elements.ForEach(element => {
+                        foreach (var verse in element.Verses)
+                        {
+                            verse.Content = verse.Content
+                                                 .Replace("（", "(")
+                                                 .Replace("）", ") ")
+                                                 .Replace(")  ", ") ")
+                                                 ;
+                        }
+                    });
+                    return;
+                }
 
             var isLeading = true;
             elements.ForEach(element => 

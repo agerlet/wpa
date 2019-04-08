@@ -106,7 +106,39 @@ namespace Word2Rtf.Tests
             Assert.Equal("(T) 11The LORD gives strength to his people; the LORD blesses his people with peace.", elements[11].Verses.First().Content);
             Assert.Equal("(合) 11\"耶和華必賜力量給他的百姓，耶和華必賜平安的福給他的百姓。\"", elements[11].Verses.Skip(1).First().Content);
         } 
-    
+
+        [Fact]
+        public void Test_BracketParser_BibleVerses_ResponsiveReading_already_marked()
+        {
+            var input = new [] { 
+                "【Responsive Reading啟應讀經】詩篇 Psalm 29", 
+                "(L) 1Ascribe to the LORD , O mighty ones, ascribe to the LORD glory and strength.",
+                "（領） 1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。", 
+                "(C) 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.",
+                "（眾）2. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。"
+                };
+
+            var elements = ParserHandler.Parse(input).ToArray();
+            Assert.NotNull(elements);
+            Assert.Equal(3, elements.Count());
+
+            Assert.True(elements[0].Pass);
+            Assert.Equal("【Responsive Reading啟應讀經】詩篇 Psalm 29", elements[0].Input);
+            Assert.Equal(2, elements[0].Verses.Count());
+            Assert.Equal("Responsive Reading\nPsalm 29", elements[0].Verses.First().Content);
+            Assert.Equal("啟應讀經\n詩篇 29", elements[0].Verses.Skip(1).First().Content);
+
+            Assert.True(elements[1].Pass);
+            Assert.Equal(2, elements[1].Verses.Count());
+            Assert.Equal("(L) 1Ascribe to the LORD , O mighty ones, ascribe to the LORD glory and strength.", elements[1].Verses.First().Content);
+            Assert.Equal("(領) 1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。", elements[1].Verses.Skip(1).First().Content);
+
+            Assert.True(elements[2].Pass);
+            Assert.Equal(2, elements[2].Verses.Count());
+            Assert.Equal("(C) 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.", elements[2].Verses.First().Content);
+            Assert.Equal("(眾) 2. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。", elements[2].Verses.Skip(1).First().Content);
+        }
+
         [Fact]
         public void LyricsWithVersesParagraphsParser()
         {
