@@ -20,6 +20,7 @@ namespace Word2Rtf.Parsers
         {
             return new IParser<IGrouping<int, Element>>[]
             {
+                new ResponsiveReadingVersesParser(),
                 new BibleVerseParser(),
                 new LyricsWithVersesParagraphsParser(),
                 new LyricsWithLanguageParagraphsParser(),

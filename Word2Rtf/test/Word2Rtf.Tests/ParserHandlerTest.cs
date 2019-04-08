@@ -53,59 +53,58 @@ namespace Word2Rtf.Tests
 
             Assert.True(elements[1].Pass);
             Assert.Equal(2, elements[1].Verses.Count());
-            Assert.Equal("1Ascribe to the LORD , O mighty ones, ascribe to the LORD glory and strength.", elements[1].Verses.First().Content);
-            Assert.Equal("1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。", elements[1].Verses.Skip(1).First().Content);
+            Assert.Equal("(L) 1Ascribe to the LORD , O mighty ones, ascribe to the LORD glory and strength.", elements[1].Verses.First().Content);
+            Assert.Equal("(領) 1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。", elements[1].Verses.Skip(1).First().Content);
 
             Assert.True(elements[2].Pass);
             Assert.Equal(2, elements[2].Verses.Count());
-            Assert.Equal("2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.", elements[2].Verses.First().Content);
-            Assert.Equal("2. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。", elements[2].Verses.Skip(1).First().Content);
+            Assert.Equal("(C) 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.", elements[2].Verses.First().Content);
+            Assert.Equal("(眾) 2. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。", elements[2].Verses.Skip(1).First().Content);
 
             Assert.True(elements[3].Pass);
             Assert.Equal(2, elements[3].Verses.Count());
-            Assert.Equal("3The voice of the LORD is over the waters; the God of glory thunders, the LORD thunders over the mighty waters.", elements[3].Verses.First().Content);
-            Assert.Equal("3. 耶和華的聲音發在水上，榮耀的神打雷，耶和華打雷在大水之上。", elements[3].Verses.Skip(1).First().Content);
+            Assert.Equal("(L) 3The voice of the LORD is over the waters; the God of glory thunders, the LORD thunders over the mighty waters.", elements[3].Verses.First().Content);
+            Assert.Equal("(領) 3. 耶和華的聲音發在水上，榮耀的神打雷，耶和華打雷在大水之上。", elements[3].Verses.Skip(1).First().Content);
 
             Assert.True(elements[4].Pass);
             Assert.Equal(2, elements[4].Verses.Count());
-            Assert.Equal("4The voice of the LORD is powerful; the voice of the LORD is majestic.", elements[4].Verses.First().Content);
-            Assert.Equal("4. 耶和華的聲音大有能力，耶和華的聲音滿有威嚴。", elements[4].Verses.Skip(1).First().Content);
+            Assert.Equal("(C) 4The voice of the LORD is powerful; the voice of the LORD is majestic.", elements[4].Verses.First().Content);
+            Assert.Equal("(眾) 4. 耶和華的聲音大有能力，耶和華的聲音滿有威嚴。", elements[4].Verses.Skip(1).First().Content);
 
             Assert.True(elements[5].Pass);
             Assert.Equal(2, elements[5].Verses.Count());
-            Assert.Equal("5	The voice of the LORD breaks the cedars; the LORD breaks in pieces the cedars of Lebanon.", elements[5].Verses.First().Content);
-            Assert.Equal("5. 耶和華的聲音震破香柏樹，耶和華震碎利巴嫩的香柏樹。", elements[5].Verses.Skip(1).First().Content);
+            Assert.Equal("(L) 5	The voice of the LORD breaks the cedars; the LORD breaks in pieces the cedars of Lebanon.", elements[5].Verses.First().Content);
+            Assert.Equal("(領) 5. 耶和華的聲音震破香柏樹，耶和華震碎利巴嫩的香柏樹。", elements[5].Verses.Skip(1).First().Content);
 
             Assert.True(elements[6].Pass);
             Assert.Equal(2, elements[6].Verses.Count());
-            Assert.Equal("6He makes Lebanon skip like a calf, Sirion like a young wild ox.", elements[6].Verses.First().Content);
-            Assert.Equal("6. 他也使之跳躍如牛犢，使利巴嫩和西連跳躍如野牛犢。", elements[6].Verses.Skip(1).First().Content);
+            Assert.Equal("(C) 6He makes Lebanon skip like a calf, Sirion like a young wild ox.", elements[6].Verses.First().Content);
+            Assert.Equal("(眾) 6. 他也使之跳躍如牛犢，使利巴嫩和西連跳躍如野牛犢。", elements[6].Verses.Skip(1).First().Content);
 
             Assert.True(elements[7].Pass);
             Assert.Equal(2, elements[7].Verses.Count());
-            Assert.Equal("7	The voice of the LORD strikes with flashes of lightning.", elements[7].Verses.First().Content);
-            Assert.Equal("7. 耶和華的聲音使火焰分岔。", elements[7].Verses.Skip(1).First().Content);
+            Assert.Equal("(L) 7	The voice of the LORD strikes with flashes of lightning.", elements[7].Verses.First().Content);
+            Assert.Equal("(領) 7. 耶和華的聲音使火焰分岔。", elements[7].Verses.Skip(1).First().Content);
 
             Assert.True(elements[8].Pass);
             Assert.Equal(2, elements[4].Verses.Count());
-            Assert.Equal("8The voice of the LORD shakes the desert; the LORD shakes the Desert of Kadesh.", elements[8].Verses.First().Content);
-            Assert.Equal("8. 耶和華的聲音震動曠野，耶和華震動加低斯的曠野。", elements[8].Verses.Skip(1).First().Content);
+            Assert.Equal("(C) 8The voice of the LORD shakes the desert; the LORD shakes the Desert of Kadesh.", elements[8].Verses.First().Content);
+            Assert.Equal("(眾) 8. 耶和華的聲音震動曠野，耶和華震動加低斯的曠野。", elements[8].Verses.Skip(1).First().Content);
 
             Assert.True(elements[9].Pass);
             Assert.Equal(2, elements[9].Verses.Count());
-            Assert.Equal("9The voice of the LORD twists the oaks and strips the forests bare. And in his temple all cry, \"Glory!\"", elements[9].Verses.First().Content);
-            Assert.Equal("9. 耶和華的聲音驚動母鹿落胎，樹木也脫落淨光。凡在他殿中的，都稱說他的榮耀。", elements[9].Verses.Skip(1).First().Content);
+            Assert.Equal("(L) 9The voice of the LORD twists the oaks and strips the forests bare. And in his temple all cry, \"Glory!\"", elements[9].Verses.First().Content);
+            Assert.Equal("(領) 9. 耶和華的聲音驚動母鹿落胎，樹木也脫落淨光。凡在他殿中的，都稱說他的榮耀。", elements[9].Verses.Skip(1).First().Content);
 
             Assert.True(elements[10].Pass);
             Assert.Equal(2, elements[10].Verses.Count());
-            Assert.Equal("10The LORD sits enthroned over the flood; the LORD is enthroned as King forever.", elements[10].Verses.First().Content);
-            Assert.Equal("10. 洪水泛濫之時，耶和華坐著為王，耶和華坐著為王，直到永遠。", elements[10].Verses.Skip(1).First().Content);
+            Assert.Equal("(C) 10The LORD sits enthroned over the flood; the LORD is enthroned as King forever.", elements[10].Verses.First().Content);
+            Assert.Equal("(眾) 10. 洪水泛濫之時，耶和華坐著為王，耶和華坐著為王，直到永遠。", elements[10].Verses.Skip(1).First().Content);
 
             Assert.True(elements[11].Pass);
             Assert.Equal(2, elements[11].Verses.Count());
-            Assert.Equal("11The LORD gives strength to his people; the LORD blesses his people with peace.", elements[11].Verses.First().Content);
-            Assert.Equal("11\"耶和華必賜力量給他的百姓，耶和華必賜平安的福給他的百姓。\"", elements[11].Verses.Skip(1).First().Content);
-
+            Assert.Equal("(T) 11The LORD gives strength to his people; the LORD blesses his people with peace.", elements[11].Verses.First().Content);
+            Assert.Equal("(合) 11\"耶和華必賜力量給他的百姓，耶和華必賜平安的福給他的百姓。\"", elements[11].Verses.Skip(1).First().Content);
         } 
     
         [Fact]

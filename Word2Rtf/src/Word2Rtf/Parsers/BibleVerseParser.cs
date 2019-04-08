@@ -20,11 +20,8 @@ namespace Word2Rtf.Parsers
             var isScripture = input.Contains("Scripture", StringComparison.InvariantCultureIgnoreCase);
             var isBibleReading = input.Contains("Bible Reading", StringComparison.InvariantCultureIgnoreCase);
             var isLordsPrayer = input.Contains("主禱文", StringComparison.InvariantCultureIgnoreCase);
-            var isResponsiveReading = input.Contains("Responsive Reading", StringComparison.InvariantCultureIgnoreCase)
-                                   || input.Contains("啟應讀經", StringComparison.InvariantCultureIgnoreCase)
-                                   || input.Contains("啟 應 讀 經", StringComparison.InvariantCultureIgnoreCase);
 
-            return isCallToWorship || isTithe || isScripture || isLordsPrayer || isResponsiveReading;
+            return isCallToWorship || isTithe || isScripture || isLordsPrayer;
         }
 
         internal override void Adjust(List<Element> elements)
