@@ -15,6 +15,7 @@ namespace Word2Rtf.Mixers
             _mixers = new List<IMixer>
             {
                 new EqualLengthMixer(),
+                new SingleVerseNumberMixer(),
             };
 
             _mergeThemMixer = new MergeThemMixer();

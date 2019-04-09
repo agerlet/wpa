@@ -6,12 +6,12 @@ namespace Word2Rtf.Mixers
 {
     class EqualLengthMixer : IMixer
     {
-        public bool CanHandle(List<Element> main, List<Element> addon)
+        public virtual bool CanHandle(List<Element> main, List<Element> addon)
         {
             return main.Count == addon.Count;
         }
 
-        public void Mix(List<Element> main, List<Element> addon)
+        public virtual void Mix(List<Element> main, List<Element> addon)
         {
             for (int i = 0; i < main.Count(); i++)
             {
