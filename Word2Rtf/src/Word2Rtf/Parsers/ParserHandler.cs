@@ -27,6 +27,7 @@ namespace Word2Rtf.Parsers
                 new LyricsWithVersesParagraphsParser(_mixerFactory),
                 new LyricsWithLanguageParagraphsParser(_mixerFactory),
                 new LyricsParser(_mixerFactory),
+                new LastParser(_mixerFactory),
             };
         }
 

@@ -287,7 +287,7 @@ namespace Word2Rtf.Tests
             Assert.Equal(2, elements.Count());
         }
 
-        //[Fact]
+        [Fact]
         public void Special_BibleVerses_Booking_Info_In_Second_Line()
         {
             var input = new [] 
@@ -299,7 +299,7 @@ namespace Word2Rtf.Tests
             };
             var elements = ParserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
-            Assert.Equal(2, elements.Count());
+            Assert.Equal(4, elements.Count());
         }
 
         [Fact]

@@ -10,7 +10,7 @@ namespace Word2Rtf.Parsers
         public GroupingParserBase(Mixers.MixerFactory mixerFactory) 
             : base(mixerFactory) { }
 
-        public sealed override void Parse(IGrouping<int, Element> group)
+        public override void Parse(IGrouping<int, Element> group)
         {
             var title = group.Get(ElementType.Title);
             var content = group.Get(ElementType.Content);
