@@ -32,9 +32,34 @@ namespace Word2Rtf.Parsers
         }
 
         internal virtual void Adjust(List<Element> verses) { }
+
         internal virtual IEnumerable<Element> Adjust(IEnumerable<Element> verses) 
         {
             return verses;
         }
-    }
+        
+        protected List<Language> GetLanguagePattern(IGrouping<int, Element> group)
+        {
+            return group
+                .Get(ElementType.Content)
+                .Select(element => element.Verses.First().Language).ToList();
+        }
+
+        protected int LanguageChanged(IEnumerable<Language> pattern)
+        {
+            var changed = 0;
+            Language? lastLanguage = default(Language?);
+            foreach(var l in pattern)
+            {    
+                if (!lastLanguage.HasValue)
+                    lastLanguage = l;
+                
+                if (lastLanguage.HasValue && lastLanguage.Value != l)
+                {
+                    lastLanguage = l;
+                    changed++;
+                }
+            }
+            return changed;
+        }    }
 }

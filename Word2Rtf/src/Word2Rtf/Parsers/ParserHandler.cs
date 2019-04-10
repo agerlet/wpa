@@ -22,6 +22,7 @@ namespace Word2Rtf.Parsers
             return new IParser<IGrouping<int, Element>>[]
             {
                 new ResponsiveReadingVersesParser(_mixerFactory),
+                new BibleVerseSplitedParser(_mixerFactory),
                 new BibleVerseParser(_mixerFactory),
                 new LyricsWithVersesParagraphsParser(_mixerFactory),
                 new LyricsWithLanguageParagraphsParser(_mixerFactory),

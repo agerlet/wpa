@@ -12,21 +12,16 @@ namespace Word2Rtf.Parsers
         
         public override bool CanHandle(IGrouping<int, Element> group)
         {
-            var input = group
-                .FirstOrDefault(g => g.ElementType == ElementType.Title)
-                .Input;
-                
-            var isCallToWorship = input.Contains("Call To Worship", StringComparison.InvariantCultureIgnoreCase);
-            var isTithe = input.Contains("Tithe", StringComparison.InvariantCultureIgnoreCase);
-            var isScripture = input.Contains("Scripture", StringComparison.InvariantCultureIgnoreCase);
-            var isBibleReading = input.Contains("Bible Reading", StringComparison.InvariantCultureIgnoreCase);
-            var isLordsPrayer = input.Contains("主禱文", StringComparison.InvariantCultureIgnoreCase);
-
-            return isCallToWorship || isTithe || isScripture || isLordsPrayer;
+            var input = group.FirstOrDefault(g => g.ElementType == ElementType.Title);             
+            var isBibleVerses = IsBibleVerses(input);
+            var isStartWithVerseNumber = startWithVerseNumber(group);
+            return isBibleVerses && isStartWithVerseNumber;
         }
 
         internal override void Adjust(List<Element> elements)
         {
+            if (!startWithVerseNumber(elements)) return; 
+
             var raw = new List<Element>(elements);
             elements.Clear();
 
@@ -50,6 +45,28 @@ namespace Word2Rtf.Parsers
             );
 
             elements.AddRange(results);
+        }
+
+        protected bool startWithVerseNumber(IEnumerable<Element> elements)
+        {
+            var firstChar = elements
+                .FirstOrDefault(g => g.ElementType == ElementType.Content)
+                .Input
+                .Trim()
+                .FirstOrDefault()
+                ;
+
+            return Char.IsNumber(firstChar);
+        }
+    
+        protected bool IsBibleVerses(Element input)
+        {
+            var isCallToWorship = input.Input.Contains("Call To Worship", StringComparison.InvariantCultureIgnoreCase);
+            var isTithe = input.Input.Contains("Tithe", StringComparison.InvariantCultureIgnoreCase);
+            var isScripture = input.Input.Contains("Scripture", StringComparison.InvariantCultureIgnoreCase);
+            var isBibleReading = input.Input.Contains("Bible Reading", StringComparison.InvariantCultureIgnoreCase);
+            var isLordsPrayer = input.Input.Contains("主禱文", StringComparison.InvariantCultureIgnoreCase);
+            return isCallToWorship || isTithe || isScripture || isBibleReading || isLordsPrayer;
         }
     }
 }

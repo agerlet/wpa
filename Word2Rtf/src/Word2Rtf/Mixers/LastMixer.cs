@@ -3,7 +3,7 @@ using Word2Rtf.Models;
 
 namespace Word2Rtf.Mixers
 {
-    class MergeThemMixer : IMixer
+    class LastMixer : IMixer
     {
         public bool CanHandle(List<Element> main, List<Element> addon)
         {
