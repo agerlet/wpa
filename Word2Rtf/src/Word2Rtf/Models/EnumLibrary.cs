@@ -6,6 +6,7 @@ namespace Word2Rtf.Models
     {
         Chinese,
         English,
+        Mixed,
     }
 
     public enum ElementType

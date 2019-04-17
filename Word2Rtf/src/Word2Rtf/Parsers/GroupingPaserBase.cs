@@ -31,9 +31,9 @@ namespace Word2Rtf.Parsers
             Elements.AddRange(main);
         }
 
-        internal virtual void Adjust(List<Element> verses) { }
+        protected virtual void Adjust(List<Element> verses) { }
 
-        internal virtual IEnumerable<Element> Adjust(IEnumerable<Element> verses) 
+        protected virtual IEnumerable<Element> Adjust(IEnumerable<Element> verses) 
         {
             return verses;
         }
@@ -61,5 +61,6 @@ namespace Word2Rtf.Parsers
                 }
             }
             return changed;
-        }    }
+        }    
+    }
 }

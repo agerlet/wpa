@@ -288,7 +288,7 @@ namespace Word2Rtf.Tests
         }
 
         [Fact]
-        public void Special_BibleVerses_Booking_Info_In_Second_Line()
+        public void Special_bible_verses_booking_info_in_second_line()
         {
             var input = new [] 
             {
@@ -361,7 +361,7 @@ namespace Word2Rtf.Tests
         }
 
         [Fact]
-        public void Scripture_With_Multiline_Matching_issue()
+        public void Scripture_with_multiline_matching_issue()
         {
             var input = new [] 
             {
@@ -385,6 +385,80 @@ namespace Word2Rtf.Tests
             Assert.Equal(2, elements[3].Verses.Count());
             Assert.Equal("For to us a child is born, to us a son is given, and the government will be on his shoulders. And he will be called Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace.", elements[3].Verses.First().Content);
             Assert.Equal("因 有 一 嬰 孩 為 我 們 而 生 ； 有 一 子 賜 給 我 們 。 政 權 必 擔 在 他 的 肩 頭 上 ； 他 名 稱 為 奇 妙 策 士 、 全 能 的 神 、 永 在 的 父 、 和 平 的 君 。", elements[3].Verses.Skip(1).First().Content);
+        }
+
+        [Fact]
+        public void Verses_mixed_languages()
+        {
+            var input = new [] 
+            {
+                "【Call To Worshi宣告】Psalm詩篇118：21-29",
+                "I will give you thanks, for you answered me; you have become my salvation. 我要稱謝你，因為你已經應允我，又成了我的拯救！The stone the builders rejected has become the cornerstone; 匠人所棄的石頭已成了房角的頭塊石頭。",
+            };
+            var elements = ParserHandler.Parse(input).ToArray();
+            Assert.NotNull(elements);
+            Assert.Equal(3, elements.Count());
+
+            Assert.True(elements[1].Pass);
+            Assert.Equal(2, elements[1].Verses.Count());
+            Assert.Equal("I will give you thanks, for you answered me; you have become my salvation.", elements[1].Verses.First().Content);
+            Assert.Equal("我要稱謝你，因為你已經應允我，又成了我的拯救！", elements[1].Verses.Skip(1).First().Content);
+        }
+
+        [Fact]
+        public void Scripture_mixed_languages_with_verse_number()
+        {
+            var input = new [] 
+            {
+                "【Scripture證道經文】Matthew 馬太福音 26：6-13",
+                "6 While Jesus was in Bethany in the home of Simon the Leper, 6耶穌在伯大尼長大痲瘋的西門家裡，"
+            };
+            var elements = ParserHandler.Parse(input).ToArray();
+            Assert.NotNull(elements);
+            Assert.Equal(2, elements.Count());
+
+            Assert.True(elements[1].Pass);
+            Assert.Equal(2, elements[1].Verses.Count());
+            Assert.Equal("6 While Jesus was in Bethany in the home of Simon the Leper,", elements[1].Verses.First().Content);
+        }
+
+        [Fact]
+        public void Verses_mixed_languages_in_one_line()
+        {
+            var input = new [] 
+            {
+                "【Call To Worshi宣告】Psalm詩篇118：21-29",
+                "21 I will give you thanks, for you answered me; you have become my salvation. 21我要稱謝你，因為你已經應允我，又成了我的拯救！22 The stone the builders rejected has become the cornerstone; 22匠人所棄的石頭已成了房角的頭塊石頭。23 the Lord has done this, and it is marvelous in our eyes.23這是耶和華所作的，在我們眼中看為希奇。24 The Lord has done it this very day; let us rejoice today and be glad. 24這是耶和華所定的日子，我們在其中要高興歡喜！",
+                "25 Lord, save us! Lord, grant us success!25耶和華啊，求你拯救！耶和華啊，求你使我們亨通！26 Blessed is he who comes in the name of the Lord. From the house of the Lord we bless you.26奉耶和華名來的是應當稱頌的！我們從耶和華的殿中為你們祝福！27 The Lord is God, and he has made his light shine on us. With boughs in hand, join in the festal procession up to the horns of the altar. 27耶和華是神；他光照了我們。理當用繩索把祭牲拴住，牽到壇角那裡。28 You are my God, and I will praise you; ou are my God, and I will exalt you.28你是我的神，我要稱謝你！你是我的神，我要尊崇你！29 Give thanks to the Lord, for he is good; his love endures forever.29你們要稱謝耶和華，因他本為善；他的慈愛永遠長存！"
+            };
+            var elements = ParserHandler.Parse(input).ToArray();
+            Assert.NotNull(elements);
+            Assert.Equal(10, elements.Count());
+
+            Assert.True(elements[1].Pass);
+            Assert.Equal(2, elements[1].Verses.Count());
+            Assert.Equal("21 I will give you thanks, for you answered me; you have become my salvation.", elements[1].Verses.First().Content);
+            Assert.Equal("21我要稱謝你，因為你已經應允我，又成了我的拯救！", elements[1].Verses.Skip(1).First().Content);
+        }
+
+        [Fact]
+        public void Verses_mixed_languages_in_responsive_reading()
+        {
+            var input = new [] 
+            {
+                "【Responsive Reading啓應讀經】Isaiah以賽亞書53：4-6，Romans羅馬書5：6、8，2 Corinthians哥林多後書5：21，1 Peter彼得前書2：24-25",
+                "(L) Surely he took up our pain and bore our suffering, yet we considered him punished by God,  stricken by him, and afflicted.（領）他誠然擔當我們的憂患，背負我們的痛苦；我們卻以為他受責罰，被神擊打苦待了。",
+                "(C) But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed.（眾）哪知他為我們的過犯受害，為我們的罪孽壓傷。因他受的刑罰，我們得平安；因他受的鞭傷，我們得醫治。"
+            };
+            var elements = ParserHandler.Parse(input).ToArray();
+            Assert.NotNull(elements);
+            Assert.Equal(3, elements.Count());
+
+            Assert.True(elements[1].Pass);
+            Assert.Equal(2, elements[1].Verses.Count());
+            Assert.Equal("(L) Surely he took up our pain and bore our suffering, yet we considered him punished by God,  stricken by him, and afflicted.", elements[1].Verses.First().Content);
+            Assert.Equal("(領) 他誠然擔當我們的憂患，背負我們的痛苦；我們卻以為他受責罰，被神擊打苦待了。", elements[1].Verses.Skip(1).First().Content);
+
         }
     }
 }

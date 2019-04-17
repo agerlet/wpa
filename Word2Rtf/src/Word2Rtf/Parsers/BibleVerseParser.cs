@@ -18,7 +18,7 @@ namespace Word2Rtf.Parsers
             return isBibleVerses && isStartWithVerseNumber;
         }
 
-        internal override void Adjust(List<Element> elements)
+        protected override void Adjust(List<Element> elements)
         {
             if (!startWithVerseNumber(elements)) return; 
 
@@ -51,12 +51,12 @@ namespace Word2Rtf.Parsers
         {
             var firstChar = elements
                 .FirstOrDefault(g => g.ElementType == ElementType.Content)
-                .Input
-                .Trim()
-                .FirstOrDefault()
+                ?.Input
+                ?.Trim()
+                ?.FirstOrDefault()
                 ;
 
-            return Char.IsNumber(firstChar);
+            return firstChar.HasValue ? Char.IsNumber(firstChar.Value) : false;
         }
     
         protected bool IsBibleVerses(Element input)

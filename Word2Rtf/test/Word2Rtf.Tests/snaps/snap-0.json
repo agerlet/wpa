@@ -1,8 +1,7 @@
 {
     "program": [
         {
-            "input": "【Welcome歡迎】",
-            "output": [
+            "verses": [
                 {
                     "Language": 1,
                     "Content": "Welcome"
@@ -11,12 +10,10 @@
                     "Language": 0,
                     "Content": "歡迎"
                 }
-            ],
-            "contentType": "Title"
+            ]
         },
         {
-            "input": "【Call To Worship宣告】Luke路3:4,6;Habakkuk哈巴谷書 2:20b",
-            "output": [
+            "verses": [
                 {
                     "Language": 1,
                     "Content": "Call To Worship\nLuke 3:4,6\nHabakkuk 2:20b"
@@ -25,12 +22,10 @@
                     "Language": 0,
                     "Content": "宣告\n路 3:4,6\n哈巴谷書 2:20b"
                 }
-            ],
-            "contentType": "Title"
+            ]
         },
         {
-            "input": "【Hymn唱詩】Be Still,For the Presence of the Lord《靜默在至聖主跟前》",
-            "output": [
+            "verses": [
                 {
                     "Language": 1,
                     "Content": "Hymn\nBe Still,For the Presence of the Lord"
@@ -39,8 +34,7 @@
                     "Language": 0,
                     "Content": "唱詩\n靜默在至聖主跟前"
                 }
-            ],
-            "contentType": "Title"
+            ]
         }
     ]
 }  

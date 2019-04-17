@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Word2Rtf.Models;
 
 namespace Word2Rtf.Parsers
@@ -22,7 +23,7 @@ namespace Word2Rtf.Parsers
             return isResponsiveReading;
         }
 
-        internal override void Adjust(List<Element> elements)
+        protected override void Adjust(List<Element> elements)
         {
             if (elements.Count == 1)
                 base.Adjust(elements);
@@ -99,6 +100,47 @@ namespace Word2Rtf.Parsers
                 }
                 isLeading = !isLeading;
             });
+        }
+
+        protected override IEnumerable<Element> Adjust(IEnumerable<Element> elements)
+        {
+            var list = elements.SelectMany(element => 
+                element.Verses.SelectMany(verse => 
+                    verse.Content
+                        .Replace("(L)", "\n(L)")
+                        .Replace("(Leader)", "\n(Leader)")
+                        .Replace("(C)", "\n(C)")
+                        .Replace("(Congregation)", "\n(Congregation)")
+                        .Replace("(領)", "\n(領)")
+                        .Replace("(眾)", "\n(眾)")
+                        .Replace("(領會)", "\n(領會)")
+                        .Replace("(會眾)", "\n(會眾)")
+                        .Replace("（L）", "\n（L）")
+                        .Replace("（Leader）", "\n（Leader）")
+                        .Replace("（C)", "\n（C）")
+                        .Replace("（Congregation)", "\n（Congregation）")
+                        .Replace("（領）", "\n（領）")
+                        .Replace("（眾）", "\n（眾）")
+                        .Replace("（領會）", "\n（領會）")
+                        .Replace("（會眾）", "\n（會眾）")
+                        .Split('\n', StringSplitOptions.RemoveEmptyEntries)
+                        .Select(line => new Element 
+                        {
+                            TitleId = element.TitleId,
+                            Input = element.Input,
+                            ElementType = element.ElementType,
+                            Verses = new List<Verse>
+                            {
+                                new Verse 
+                                {
+                                    Content = line,
+                                    Language = line.GetLanguage()
+                                }
+                            }
+                        })
+                    )
+                ).ToList();
+            return list;
         }
     }
 }

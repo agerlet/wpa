@@ -17,7 +17,7 @@ namespace Word2Rtf.Parsers
         public override void Parse(Element input)
         {
             input.ElementType = ElementType.Title;
-            input.Verses = input.Input.SplitByLanguage();
+            input.Verses = input.Input.FilterByLanguages();
             Elements.Add(input);
         }
     }

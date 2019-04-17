@@ -18,7 +18,7 @@ namespace Word2Rtf.Parsers
             return isLyrics && languageChangedCount > 1;
         }
 
-        internal override IEnumerable<Element> Adjust(IEnumerable<Element> lyrics) 
+        protected override IEnumerable<Element> Adjust(IEnumerable<Element> lyrics) 
         { 
             var lines = lyrics.ToList();
 

@@ -50,13 +50,12 @@ namespace Word2Rtf.Tests
 
             actual = "12 大聲說、曾被殺的羔羊、是配得權柄、豐富、智慧、能力、尊貴、榮耀、頌讚的。13我又聽見、在天上、地上、地底下、滄海裡、和天地間一切所有被造之物、都說、但願頌讚、尊貴、榮耀、權勢、都歸給坐寶座的和羔羊、直到永永遠遠。".GetLanguage();
             Assert.Equal(Language.Chinese, actual);
-        }
 
-        [Fact]
-        public void Test_Language_RealCase()
-        {
+            actual = "25 Lord, save us! Lord, grant us success!25耶和華啊，求你拯救！耶和華啊，求你使我們亨通！".GetLanguage();
+            Assert.Equal(Language.Mixed, actual);
+
             var text = "1Ascribe to the LORD , O mighty ones, ascribe to the LORD glory and strength. 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.3The voice of the LORD is over the waters; the God of glory thunders, the LORD thunders over the mighty waters.4The voice of the LORD is powerful; the voice of the LORD is majestic.5	The voice of the LORD breaks the cedars; the LORD breaks in pieces the cedars of Lebanon.6He makes Lebanon skip like a calf, Sirion like a young wild ox.7	The voice of the LORD strikes with flashes of lightning.8The voice of the LORD shakes the desert; the LORD shakes the Desert of Kadesh.9The voice of the LORD twists the oaks and strips the forests bare. And in his temple all cry, \"Glory!\"10The LORD sits enthroned over the flood; the LORD is enthroned as King forever.11The LORD gives strength to his people; the LORD blesses his people with peace.";
-            var actual = text.GetLanguage();
+            actual = text.GetLanguage();
 
             Assert.Equal(Language.English, actual);
         }
@@ -88,7 +87,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Test_SplitByLanguage_BibleVerse()
         {
-            var actual = _source.SplitByLanguage();
+            var actual = _source.FilterByLanguages();
 
             var expectedLength = 2;
             var expectedVerse1Language = Language.English;
@@ -107,7 +106,7 @@ namespace Word2Rtf.Tests
         public void Test_SplitByLanguage_Song()
         {
             var source = "【唱詩/Song】因著十架愛/Love From The Cross";
-            var actual = source.SplitByLanguage();
+            var actual = source.FilterByLanguages();
 
             var expectedLength = 2;
             var expectedVerse1Language = Language.English;
@@ -174,6 +173,41 @@ namespace Word2Rtf.Tests
             {
                 Assert.Equal(expected[i], actual[i]);
             }
+        }
+
+        [Fact]
+        public void Mixed_languages()
+        {
+            string input = "25 Lord, save us! Lord, grant us success!25耶和華啊，求你拯救！耶和華啊，求你使我們亨通！";
+            Assert.Equal(Language.Mixed, input.GetLanguage());
+            input = "25 Lord, save us! Lord, grant us success!";
+            Assert.Equal(Language.English, input.GetLanguage());
+            input = "25耶和華啊，求你拯救！耶和華啊，求你使我們亨通！";
+            Assert.Equal(Language.Chinese, input.GetLanguage());
+        }
+
+        [Fact]
+        public void Test_the_dotnet_core_api()
+        {
+            Assert.True(Char.IsPunctuation('，'));
+            Assert.True(Char.IsPunctuation('。'));
+            Assert.True(Char.IsPunctuation('！'));
+            Assert.True(Char.IsPunctuation('：'));
+            Assert.True(Char.IsPunctuation('“'));
+            Assert.True(Char.IsPunctuation('”'));
+            Assert.True(Char.IsPunctuation('【'));
+
+            var input = "耶和華啊，求你拯救！耶和華啊，求你使我們亨通！";
+            foreach(var c in input)
+            {
+                Assert.True(Char.IsPunctuation(c) || Char.IsLetter(c));
+            }
+        }
+
+        [Fact]
+        public void Default_Char()
+        {
+            Assert.Equal('\0', default(char));
         }
     }
 }

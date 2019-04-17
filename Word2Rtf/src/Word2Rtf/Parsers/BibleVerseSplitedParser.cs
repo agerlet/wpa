@@ -14,13 +14,15 @@ namespace Word2Rtf.Parsers
 
         public override bool CanHandle(IGrouping<int, Element> group)
         {
-            var input = group.FirstOrDefault(g => g.ElementType == ElementType.Title);
+            if (!group.Any()) return false;
+            var input = group.First();
+            if (input.ElementType != ElementType.Title) return false;
             var isBibleVerses = IsBibleVerses(input);
             var noVerseNumber = !startWithVerseNumber(group);
             return isBibleVerses && noVerseNumber;
         }
 
-        internal override IEnumerable<Element> Adjust(IEnumerable<Element> verses) 
+        protected override IEnumerable<Element> Adjust(IEnumerable<Element> verses) 
         { 
             var lines = verses.ToList();
 
@@ -44,6 +46,6 @@ namespace Word2Rtf.Parsers
             return verses.Where(l => !string.IsNullOrWhiteSpace(l.Input)).ToList();
         }
 
-        internal override void Adjust(List<Element> elements) { }
+        protected override void Adjust(List<Element> elements) { }
     }
 }

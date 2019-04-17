@@ -17,22 +17,31 @@ namespace Word2Rtf
                         .ToArray();
         }
 
-        public static Language GetLanguage(this string input)
+        public static Language GetLanguage(this string text)
         {
-            if (string.IsNullOrWhiteSpace(input)) 
+            if (string.IsNullOrWhiteSpace(text)) 
                 throw new ArgumentNullException();
 
+            var input = text.Replace(" ", "");
             var totalLength = input.Length;
             var numberOfEnglishLetters = input.ToCharArray()
-                .Select(c => c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z'
-                          || Char.IsNumber(c)
-                          || Char.IsSymbol(c))
-                .Count(b => b);
+                .Count(c => c.IsEnglish()
+                        || Char.IsNumber(c)
+                        || Char.IsPunctuation(c)
+                        || Char.IsWhiteSpace(c));
+            
+            var numberOfChineseCharacters = input.ToCharArray()
+                .Count(c => c.IsChinese()
+                        || Char.IsNumber(c)
+                        || Char.IsPunctuation(c));
 
-            return numberOfEnglishLetters * 1.0 / totalLength > 0.65
-                   ? Language.English 
-                   : Language.Chinese
-                   ;
+            if (numberOfEnglishLetters * 1.0 / totalLength > 0.9)
+                return Language.English;
+            
+            if (numberOfChineseCharacters * 1.0 / totalLength > 0.9)
+                return Language.Chinese;
+            
+            return Language.Mixed;
         }
 
         public static string Purify(this string input)
@@ -67,7 +76,7 @@ namespace Word2Rtf
                 );
         }
 
-        public static Verse[] SplitByLanguage(this string input)
+        public static Verse[] FilterByLanguages(this string input)
         {
             // sample input: 
             //      【宣告 Call to worship】 詩篇 Psalm 50:10,23-26 ,Luke路2:10b-11,14
@@ -100,6 +109,44 @@ namespace Word2Rtf
                 new Verse { Content = english.ToString().Trim(), Language = Language.English },
                 new Verse { Content = chinese.ToString().Trim(), Language = Language.Chinese },
             }; 
+        }
+
+        public static IEnumerable<string> SplitByLanguages(this string content)
+        {
+            var list = new List<string>();
+            var builder = new StringBuilder();
+            var lastLanguage = content.First(c => c.GetLanguage() != default(Language?)).GetLanguage();
+
+            for(var i = 0; i < content.Length; i ++)
+            {
+                var c = content[i];
+                var currentLanguage = c.GetLanguage();
+                if (currentLanguage.HasValue && currentLanguage.Value != lastLanguage.Value)
+                {
+                    list.Add(builder.ToString());
+                    builder.Clear();
+                    lastLanguage = currentLanguage.Value;
+                }
+                if (Char.IsNumber(c))
+                {
+                    var nextNonWhitespace = content.GetNextLetter(i);
+                    if (nextNonWhitespace != default(char)) 
+                    {
+                        currentLanguage = nextNonWhitespace.GetLanguage();
+                        if (currentLanguage != lastLanguage.Value)
+                        {
+                            list.Add(builder.ToString());
+                            builder.Clear();
+                            lastLanguage = currentLanguage.Value;
+                        }
+                    }
+                }
+                builder.Append(c);
+            }
+
+            list.Add(builder.ToString());
+
+            return list;
         }
 
         public static bool IsBibleReadingTitle(this string input)
@@ -211,6 +258,37 @@ namespace Word2Rtf
                 .Split(new [] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(v => v.Trim());
 
+        }
+
+        public static Language? GetLanguage(this char c)
+        {
+            if (c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z') return Language.English;
+            if (Char.IsLetter(c) && !(c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z')) return Language.Chinese;
+            return default(Language?);
+        }
+
+        public static bool IsEnglish(this char c)
+        {
+            return c.GetLanguage() == Language.English;
+        }
+
+        public static bool IsChinese(this char c)
+        {
+            return c.GetLanguage() == Language.Chinese;
+        }
+
+        public static char GetNextLetter(this string line, int start)
+        {
+            if (string.IsNullOrWhiteSpace(line) || line.Length < start)
+                return default(char);
+
+            for(int i = start + 1; i < line.Length; i ++)
+            {
+                if (Char.IsLetter(line, i))
+                    return line[i];
+            }
+
+            return default(char);
         }
     } 
 }

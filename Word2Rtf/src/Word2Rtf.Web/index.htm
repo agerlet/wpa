@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Word2Rtf - 幫助你更快製作PPT</title>
+        <style>
+            #content {
+                width: 100%;
+                height: 300px;
+            }
+            h1 {
+                font-size: 16pt;
+                color: #2F5496; 
+            }
+            h2 {
+                font-size: 13pt;
+                color: #2F5496;
+                margin-left: 2em;
+            }
+            #output {
+                border: 1px dotted rgba(47, 85, 150, 0.651);
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <label for="content">使用方法：基本上就是做完敬拜程序之後，將需要做進PPT的內容，就是原來要轉換成RTF文件的內容，複製、粘貼到那個框當中，點擊“轉換”，然後把轉換好的內容複製粘貼回Word，並且保存為RTF格式，即可導入到PPT裡面。</label>
+            <textarea name="content" id="content"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="轉換" id="submit" />
+        </div>
+        <div>
+            <label for="output">點擊轉換後，把結果複製粘貼到Word，並保存為RTF文件。</label>
+            <div id="output">
+                
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+        <script>
+            $(function() {
+                $("#submit").click(function() {
+                    $("#output").empty();
+                    $.ajax({
+                        type: "POST",
+                        url: "https://1db54ls3q1.execute-api.ap-southeast-2.amazonaws.com/PROD/Word2Rtf", 
+                        data: JSON.stringify({ Input: $("#content").val() }),
+                        dataType: "json",
+                        contentType: "application/json;charset=utf-8",
+                        success: function(data){
+                            data.program.forEach(function (element) {
+                                element.verses.forEach(function (verse) {
+                                    var content = verse.Content.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                                    if (verse.Language == 1) {
+                                        $("#output").append("<h1>" + content + "</h1>");
+                                    } else if (verse.Language == 0)
+                                    {
+                                        $("#output").append("<h2>" + content + "</h2>");
+                                    }
+                                });
+                            });
+                        }
+                    });
+                })
+            });
+        </script>
+    </body>
+</html>
