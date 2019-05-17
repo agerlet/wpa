@@ -33,8 +33,8 @@ namespace Word2Rtf.Parsers
                 }
                 else
                 {
-                    firstSameLanguageElement.Input += '\n' + lines[i].Input;
-                    firstSameLanguageElement.Verses.First().Content += '\n' + lines[i].Input;
+                    firstSameLanguageElement.Input += Environment.NewLine + lines[i].Input;
+                    firstSameLanguageElement.Verses.First().Content += Environment.NewLine + lines[i].Input;
                     lines[i].Input = string.Empty;
                 }
             }

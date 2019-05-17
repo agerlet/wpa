@@ -92,8 +92,8 @@ namespace Word2Rtf.Tests
             var expectedLength = 2;
             var expectedVerse1Language = Language.English;
             var expectedVerse2Language = Language.Chinese;
-            var expectedVerse1Content = "Call to worship\nSong of Songs50:10,23-26\nLuke 2:10b-11,14";
-            var expectedVerse2Content = "宣告\n詩篇 50:10,23-26\n路 2:10b-11,14";
+            var expectedVerse1Content = $"Call to worship{Environment.NewLine}Song of Songs50:10,23-26{Environment.NewLine}Luke 2:10b-11,14";
+            var expectedVerse2Content = $"宣告{Environment.NewLine}詩篇 50:10,23-26{Environment.NewLine}路 2:10b-11,14";
 
             Assert.Equal(expectedLength, actual.Length);
             Assert.Equal(expectedVerse1Language, actual[0].Language);
@@ -111,8 +111,8 @@ namespace Word2Rtf.Tests
             var expectedLength = 2;
             var expectedVerse1Language = Language.English;
             var expectedVerse2Language = Language.Chinese;
-            var expectedVerse1Content = "Song\nLove From The Cross";
-            var expectedVerse2Content = "唱詩\n因著十架愛";
+            var expectedVerse1Content = $"Song{Environment.NewLine}Love From The Cross";
+            var expectedVerse2Content = $"唱詩{Environment.NewLine}因著十架愛";
 
             Assert.Equal(expectedLength, actual.Length);
             Assert.Equal(expectedVerse1Language, actual[0].Language);

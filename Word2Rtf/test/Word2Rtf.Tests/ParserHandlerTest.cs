@@ -27,9 +27,9 @@ namespace Word2Rtf.Tests
             Assert.True(element.Pass);
             Assert.Equal(2, element.Verses.Count());
             Assert.Equal(ElementType.Title, element.ElementType);
-            Assert.Equal("Proclaim\nPsalm 50:23\nHebrew 13:15b", element.Verses.First().Content);
+            Assert.Equal($"Proclaim{Environment.NewLine}Psalm 50:23{Environment.NewLine}Hebrew 13:15b", element.Verses.First().Content);
             Assert.Equal(Language.English, element.Verses.First().Language);
-            Assert.Equal("宣告\n詩篇 50:23\n希伯來書 13:15b", element.Verses.Last().Content);
+            Assert.Equal($"宣告{Environment.NewLine}詩篇 50:23{Environment.NewLine}希伯來書 13:15b", element.Verses.Last().Content);
             Assert.Equal(Language.Chinese, element.Verses.Last().Language);            
         }
 
@@ -48,8 +48,8 @@ namespace Word2Rtf.Tests
             Assert.True(elements[0].Pass);
             Assert.Equal(title, elements[0].Input);
             Assert.Equal(2, elements[0].Verses.Count());
-            Assert.Equal("Responsive Reading\nPsalm 29", elements[0].Verses.First().Content);
-            Assert.Equal("啟應讀經\n詩篇 29", elements[0].Verses.Skip(1).First().Content);
+            Assert.Equal($"Responsive Reading{Environment.NewLine}Psalm 29", elements[0].Verses.First().Content);
+            Assert.Equal($"啟應讀經{Environment.NewLine}詩篇 29", elements[0].Verses.Skip(1).First().Content);
 
             Assert.True(elements[1].Pass);
             Assert.Equal(2, elements[1].Verses.Count());
@@ -125,8 +125,8 @@ namespace Word2Rtf.Tests
             Assert.True(elements[0].Pass);
             Assert.Equal("【Responsive Reading啟應讀經】詩篇 Psalm 29", elements[0].Input);
             Assert.Equal(2, elements[0].Verses.Count());
-            Assert.Equal("Responsive Reading\nPsalm 29", elements[0].Verses.First().Content);
-            Assert.Equal("啟應讀經\n詩篇 29", elements[0].Verses.Skip(1).First().Content);
+            Assert.Equal($"Responsive Reading{Environment.NewLine}Psalm 29", elements[0].Verses.First().Content);
+            Assert.Equal($"啟應讀經{Environment.NewLine}詩篇 29", elements[0].Verses.Skip(1).First().Content);
 
             Assert.True(elements[1].Pass);
             Assert.Equal(2, elements[1].Verses.Count());
@@ -155,8 +155,8 @@ namespace Word2Rtf.Tests
             Assert.True(elements[0].Pass);
             Assert.Equal("【Call To Worship宣告】Luke路2:10b-11,14", elements[0].Input);
             Assert.Equal(2, elements[0].Verses.Count());
-            Assert.Equal("Call To Worship\nLuke 2:10b-11,14", elements[0].Verses.First().Content);
-            Assert.Equal("宣告\n路 2:10b-11,14", elements[0].Verses.Skip(1).First().Content);
+            Assert.Equal($"Call To Worship{Environment.NewLine}Luke 2:10b-11,14", elements[0].Verses.First().Content);
+            Assert.Equal($"宣告{Environment.NewLine}路 2:10b-11,14", elements[0].Verses.Skip(1).First().Content);
 
             Assert.True(elements[1].Pass);
             Assert.Equal("I bring you good news that will cause great joy for all the people. 11 Today in the town of David a Savior has been born to you; he is the Messiah, the Lord. “Glory to God in the highest heaven, and on earth peace to those on whom his favor rests.”\n我報給你們大喜的信息、 是關乎萬民的.因今天在大衛的城裡、 為你們生了救主、 就是主基督。在至高之處榮耀歸與上帝!在地上平安歸 與祂所喜悅的人!", elements[1].Input);
@@ -187,18 +187,18 @@ namespace Word2Rtf.Tests
 
             Assert.True(elements[0].Pass);
             Assert.Equal(2, elements[0].Verses.Count());
-            Assert.Equal("Hymn\nBe Still,For the Presence of the Lord", elements[0].Verses.First().Content);
-            Assert.Equal("唱詩\n靜默在至聖主跟前", elements[0].Verses.Skip(1).First().Content);
+            Assert.Equal($"Hymn{Environment.NewLine}Be Still,For the Presence of the Lord", elements[0].Verses.First().Content);
+            Assert.Equal($"唱詩{Environment.NewLine}靜默在至聖主跟前", elements[0].Verses.Skip(1).First().Content);
 
             Assert.True(elements[1].Pass);
             Assert.Equal(2, elements[1].Verses.Count());
-            Assert.Equal("Be still, for the presence of the Lord, the Holy one is here. \nCome bow before him now, with reverence and fear.", elements[1].Verses.First().Content);
-            Assert.Equal("靜默在至聖的主跟前，主今親臨同在，\n這是神聖之地，主聖潔無瑕疵；", elements[1].Verses.Skip(1).First().Content);
+            Assert.Equal($"Be still, for the presence of the Lord, the Holy one is here. {Environment.NewLine}Come bow before him now, with reverence and fear.", elements[1].Verses.First().Content);
+            Assert.Equal($"靜默在至聖的主跟前，主今親臨同在，{Environment.NewLine}這是神聖之地，主聖潔無瑕疵；", elements[1].Verses.Skip(1).First().Content);
 
             Assert.True(elements[2].Pass);
             Assert.Equal(2, elements[2].Verses.Count());
-            Assert.Equal("In him no sin is found, we stand on holy ground.\nBe still, for the presence of the Lord, the Holy one is here. ", elements[2].Verses.First().Content);
-            Assert.Equal("你當尊他為聖，向他屈膝敬拜，\n肅靜在至聖的主跟前，主今親臨同在。", elements[2].Verses.Skip(1).First().Content);
+            Assert.Equal($"In him no sin is found, we stand on holy ground.{Environment.NewLine}Be still, for the presence of the Lord, the Holy one is here. ", elements[2].Verses.First().Content);
+            Assert.Equal($"你當尊他為聖，向他屈膝敬拜，{Environment.NewLine}肅靜在至聖的主跟前，主今親臨同在。", elements[2].Verses.Skip(1).First().Content);
 
         }
         
@@ -224,8 +224,8 @@ namespace Word2Rtf.Tests
 
             Assert.True(elements[0].Pass);
             Assert.Equal(2, elements[0].Verses.Count());
-            Assert.Equal("Hymn\nBe Still,For the Presence of the Lord", elements[0].Verses.First().Content);
-            Assert.Equal("唱詩\n靜默在至聖主跟前", elements[0].Verses.Skip(1).First().Content);
+            Assert.Equal($"Hymn{Environment.NewLine}Be Still,For the Presence of the Lord", elements[0].Verses.First().Content);
+            Assert.Equal($"唱詩{Environment.NewLine}靜默在至聖主跟前", elements[0].Verses.Skip(1).First().Content);
 
             Assert.True(elements[1].Pass);
             Assert.Equal(2, elements[1].Verses.Count());
@@ -264,8 +264,8 @@ namespace Word2Rtf.Tests
 
             Assert.True(elements[0].Pass);
             Assert.Equal(2, elements[0].Verses.Count());
-            Assert.Equal("Mercy Seat Appeal\nA Gift", elements[0].Verses.First().Content);
-            Assert.Equal("恩座呼召\n一件禮物", elements[0].Verses.Skip(1).First().Content);
+            Assert.Equal($"Mercy Seat Appeal{Environment.NewLine}A Gift", elements[0].Verses.First().Content);
+            Assert.Equal($"恩座呼召{Environment.NewLine}一件禮物", elements[0].Verses.Skip(1).First().Content);
 
             Assert.True(elements[1].Pass);
             Assert.Single(elements[1].Verses);
@@ -356,8 +356,8 @@ namespace Word2Rtf.Tests
 
             Assert.True(elements[3].Pass);
             Assert.Equal(2, elements[3].Verses.Count());
-            Assert.Equal("Joy to the world!\nThe Saviour reigns;\nLet men their songs employ,", elements[3].Verses.First().Content);
-            Assert.Equal("普世歡勝！主治萬方，\n萬民高聲歌唱；", elements[3].Verses.Skip(1).First().Content);
+            Assert.Equal($"Joy to the world!{Environment.NewLine}The Saviour reigns;{Environment.NewLine}Let men their songs employ,", elements[3].Verses.First().Content);
+            Assert.Equal($"普世歡勝！主治萬方，{Environment.NewLine}萬民高聲歌唱；", elements[3].Verses.Skip(1).First().Content);
         }
 
         [Fact]

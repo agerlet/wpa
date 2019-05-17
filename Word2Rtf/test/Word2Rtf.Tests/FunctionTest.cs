@@ -4,6 +4,7 @@ using Xunit;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
 using System.IO;
+using System;
 
 namespace Word2Rtf.Tests
 {
@@ -23,7 +24,7 @@ namespace Word2Rtf.Tests
             string actual = await jsonSerializer.GetJsonString(json);
 
             string snap = await "snaps/snap-0.json".LoadAsync();
-            object o = jsonSerializer.GetJsonObject(snap);
+            object o = jsonSerializer.GetJsonObject(snap.Replace("\\n", Environment.NewLine));
             string expected = await jsonSerializer.GetJsonString(o);
             
             Assert.Equal(expected, actual);
@@ -39,7 +40,7 @@ namespace Word2Rtf.Tests
             string actual = await jsonSerializer.GetJsonString(json);
 
             string snap = await "snaps/snap-1.json".LoadAsync();
-            object o = jsonSerializer.GetJsonObject(snap);
+            object o = jsonSerializer.GetJsonObject(snap.Replace("\\n", Environment.NewLine));
             string expected = await jsonSerializer.GetJsonString(o);
             
             Assert.Equal(expected, actual);
@@ -55,7 +56,7 @@ namespace Word2Rtf.Tests
             string actual = await jsonSerializer.GetJsonString(json);
 
             string snap = await "snaps/snap-2.json".LoadAsync();
-            object o = jsonSerializer.GetJsonObject(snap);
+            object o = jsonSerializer.GetJsonObject(snap.Replace("\\n", Environment.NewLine));
             string expected = await jsonSerializer.GetJsonString(o);
             
             Assert.Equal(expected, actual);
@@ -71,7 +72,7 @@ namespace Word2Rtf.Tests
             string actual = await jsonSerializer.GetJsonString(json);
 
             string snap = await "snaps/snap-2.1.json".LoadAsync();
-            object o = jsonSerializer.GetJsonObject(snap);
+            object o = jsonSerializer.GetJsonObject(snap.Replace("\\n", Environment.NewLine));
             string expected = await jsonSerializer.GetJsonString(o);
             
             Assert.Equal(expected, actual);
