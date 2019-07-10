@@ -8,13 +8,14 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
 
 using Word2Rtf;
+using Word2Rtf.Exceptions;
 using Word2Rtf.Models;
 
 namespace Word2Rtf.Tests
 {
     public class StringExtensionTest
     {
-        const string _source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26；Luke路2:10b-11,14";
+        const string Source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26；Luke路2:10b-11,14";
 
         [Fact]
         public void Test_Break()
@@ -63,7 +64,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Test_Purify()
         {
-            var actual = _source.Purify();
+            var actual = Source.Purify();
             var expected = "【宣告 Call to worship】 詩篇 Song of Songs50:10,23-26；Luke路2:10b-11,14";
             Assert.Equal(expected, actual);
 
@@ -87,7 +88,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Test_SplitByLanguage_BibleVerse()
         {
-            var actual = _source.FilterByLanguages();
+            var actual = Source.FilterByLanguages();
 
             var expectedLength = 2;
             var expectedVerse1Language = Language.English;
@@ -123,7 +124,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Test_IsBibleReadingTitle()
         {
-            Assert.True(_source.IsBibleReadingTitle());
+            Assert.True(Source.IsBibleReadingTitle());
             Assert.False("【唱詩/Song】因著十架愛/Love From The Cross".IsBibleReadingTitle());
         }    
 
@@ -153,7 +154,7 @@ namespace Word2Rtf.Tests
         {
             string source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26;Luke路2:10b-11,14";
             var expected = new [] { "50:10,23-26", "2:10b-11,14" };
-            var actual = source.GetVerseNumbers();
+            var actual = source.GetVerseNumbers().ToArray();
             Assert.Equal(expected, actual);
         }
 
@@ -208,6 +209,72 @@ namespace Word2Rtf.Tests
         public void Default_Char()
         {
             Assert.Equal('\0', default(char));
+        }
+
+        [Fact]
+        public void Should_return_2_languages_For_complex_verses()
+        {
+            var result = "【Responsive Reading啓應讀經】Isaiah以賽亞書53：4-6，Romans羅馬書5：6、8，2 Corinthians哥林多後書5：21，1 Peter彼得前書2：24-25"
+                .FilterByLanguages();
+            
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            
+            Assert.Equal($"Responsive Reading{Environment.NewLine}Isaiah 53:4-6{Environment.NewLine}Romans 5:6、8{Environment.NewLine}2 Corinthians 5:21{Environment.NewLine}1 Peter 2:24-25", result[0].Content);
+            Assert.Equal(Language.English, result[0].Language);
+            
+            Assert.Equal($"啓應讀經{Environment.NewLine}以賽亞書 53:4-6{Environment.NewLine}羅馬書 5:6、8{Environment.NewLine}哥林多後書 5:21{Environment.NewLine}彼得前書 2:24-25", result[1].Content);
+            Assert.Equal(Language.Chinese, result[1].Language);
+        }
+
+        [Fact]
+        public void Should_pass_When_part_language_is_missing()
+        {
+            Assert.Throws<ImbalancedLanguagesException>(() => "【宣告/Proclaim】Psalms 50:23".FilterByLanguages());
+        }
+
+        [Fact]
+        public void Should_do_nothing_When_balanced_terms_passed_in()
+        {
+            var cTerms = new List<string>() { "宣告", "詩篇" };
+            var eTerms = new List<string>() { "Proclaim", "Psalm" };
+            var cTermsLength = cTerms.Count();
+            var eTermsLength = eTerms.Count();
+            StringExtensions.BalanceLanguages(cTerms, eTerms);
+            
+            Assert.Equal(cTermsLength, cTerms.Count);
+            Assert.Equal(eTermsLength, eTerms.Count);
+        }
+
+        [Fact]
+        public void Should_insert_the_missing_Chinese_part()
+        {
+            var cTerms = new List<string>() { "宣告" };
+            var eTerms = new List<string>() { "Proclaim", "Psalm" };
+            StringExtensions.BalanceLanguages(cTerms, eTerms);
+            
+            Assert.Equal(cTerms.Count(), eTerms.Count());
+        }
+
+        [Fact]
+        public void Should_insert_the_missing_English_part()
+        {
+            var cTerms = new List<string>() { "宣告", "詩篇" };
+            var eTerms = new List<string>() { "Proclaim" };
+            StringExtensions.BalanceLanguages(cTerms, eTerms);
+            
+            Assert.Equal(cTerms.Count(), eTerms.Count());
+        }
+
+        [Fact]
+        public void Should_not_throw_exception_When_the_missing_part_cannot_find_counterpart()
+        {
+            var cTerms = new List<string>() { "宣告" };
+            var eTerms = new List<string>() { "Proclaim", "Psalms" };
+            StringExtensions.BalanceLanguages(cTerms, eTerms);
+            
+            Assert.Equal(1, cTerms.Count());
+            Assert.Equal(2, eTerms.Count());
         }
     }
 }
