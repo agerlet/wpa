@@ -183,7 +183,12 @@ namespace Word2Rtf
 
         public static bool IsBibleReadingTitle(this string input)
         {
-            return input.Any(c => c >= '0' && c <= '9' || c == ':');
+            return (BookNames.Chinese.Any(input.Contains)
+                   || BookNames.English.Any(input.Contains)
+                   || BookNames.ChineseShortName.Any(input.Contains)
+                   || BookNames.EnglishShortName.Any(input.Contains))
+                && input.Any(c => c >= '0' && c <= '9')
+                && input.All(c => c != '#');
         }
 
         public static IEnumerable<string> GetEnglishAndVerseNumber(this string input)
@@ -196,7 +201,7 @@ namespace Word2Rtf
                     || c >= '0' && c <= '9'
                     || c == ':' || c == ',' || c == '-'
                     || c == ';' || c == '；' || c == '、'
-                    || c == '【' || c == '】')
+                    || c == '【' || c == '】' || c == '#')
                 {
                     return c;
                 }
@@ -229,7 +234,7 @@ namespace Word2Rtf
                         || c >= '0' && c <= '9'
                         || c == ':' || c == ',' || c == '-'
                         || c == ';' || c == '；' || c == '、'
-                        || c == '【' || c == '】')
+                        || c == '【' || c == '】' || c == '#')
                     {
                         return ' ';
                     }

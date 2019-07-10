@@ -104,6 +104,21 @@ namespace Word2Rtf.Tests
         }
 
         [Fact]
+        public void Should_split_song_title_by_language()
+        {
+            var input = "【序樂/Prelude】SB#636我們頌揚多年祝福/Sing We Many Years of Blessing";
+            var result = input.FilterByLanguages();
+            
+            Assert.Equal(2, result.Count());
+            
+            Assert.Equal($"Prelude{Environment.NewLine}SB#636 Sing We Many Years of Blessing", result[0].Content);
+            Assert.Equal(Language.English, result[0].Language);
+            
+            Assert.Equal($"序樂{Environment.NewLine}我們頌揚多年祝福", result[1].Content);
+            Assert.Equal(Language.Chinese, result[1].Language);
+        }
+
+        [Fact]
         public void Test_SplitByLanguage_Song()
         {
             var source = "【唱詩/Song】因著十架愛/Love From The Cross";
@@ -126,7 +141,7 @@ namespace Word2Rtf.Tests
         {
             Assert.True(Source.IsBibleReadingTitle());
             Assert.False("【唱詩/Song】因著十架愛/Love From The Cross".IsBibleReadingTitle());
-        }    
+        }
 
         [Fact]
         public void Test_GetEnglishAndVerseNumber()
@@ -138,6 +153,12 @@ namespace Word2Rtf.Tests
             {
                 Assert.Equal(expected[i], actual[i]);
             }
+        }
+        
+        [Fact]
+        public void Should_not_be_bible_title_When_song_name_provided()
+        {
+            Assert.False("【序樂/Prelude】SB#636我們頌揚多年祝福/Sing We Many Years of Blessing".IsBibleReadingTitle());
         }
 
         [Fact]
@@ -276,5 +297,14 @@ namespace Word2Rtf.Tests
             Assert.Equal(1, cTerms.Count());
             Assert.Equal(2, eTerms.Count());
         }
+
+        [Fact]
+        public void Should_Filter_Out_Hash_When_Get_Chinese()
+        {
+            var input = "【序樂/Prelude】SB#636我們頌揚多年祝福/Sing We Many Years of Blessing";
+            var result = input.GetChinese();
+            Assert.Equal(2, result.Count());
+        }
+
     }
 }
