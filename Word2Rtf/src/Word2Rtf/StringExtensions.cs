@@ -117,9 +117,18 @@ namespace Word2Rtf
 
             try
             {
-
                 if (chineseTerms.Count() > englishTerms.Count())
                 {
+                    var section = Sections.Names.FirstOrDefault(n => n.Instances.Any(_ => 
+                        _.Content.Equals(chineseTerms[0], StringComparison.InvariantCultureIgnoreCase)));
+                    var englishCounterpart = section?.Instances.Where(_ => _.Language == Language.English).ToArray();
+                    if (englishCounterpart.Any() &&
+                        !englishCounterpart.Join(englishTerms, v => v.Content, s => s, (v, s) => v.Content.Equals(s, StringComparison.InvariantCultureIgnoreCase)).Any())
+                    {
+                        englishTerms.Insert(0, englishCounterpart.First().Content);
+                    }
+                    if (chineseTerms.Count() == englishTerms.Count()) return;
+                    
                     for (var i = 1; i < chineseTerms.Count(); i++)
                     {
                         var idx = BookNames.Chinese.IndexOf(chineseTerms[i]);
@@ -129,9 +138,23 @@ namespace Word2Rtf
                 }
                 else
                 {
+                    var section = Sections.Names.FirstOrDefault(x => x.Instances.Any(_ =>
+                        _.Content.Equals(englishTerms[0], StringComparison.InvariantCultureIgnoreCase)));
+                    var chineseCounterpart = section?.Instances.Where(_ => _.Language == Language.Chinese).ToArray();
+                    if (chineseCounterpart.Any() &&
+                        !chineseCounterpart.Join(chineseTerms, v => v.Content, s => s, (v, s) => v.Content.Equals(s, StringComparison.InvariantCultureIgnoreCase)).Any())
+                    {
+                        chineseTerms.Insert(0, chineseCounterpart.First().Content);
+                    }
+                    if (chineseTerms.Count() == englishTerms.Count()) return;
+                    
                     for (var i = 1; i < englishTerms.Count(); i++)
                     {
-                        var idx = BookNames.English.IndexOf(englishTerms[i]);
+                        var englishBookname = BookNames.English.Where(_ => englishTerms[i].Contains(_));
+                        if (!englishBookname.Any())
+                            englishBookname = BookNames.EnglishShortName.Where(_ => englishTerms[i].Contains(_));
+                        var idx = BookNames.English.IndexOf(englishBookname.FirstOrDefault());
+                        if (idx == -1) idx = BookNames.EnglishShortName.IndexOf(englishBookname.FirstOrDefault());
                         var term = BookNames.Chinese[idx];
                         chineseTerms.Insert(i, term);
                     }
@@ -183,12 +206,19 @@ namespace Word2Rtf
 
         public static bool IsBibleReadingTitle(this string input)
         {
-            return (BookNames.Chinese.Any(input.Contains)
-                   || BookNames.English.Any(input.Contains)
-                   || BookNames.ChineseShortName.Any(input.Contains)
-                   || BookNames.EnglishShortName.Any(input.Contains))
-                && input.Any(c => c >= '0' && c <= '9')
-                && input.All(c => c != '#');
+            var doesContainBookName = (BookNames.Chinese.Any(input.Contains)
+                                       || BookNames.English.Any(input.Contains)
+                                       || BookNames.ChineseShortName.Any(input.Contains)
+                                       || BookNames.EnglishShortName.Any(input.Contains))
+                                      && input.Any(c => c >= '0' && c <= '9')
+                                      && input.All(c => c != '#');
+
+            var isBibleVerse = Sections.Names.Any(_ => 
+                _.SectionType.HasFlag(ElementType.BibleVerses)
+                && _.Instances.Any(x => input.Contains(x.Content))
+                );
+            
+            return doesContainBookName || isBibleVerse;
         }
 
         public static IEnumerable<string> GetEnglishAndVerseNumber(this string input)
@@ -214,10 +244,19 @@ namespace Word2Rtf
                 englishAndVerseNumbersLine.Replace(s, $"{Environment.NewLine}{s}");
             }
             
+            foreach (var s in BookNames.EnglishShortName)
+            {
+                englishAndVerseNumbersLine.Replace(s, $"{Environment.NewLine}{s}");
+            }
+
+            englishAndVerseNumbersLine.Replace($"Song of {Environment.NewLine}Songs", $"Song of Songs");
+            
             var removeExtraSpaces = englishAndVerseNumbersLine.ToString().RemoveDuplicateSpaces();
             var splitedTitleAndBody = removeExtraSpaces.Split(new [] { '【', '】', ';', '；', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             var processed = splitedTitleAndBody.Select(phrase => phrase.Trim(' ', ',', ';'))
-                .Where(phrase => !string.IsNullOrWhiteSpace(phrase));
+                .Where(phrase => !string.IsNullOrWhiteSpace(phrase)
+                    && phrase.Any(c => c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
+                );
             
             return processed;
         }
@@ -278,7 +317,8 @@ namespace Word2Rtf
             return process.ToString()
                 .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
                 .Where(x => !string.IsNullOrWhiteSpace(x))
-                .Select(x => x.Trim(' ', ',', ';', '；'));
+                .Select(x => x.Trim(' ', ',', ';', '；'))
+                .Distinct();
         }
 
         public static string RemoveDuplicateSpaces(this string input)

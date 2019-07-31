@@ -136,11 +136,19 @@ namespace Word2Rtf.Tests
             Assert.Equal(expectedVerse1Content, actual[0].Content);
             Assert.Equal(expectedVerse2Content, actual[1].Content);
         }
+        
         [Fact]
         public void Test_IsBibleReadingTitle()
         {
             Assert.True(Source.IsBibleReadingTitle());
             Assert.False("【唱詩/Song】因著十架愛/Love From The Cross".IsBibleReadingTitle());
+        }
+
+        [Fact]
+        public void Should_recognise_When_section_is_suppose_to_be_a_bible_verse()
+        {
+            var result = "【Call To Worship宣告】Something 2:20b".IsBibleReadingTitle();
+            Assert.True(result);
         }
 
         [Fact]
@@ -154,7 +162,15 @@ namespace Word2Rtf.Tests
                 Assert.Equal(expected[i], actual[i]);
             }
         }
-        
+
+        [Fact]
+        public void Should_not_break_Song_of_Songs()
+        {
+            var source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26 ;Luke路2:10b-11,14";
+            var actual = source.GetEnglishAndVerseNumber().ToArray();
+            Assert.Contains("Song of Songs", actual[1]);
+        }
+
         [Fact]
         public void Should_not_be_bible_title_When_song_name_provided()
         {
@@ -180,7 +196,7 @@ namespace Word2Rtf.Tests
         }
 
         [Fact]
-        public void Test_BreakByVerseNumbers()
+        public void Should_break_by_verse_numbers_For_same_language()
         {
             string source = "1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。12. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。123. 耶和華的聲音發在水上，榮耀的神打雷，耶和華打雷在大水之上。";
             var expected = new [] 
@@ -198,7 +214,7 @@ namespace Word2Rtf.Tests
         }
 
         [Fact]
-        public void Mixed_languages()
+        public void Should_split_languages_when_inline_mixed_languages()
         {
             string input = "25 Lord, save us! Lord, grant us success!25耶和華啊，求你拯救！耶和華啊，求你使我們亨通！";
             Assert.Equal(Language.Mixed, input.GetLanguage());
@@ -249,9 +265,35 @@ namespace Word2Rtf.Tests
         }
 
         [Fact]
-        public void Should_pass_When_part_language_is_missing()
+        public void Should_find_missing_english_counterpart()
         {
-            Assert.Throws<ImbalancedLanguagesException>(() => "【宣告/Proclaim】Psalms 50:23".FilterByLanguages());
+            var result = "【啟應經文】約翰福音 3:1-8,16, 哥林多後書 5:17 John 3:1-8,16, 2Cor 5:17".FilterByLanguages();
+            Assert.Contains("Responsive Reading", result[0].Content);
+        }
+
+        [Fact]
+        public void Should_return_english_book_names_with_verse_numbers()
+        {
+            var source = "【啟應經文】約翰福音 3:1-8,16, 哥林多後書 5:17 John 3:1-8,16, 2Cor 5:17";
+            var result = source.GetEnglishAndVerseNumber().ToArray();
+            Assert.Equal(2, result.Count());
+            Assert.Equal("John 3:1-8,16", result[0]);
+            Assert.Equal("2Cor 5:17", result[1]);
+        }
+
+        [Fact]
+        public void Should_deduplicate_verse_numbers()
+        {
+            var result = "【啟應經文】約翰福音 3:1-8,16, 哥林多後書 5:17 John 3:1-8,16, 2Cor 5:17".GetVerseNumbers().ToArray();
+            Assert.Equal(2, result.Length);
+            Assert.Equal("3:1-8,16", result[0]);
+            Assert.Equal("5:17", result[1]);
+        }
+
+        [Fact]
+        public void Should_throw_ImbalancedLanguagesException_When_part_language_is_missing()
+        {
+            Assert.ThrowsAny<ImbalancedLanguagesException>(() => "【宣告/Proclaim】Something 50:23".FilterByLanguages());
         }
 
         [Fact]
@@ -291,7 +333,7 @@ namespace Word2Rtf.Tests
         public void Should_not_throw_exception_When_the_missing_part_cannot_find_counterpart()
         {
             var cTerms = new List<string>() { "宣告" };
-            var eTerms = new List<string>() { "Proclaim", "Psalms" };
+            var eTerms = new List<string>() { "Proclaim", "Cannot find" };
             StringExtensions.BalanceLanguages(cTerms, eTerms);
             
             Assert.Equal(1, cTerms.Count());

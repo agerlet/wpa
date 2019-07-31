@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Word2Rtf.Models
@@ -9,13 +10,14 @@ namespace Word2Rtf.Models
         Mixed
     }
 
+    [Flags]
     public enum ElementType
     {
-        Title,
-        Content,
-        Lyrics,
-        BibleVerses,
-        YouTubeLink
+        Title = 0,
+        Content = 1,
+        Lyrics = 1 << 1,
+        BibleVerses = 1 << 2,
+        YouTubeLink = 1 << 3,
     }
 
     public static class BookNames
@@ -54,7 +56,6 @@ namespace Word2Rtf.Models
                 /*---------------------------------------------------------------------------------------------------*/
                 "歌林多前書", "歌林多後書",
             };
-
             ChineseShortName = new List<string>
             {
                 "創", "出", "利", "民", "申", "書", "士", "得", "撒上", "撒下", "王上", "王下", "代上", "代下", "拉", "尼", "斯", "伯", "詩",
@@ -73,4 +74,232 @@ namespace Word2Rtf.Models
         public static List<string> ChineseShortName { get; internal set; }
     }
 
+    internal static class Sections
+    {
+        public static List<Section> Names => new List<Section>
+        {
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Silent Prayer", Language = Language.English},
+                    new Verse {Content = "默禱", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Welcome", Language = Language.English},
+                    new Verse {Content = "歡迎", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Praise & Prayer", Language = Language.English},
+                    new Verse {Content = "讚美禱告", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title | ElementType.BibleVerses,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Proclaim", Language = Language.English},
+                    new Verse {Content = "宣告經文", Language = Language.Chinese},
+                    new Verse {Content = "宣告", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title | ElementType.BibleVerses,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Call To worship", Language = Language.English},
+                    new Verse {Content = "宣召經文", Language = Language.Chinese},
+                    new Verse {Content = "宣召", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title | ElementType.Lyrics,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Hymn", Language = Language.English},
+                    new Verse {Content = "詩歌", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title | ElementType.Lyrics,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Song", Language = Language.English},
+                    new Verse {Content = "唱詩", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Prayer", Language = Language.English},
+                    new Verse {Content = "禱告", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title | ElementType.BibleVerses,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Responsive Reading", Language = Language.English},
+                    new Verse {Content = "啟應經文", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Thanksgiving Song", Language = Language.English},
+                    new Verse {Content = "感恩讚美唱詩", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Thanksgiving", Language = Language.English},
+                    new Verse {Content = "感恩讚美分享", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Thanksgiving", Language = Language.English},
+                    new Verse {Content = "感恩讚美禱告", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Welcome New Friends", Language = Language.English},
+                    new Verse {Content = "歡迎新朋友", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title | ElementType.Lyrics,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Welcome Song", Language = Language.English},
+                    new Verse {Content = "歡迎歌", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Announcements", Language = Language.English},
+                    new Verse {Content = "報告", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Tithe", Language = Language.English},
+                    new Verse {Content = "十一奉獻", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title | ElementType.BibleVerses,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Generous Offering", Language = Language.English},
+                    new Verse {Content = "慷慨奉獻", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Offering Prayer", Language = Language.English},
+                    new Verse {Content = "奉獻禱告", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title | ElementType.BibleVerses,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Scripture", Language = Language.English},
+                    new Verse {Content = "Scripture Reading", Language = Language.English},
+                    new Verse {Content = "證道經文", Language = Language.Chinese},
+                    new Verse {Content = "經文", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Message", Language = Language.English},
+                    new Verse {Content = "證道", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title | ElementType.Lyrics,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Mercy Seat Appeal", Language = Language.English},
+                    new Verse {Content = "恩座呼召", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title | ElementType.Lyrics,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Responding Song", Language = Language.English},
+                    new Verse {Content = "回應詩歌", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances = new List<Verse>
+                {
+                    new Verse {Content = "Sending And Benediction", Language = Language.English},
+                    new Verse {Content = "Benediction", Language = Language.English},
+                    new Verse {Content = "差遣與祝福", Language = Language.Chinese},
+                }
+            },
+            new Section()
+            {
+                SectionType = ElementType.Title,
+                Instances =
+                    new List<Verse>
+                    {
+                        new Verse {Content = "Prayer Group", Language = Language.English},
+                        new Verse {Content = "禱告會", Language = Language.Chinese},
+                    }
+            }
+        };
+    }
 }
