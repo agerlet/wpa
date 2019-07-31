@@ -104,6 +104,20 @@ namespace Word2Rtf.Tests
         }
 
         [Fact]
+        public void Should_not_repeat_chinese_title()
+        {
+            var source = "【Responsive Reading啟應讀經】Psalm詩篇 8";
+            var results = source.FilterByLanguages();
+            Assert.Equal($"啟應讀經{Environment.NewLine}詩篇 8", results[1].Content);
+        }
+
+        [Fact]
+        public void Should_return_chapter_number()
+        {
+            Assert.Equal("8", "【Responsive Reading啟應讀經】Psalm詩篇 8".GetVerseNumbers().First());
+        }
+
+        [Fact]
         public void Should_split_song_title_by_language()
         {
             var input = "【序樂/Prelude】SB#636我們頌揚多年祝福/Sing We Many Years of Blessing";

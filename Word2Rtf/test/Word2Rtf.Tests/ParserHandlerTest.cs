@@ -113,8 +113,8 @@ namespace Word2Rtf.Tests
             var input = new [] { 
                 "【Responsive Reading啟應讀經】詩篇 Psalm 29", 
                 "(L) 1Ascribe to the LORD , O mighty ones, ascribe to the LORD glory and strength.",
-                "（領） 1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。", 
                 "(C) 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.",
+                "（領） 1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。", 
                 "（眾）2. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。"
                 };
 
@@ -138,7 +138,7 @@ namespace Word2Rtf.Tests
             Assert.Equal("(C) 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.", elements[2].Verses.First().Content);
             Assert.Equal("(眾) 2. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。", elements[2].Verses.Skip(1).First().Content);
         }
-        
+
         [Fact]
         public void BibleVersesParser_WithUnknownVerseNumbers() 
         {
