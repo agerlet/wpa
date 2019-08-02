@@ -9,39 +9,14 @@ namespace Word2Rtf
 {
     internal static class StringExtensions
     {
+        #region pre-process
+        
         public static string[] Break(this string input)
         {
             return input.Split(new [] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(s => s.Trim())
                         .Where(s => !string.IsNullOrWhiteSpace(s))
                         .ToArray();
-        }
-
-        public static Language GetLanguage(this string text)
-        {
-            if (string.IsNullOrWhiteSpace(text)) 
-                throw new ArgumentNullException();
-
-            var input = text.Replace(" ", "");
-            var totalLength = input.Length;
-            var numberOfEnglishLetters = input.ToCharArray()
-                .Count(c => c.IsEnglish()
-                        || Char.IsNumber(c)
-                        || Char.IsPunctuation(c)
-                        || Char.IsWhiteSpace(c));
-            
-            var numberOfChineseCharacters = input.ToCharArray()
-                .Count(c => c.IsChinese()
-                        || Char.IsNumber(c)
-                        || Char.IsPunctuation(c));
-
-            if (numberOfEnglishLetters * 1.0 / totalLength > 0.9)
-                return Language.English;
-            
-            if (numberOfChineseCharacters * 1.0 / totalLength > 0.9)
-                return Language.Chinese;
-            
-            return Language.Mixed;
         }
 
         public static string Purify(this string input)
@@ -70,9 +45,88 @@ namespace Word2Rtf
                 purified
                     .ToString()
                     .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-                );
+            );
         }
 
+        public static string RemoveDuplicateSpaces(this string input)
+        {
+            return string.Join(' ', input.Split(' ', StringSplitOptions.RemoveEmptyEntries));
+        }
+        
+        #endregion
+        
+        
+        #region language related
+        
+        public static Language GetLanguage(this string text)
+        {
+            const double threshold = 0.9;
+            
+            if (string.IsNullOrWhiteSpace(text))
+                throw new ArgumentNullException();
+
+            var input = text.Replace(" ", "");
+            var totalLength = input.Length;
+            var numberOfEnglishLetters = input.ToCharArray()
+                .Count(c => c.IsEnglish()
+                            || Char.IsNumber(c)
+                            || Char.IsPunctuation(c)
+                            || Char.IsWhiteSpace(c));
+
+            var numberOfChineseCharacters = input.ToCharArray()
+                .Count(c => c.IsChinese()
+                            || Char.IsNumber(c)
+                            || Char.IsPunctuation(c));
+
+            if (numberOfEnglishLetters * 1.0 / totalLength > threshold)
+                return Language.English;
+
+            if (numberOfChineseCharacters * 1.0 / totalLength > threshold)
+                return Language.Chinese;
+
+            return Language.Mixed;
+        }
+
+        public static Language? GetLanguage(this char c)
+        {
+            if (c.IsEnglish()) return Language.English;
+            if (c.IsChinese()) return Language.Chinese;
+            return default(Language?);
+        }
+
+        public static bool IsEnglish(this char c)
+        {
+            return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
+        }
+
+        public static bool IsChinese(this char c)
+        {
+            return Encoding.Unicode
+                       .GetBytes(new[] {c})
+                       .Count(_ => _ != 0) > 1
+                && !char.IsPunctuation(c);
+        }
+
+        public static IEnumerable<string> GetChinese(this string input)
+        {
+            var purified = input.Purify();
+
+            return string
+                .Concat(purified.Select(c => 
+                {
+                    if (c.IsEnglish() || char.IsNumber(c)
+                        || c == ':' || c == ',' || c == '-'
+                        || c == ';' || c == '；' || c == '、'
+                        || c == '【' || c == '】' || c == '#'
+                        || c == '\'')
+                    {
+                        return ' ';
+                    }
+                    return c;
+                }))
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries);        
+        }
+        
         public static Verse[] FilterByLanguages(this string input)
         {
             var english = new StringBuilder();
@@ -85,9 +139,10 @@ namespace Word2Rtf
                 var verseNumberTerms = input.GetVerseNumbers().ToList();
 
                 BalanceLanguages(chineseTerms, englishTerms);
-
                 if (chineseTerms.Count() != englishTerms.Count())
                     throw new ImbalancedLanguagesException(input);
+                
+                
                 
                 for(var i = verseNumberTerms.Count(); i > 0; i--)
                 {
@@ -204,6 +259,11 @@ namespace Word2Rtf
             return list;
         }
 
+        #endregion
+        
+        
+        #region section related
+        
         public static bool IsBibleReadingTitle(this string input)
         {
             var doesContainBookName = (BookNames.Chinese.Any(input.Contains)
@@ -219,19 +279,18 @@ namespace Word2Rtf
                 );
             
             return doesContainBookName || isBibleVerse;
-        }
+        }        
 
         public static IEnumerable<string> GetEnglishAndVerseNumber(this string input)
         {
             var purified = input.Purify();
             var englishAndVerseNumbersLine = new StringBuilder(string.Concat(purified.Select(c =>
             {
-                if (c >= 'a' && c <= 'z'
-                    || c >= 'A' && c <= 'Z'
-                    || c >= '0' && c <= '9'
+                if (c.IsEnglish() || Char.IsNumber(c)
                     || c == ':' || c == ',' || c == '-'
                     || c == ';' || c == '；' || c == '、'
-                    || c == '【' || c == '】' || c == '#')
+                    || c == '【' || c == '】' || c == '#'
+                    || c == '\'')
                 {
                     return c;
                 }
@@ -255,31 +314,10 @@ namespace Word2Rtf
             var splitedTitleAndBody = removeExtraSpaces.Split(new [] { '【', '】', ';', '；', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             var processed = splitedTitleAndBody.Select(phrase => phrase.Trim(' ', ',', ';'))
                 .Where(phrase => !string.IsNullOrWhiteSpace(phrase)
-                    && phrase.Any(c => c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
+                    && phrase.Any(c => c.IsEnglish())
                 );
             
             return processed;
-        }
-
-        public static IEnumerable<string> GetChinese(this string input)
-        {
-            var purified = input.Purify();
-
-            return string
-                .Concat(purified.Select(c => 
-                {
-                    if (c >= 'a' && c <= 'z' 
-                        || c >= 'A' && c <= 'Z' 
-                        || c >= '0' && c <= '9'
-                        || c == ':' || c == ',' || c == '-'
-                        || c == ';' || c == '；' || c == '、'
-                        || c == '【' || c == '】' || c == '#')
-                    {
-                        return ' ';
-                    }
-                    return c;
-                }))
-                .Split(' ', StringSplitOptions.RemoveEmptyEntries);        
         }
 
         public static IEnumerable<string> GetVerseNumbers(this string input)
@@ -292,7 +330,6 @@ namespace Word2Rtf
             }
             
             var process = new StringBuilder(purified.Substring(index));
-
 
             foreach (var s in BookNames.English)
             {
@@ -314,16 +351,17 @@ namespace Word2Rtf
                 process.Replace(s, Environment.NewLine);
             }
 
+            for (var i = 0; i < process.Length; i++)
+            {
+                if (process[i].IsChinese()) 
+                    process.Replace(process[i].ToString(), Environment.NewLine, i, 1);
+            }
+
             return process.ToString()
                 .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Select(x => x.Trim(' ', ',', ';', '；'))
                 .Distinct();
-        }
-
-        public static string RemoveDuplicateSpaces(this string input)
-        {
-            return string.Join(' ', input.Split(' ', StringSplitOptions.RemoveEmptyEntries));
         }
 
         public static IEnumerable<string> SplitByVerseNumbers(this string input)
@@ -344,24 +382,9 @@ namespace Word2Rtf
                 .Split(new [] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(v => v.Trim());
 
-        }
-
-        public static Language? GetLanguage(this char c)
-        {
-            if (c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z') return Language.English;
-            if (Char.IsLetter(c) && !(c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z')) return Language.Chinese;
-            return default(Language?);
-        }
-
-        public static bool IsEnglish(this char c)
-        {
-            return c.GetLanguage() == Language.English;
-        }
-
-        public static bool IsChinese(this char c)
-        {
-            return c.GetLanguage() == Language.Chinese;
-        }
+        }        
+        
+        #endregion
 
         public static char GetNextLetter(this string line, int start)
         {

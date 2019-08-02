@@ -106,9 +106,54 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Should_not_repeat_chinese_title()
         {
-            var source = "【Responsive Reading啟應讀經】Psalm詩篇 8";
-            var results = source.FilterByLanguages();
+            var results = "【Responsive Reading啟應讀經】Psalm詩篇 8".FilterByLanguages();
             Assert.Equal($"啟應讀經{Environment.NewLine}詩篇 8", results[1].Content);
+        }
+
+        [Fact]
+        public void Should_not_repeat_chinese_title_When_given_unknown_wrong_charactors()
+        {
+            var results = "【Proclamation宣告】Revelation啓示錄 4:11".FilterByLanguages();
+            Assert.Equal($"宣告{Environment.NewLine}啓示錄 4:11", results[1].Content);
+        }
+
+        [Fact]
+        public void Should_use_knowned_Chinese_When_Simplify_Chinese_passed_in()
+        {
+            var results = "【Scripture Reading證道經文】Romans罗马书1:18-32".FilterByLanguages();
+            Assert.Equal($"證道經文{Environment.NewLine}羅馬書 1:18-32", results[1].Content);            
+        }
+
+        [Fact]
+        public void Should_find_verse_numbers_when_unknown_book_name_is_given()
+        {
+            var results = "【Scripture Reading證道經文】Romans罗马书1:18-32".GetVerseNumbers().ToArray();
+            Assert.Equal($"1:18-32", results[0]);
+        }
+
+        [Fact]
+        public void Should_recognize_as_chinese()
+        {
+            Assert.True('罗'.IsChinese());
+            Assert.True('羅'.IsChinese());
+        }
+
+        [Fact]
+        public void Should_NOT_recognize_English_as_Chinese()
+        {
+            Assert.False("Romans".All(_ => _.IsChinese()));
+        }
+
+        [Fact]
+        public void Should_NOT_recognize_bible_verses_as_Chinese()
+        {
+            Assert.False("1:18-32".All(_ => _.IsChinese()));
+        }
+        
+        [Fact]
+        public void Should_NOT_recognize_punctuation_as_Chinese()
+        {
+            Assert.False("、".All(_ => _.IsChinese()));
         }
 
         [Fact]
@@ -350,7 +395,7 @@ namespace Word2Rtf.Tests
             var eTerms = new List<string>() { "Proclaim", "Cannot find" };
             StringExtensions.BalanceLanguages(cTerms, eTerms);
             
-            Assert.Equal(1, cTerms.Count());
+            Assert.Single(cTerms);
             Assert.Equal(2, eTerms.Count());
         }
 
@@ -362,5 +407,18 @@ namespace Word2Rtf.Tests
             Assert.Equal(2, result.Count());
         }
 
+        [Fact]
+        public void Should_keep_single_quote_in_English()
+        {
+            var result = "【Song詩歌】This is My Father's World 这是天父世界".FilterByLanguages();
+            Assert.Contains("'", result[0].Content);
+        }
+
+        [Fact]
+        public void Should_NOT_put_single_quote_in_Chinese()
+        {
+            var result = "【Song詩歌】This is My Father's World 这是天父世界".FilterByLanguages();
+            Assert.DoesNotContain("'", result[1].Content);
+        }
     }
 }
