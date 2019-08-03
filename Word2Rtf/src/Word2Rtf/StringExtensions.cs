@@ -141,8 +141,8 @@ namespace Word2Rtf
                 BalanceLanguages(chineseTerms, englishTerms);
                 if (chineseTerms.Count() != englishTerms.Count())
                     throw new ImbalancedLanguagesException(input);
-                
-                
+
+                ReplaceSimplifiedChineseBookNamesWithTranditionalOnes(chineseTerms);
                 
                 for(var i = verseNumberTerms.Count(); i > 0; i--)
                 {
@@ -164,6 +164,20 @@ namespace Word2Rtf
                 new Verse { Content = english.ToString().Trim(), Language = Language.English },
                 new Verse { Content = chinese.ToString().Trim(), Language = Language.Chinese }
             }; 
+        }
+
+        private static void ReplaceSimplifiedChineseBookNamesWithTranditionalOnes(List<string> chineseTerms)
+        {
+            for (var i = 0; i < BookNames.ChineseSimplified.Count(); i++)
+            {
+                var simplifiedChineseBookName = BookNames.ChineseSimplified[i];
+                var idx = chineseTerms.IndexOf(simplifiedChineseBookName);
+                if (idx != -1)
+                {
+                    var tranditionalChineseBookName = BookNames.Chinese[i];
+                    chineseTerms[idx] = tranditionalChineseBookName;
+                }
+            }
         }
 
         public static void BalanceLanguages(List<string> chineseTerms, List<string> englishTerms)
