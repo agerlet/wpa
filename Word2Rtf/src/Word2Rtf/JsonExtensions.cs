@@ -26,9 +26,19 @@ namespace Word2Rtf
         public static object GetJsonObject(this ILambdaSerializer serializer, string snap)
         {
             object t;
-            using(Stream stream = new MemoryStream(ASCIIEncoding.Default.GetBytes(snap)))
+            using(Stream stream = new MemoryStream(Encoding.Default.GetBytes(snap)))
             {
                 t = serializer.Deserialize<object>(stream);
+            }
+            return t;
+        }
+        
+        public static T GetJsonObject<T>(this ILambdaSerializer serializer, string snap)
+        {
+            T t;
+            using(Stream stream = new MemoryStream(Encoding.Default.GetBytes(snap)))
+            {
+                t = serializer.Deserialize<T>(stream);
             }
             return t;
         }

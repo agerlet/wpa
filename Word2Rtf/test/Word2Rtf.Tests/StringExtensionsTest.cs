@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using Xunit;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Word2Rtf;
 using Word2Rtf.Exceptions;
 using Word2Rtf.Models;
@@ -16,6 +17,11 @@ namespace Word2Rtf.Tests
     public class StringExtensionTest
     {
         const string Source = "【宣告/Call to worship】 詩篇 Song of Songs50:10,23——26；Luke路2:10b-11,14";
+
+        public StringExtensionTest()
+        {
+            new Function();
+        }
 
         [Fact]
         public void Test_Break()
@@ -418,6 +424,14 @@ namespace Word2Rtf.Tests
         {
             var result = "【Song詩歌】This is My Father's World 这是天父世界".FilterByLanguages();
             Assert.DoesNotContain("'", result[1].Content);
+        }
+
+        [Fact]
+        public void Should_return_section_json()
+        {
+            var json = JsonConvert.SerializeObject(Sections.Names, Formatting.Indented, new StringEnumConverter());
+            Assert.NotNull(json);
+            Assert.NotEmpty(json);
         }
     }
 }

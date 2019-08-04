@@ -14,6 +14,11 @@ namespace Word2Rtf.Tests
 {
     public class ParserHandlerTests
     {
+        public ParserHandlerTests()
+        {
+            new Function();
+        }
+
         [Fact]
         public void Test_BracketParser_EnglishFirst_WithMultipleBibleVerses()
         {

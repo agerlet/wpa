@@ -1,19 +1,12 @@
-using System.Threading.Tasks;
-
 using Xunit;
-using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
-using System.IO;
 using System;
+using static Word2Rtf.Function;
 
 namespace Word2Rtf.Tests
 {
     public class FunctionTest
     {
-        public FunctionTest()
-        {
-        }
-
         [Fact]
         public async void Snap_0_Title_Only()
         {
