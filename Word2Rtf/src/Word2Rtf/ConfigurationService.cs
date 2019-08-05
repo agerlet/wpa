@@ -19,6 +19,7 @@ namespace Word2Rtf
             return new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("dictionary/sections.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("dictionary/book-names.json", false, true)
                 .Build();
         }
     }

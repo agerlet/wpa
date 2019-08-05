@@ -429,7 +429,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Should_return_section_json()
         {
-            var json = JsonConvert.SerializeObject(Sections.Names, Formatting.Indented, new StringEnumConverter());
+            var json = JsonConvert.SerializeObject(C.Sections, Formatting.Indented, new StringEnumConverter());
             Assert.NotNull(json);
             Assert.NotEmpty(json);
         }

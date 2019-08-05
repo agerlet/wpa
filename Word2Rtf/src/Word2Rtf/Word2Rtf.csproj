@@ -18,6 +18,7 @@
   
   <ItemGroup>
     <None Include="dictionary/sections.json" CopyToOutputDirectory="Always" />
+    <None Include="dictionary/book-names.json" CopyToOutputDirectory="Always" />
   </ItemGroup>
   
 </Project>

@@ -22,22 +22,17 @@ namespace Word2Rtf
             object locker = new object(), innerLocker = new object();
             lock (locker)
             {
-                if (Sections.Names == null)
+                if (C.Sections == null || C.Books == null)
                 {
-                    lock (innerLocker)
-                    {
-                        if (Sections.Names == null)
-                        {
-                            // Set up Dependency Injection
-                            var serviceCollection = new ServiceCollection();
-                            ConfigureServices(serviceCollection);
-                            var serviceProvider = serviceCollection.BuildServiceProvider();
-                            var configService = serviceProvider.GetService<IConfigurationService>();
-                            var config = configService.GetConfiguration();
-
-                            Sections.Names = config.GetSection("sections").Get<List<Section>>();
-                        }                        
-                    }
+                    // Set up Dependency Injection
+                    var serviceCollection = new ServiceCollection();
+                    ConfigureServices(serviceCollection);
+                    var serviceProvider = serviceCollection.BuildServiceProvider();
+                    var configService = serviceProvider.GetService<IConfigurationService>();
+                    var config = configService.GetConfiguration();
+                
+                    C.Sections = config.GetSection("sections").Get<Section[]>();
+                    C.Books = config.GetSection("books").Get<Book[]>();
                 }
             }
         }

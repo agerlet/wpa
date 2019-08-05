@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using Word2Rtf.Exceptions;
 using Word2Rtf.Models;
@@ -168,14 +169,15 @@ namespace Word2Rtf
 
         private static void ReplaceSimplifiedChineseBookNamesWithTranditionalOnes(List<string> chineseTerms)
         {
-            for (var i = 0; i < BookNames.ChineseSimplified.Count(); i++)
+            for (var i = 0; i < chineseTerms.Count(); i++)
             {
-                var simplifiedChineseBookName = BookNames.ChineseSimplified[i];
-                var idx = chineseTerms.IndexOf(simplifiedChineseBookName);
-                if (idx != -1)
+                var term = chineseTerms[i];
+                var book = C.Books.SingleOrDefault(_ =>
+                    _.Versions.Any(x => x.Chinese == Chinese.Simplified && x.Name == term));
+                if (book != null)
                 {
-                    var tranditionalChineseBookName = BookNames.Chinese[i];
-                    chineseTerms[idx] = tranditionalChineseBookName;
+                    var traditionalChinese = book.Versions.FirstOrDefault(C.GetFullChinese);
+                    chineseTerms[i] = traditionalChinese?.Name ?? term;
                 }
             }
         }
@@ -188,7 +190,7 @@ namespace Word2Rtf
             {
                 if (chineseTerms.Count() > englishTerms.Count())
                 {
-                    var section = Sections.Names.FirstOrDefault(n => n.Instances.Any(_ => 
+                    var section = C.Sections.FirstOrDefault(n => n.Instances.Any(_ => 
                         _.Content.Equals(chineseTerms[0], StringComparison.InvariantCultureIgnoreCase)));
                     var englishCounterpart = section?.Instances.Where(_ => _.Language == Language.English).ToArray();
                     if (englishCounterpart.Any() &&
@@ -200,14 +202,19 @@ namespace Word2Rtf
                     
                     for (var i = 1; i < chineseTerms.Count(); i++)
                     {
-                        var idx = BookNames.Chinese.IndexOf(chineseTerms[i]);
-                        var term = BookNames.English[idx];
-                        englishTerms.Insert(i, term);
+                        var name = C.Books.FirstOrDefault(b =>
+                            b.Versions.Any(n => n.Name == chineseTerms[i]))?.Versions?.FirstOrDefault(_ =>
+                            _.Language == Language.English && _.Format == NameFormat.Full)?.Name;
+                        
+                        if (!string.IsNullOrWhiteSpace(name))
+                        {
+                            englishTerms.Insert(i, name);
+                        }
                     }
                 }
                 else
                 {
-                    var section = Sections.Names.FirstOrDefault(x => x.Instances.Any(_ =>
+                    var section = C.Sections.FirstOrDefault(x => x.Instances.Any(_ =>
                         _.Content.Equals(englishTerms[0], StringComparison.InvariantCultureIgnoreCase)));
                     var chineseCounterpart = section?.Instances.Where(_ => _.Language == Language.Chinese).ToArray();
                     if (chineseCounterpart.Any() &&
@@ -219,13 +226,13 @@ namespace Word2Rtf
                     
                     for (var i = 1; i < englishTerms.Count(); i++)
                     {
-                        var englishBookname = BookNames.English.Where(_ => englishTerms[i].Contains(_));
-                        if (!englishBookname.Any())
-                            englishBookname = BookNames.EnglishShortName.Where(_ => englishTerms[i].Contains(_));
-                        var idx = BookNames.English.IndexOf(englishBookname.FirstOrDefault());
-                        if (idx == -1) idx = BookNames.EnglishShortName.IndexOf(englishBookname.FirstOrDefault());
-                        var term = BookNames.Chinese[idx];
-                        chineseTerms.Insert(i, term);
+                        var englishTerm = englishTerms[i];
+                        var book = C.Books.FirstOrDefault(_ => _.Versions.Any(b => b.Language == Language.English &&
+                                                                                   b.Name.Equals(englishTerm)));
+                        if (book == null) continue;
+                        
+                        var name = book.Versions.First(C.GetFullChinese);
+                        chineseTerms.Insert(i, name.Name);
                     }
                 }
             }
@@ -280,17 +287,15 @@ namespace Word2Rtf
         
         public static bool IsBibleReadingTitle(this string input)
         {
-            var doesContainBookName = (BookNames.Chinese.Any(input.Contains)
-                                       || BookNames.English.Any(input.Contains)
-                                       || BookNames.ChineseShortName.Any(input.Contains)
-                                       || BookNames.EnglishShortName.Any(input.Contains))
+            var doesContainBookName = C.Books.Any(_ => _.Versions.Any(x => 
+                                          input.Contains(x.Name, StringComparison.InvariantCultureIgnoreCase)))
                                       && input.Any(c => c >= '0' && c <= '9')
                                       && input.All(c => c != '#');
 
-            var isBibleVerse = Sections.Names.Any(_ => 
+            var isBibleVerse = C.Sections.Any(_ =>
                 _.SectionType.HasFlag(ElementType.BibleVerses)
                 && _.Instances.Any(x => input.Contains(x.Content))
-                );
+            );
             
             return doesContainBookName || isBibleVerse;
         }        
@@ -312,12 +317,12 @@ namespace Word2Rtf
                 return ' ';
             })));
             
-            foreach (var s in BookNames.English)
+            foreach (var s in C.FullEnglishBookNames)
             {
                 englishAndVerseNumbersLine.Replace(s, $"{Environment.NewLine}{s}");
             }
             
-            foreach (var s in BookNames.EnglishShortName)
+            foreach (var s in C.ShortEnglishBookNames)
             {
                 englishAndVerseNumbersLine.Replace(s, $"{Environment.NewLine}{s}");
             }
@@ -345,22 +350,22 @@ namespace Word2Rtf
             
             var process = new StringBuilder(purified.Substring(index));
 
-            foreach (var s in BookNames.English)
+            foreach (var s in C.FullEnglishBookNames)
             {
                 process.Replace(s, Environment.NewLine);
             }
 
-            foreach (var s in BookNames.EnglishShortName)
+            foreach (var s in C.ShortEnglishBookNames)
             {
                 process.Replace(s, Environment.NewLine);
             }
             
-            foreach (var s in BookNames.Chinese)
+            foreach (var s in C.TranditionChineseBookNames)
             {
                 process.Replace(s, Environment.NewLine);
             }
             
-            foreach (var s in BookNames.ChineseShortName)
+            foreach (var s in C.ShortChineseBookNames)
             {
                 process.Replace(s, Environment.NewLine);
             }
