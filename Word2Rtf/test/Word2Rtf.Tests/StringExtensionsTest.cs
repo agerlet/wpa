@@ -433,5 +433,14 @@ namespace Word2Rtf.Tests
             Assert.NotNull(json);
             Assert.NotEmpty(json);
         }
+
+        [Fact]
+        public void Should_return_bible_verse_number_with_incorrect_spelled_Psalm()
+        {
+            var source = "【Bible Reading啟應讀經】Pslam 詩篇 118:21-29";
+            var actual = source.FilterByLanguages();
+            Assert.Equal($"Bible Reading{Environment.NewLine}Pslam 118:21-29", actual[0].Content);
+            Assert.Equal($"啟應讀經{Environment.NewLine}詩篇 118:21-29", actual[1].Content);
+        }
     }
 }

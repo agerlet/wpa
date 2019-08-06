@@ -571,6 +571,11 @@
           "Format": "Full"
         },
         {
+          "Name": "Pslam",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
           "Name": "詩篇",
           "Language": "Chinese",
           "Format": "Full",
