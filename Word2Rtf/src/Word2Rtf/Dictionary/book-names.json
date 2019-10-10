@@ -1,0 +1,2090 @@
+{
+  "books" : [
+    {
+      "versions": [
+        {
+          "Name": "Gen",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Genesis",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "創世記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "創",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "创世记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Exod",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Exodus",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "出埃及記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "出",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "出埃及记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Lev",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Leviticus",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "利未記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "利",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "利未记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Num",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Numbers",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "民數記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "民",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "民数记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Deut",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Deuteronomy",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "申命記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "申",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "申命记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Josh",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Joshua",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "約書亞記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "書",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "约书亚记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Judg",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Judges",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "士師記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "士",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "士师记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Ruth",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Ruth",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "路得記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "得",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "路得记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "1Sam",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "1 Samuel",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "撒母耳記上",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "撒上",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "撒母耳记上",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "2Sam",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "2 Samuel",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "撒母耳記下",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "撒下",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "撒母耳记下",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "1Kgs",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "1 Kings",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "列王紀上",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "王上",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "列王纪上",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "2Kgs",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "2 Kings",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "列王紀下",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "王下",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "列王纪下",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "1Chr",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "1 Chronicles",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "歷代志上",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "代上",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "历代志上",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "2Chr",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "2 Chronicles",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "歷代志下",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "代下",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "历代志下",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Ezra",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Ezra",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "以斯拉記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "拉",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "以斯拉记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Neh",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Nehemiah",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "尼希米記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "尼",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "尼希米记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Esth",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Esther",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "以斯帖記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "斯",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "以斯帖记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Job",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Job",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "約伯記",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "伯",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "约伯记",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Ps",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Psalm",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "Pslam",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "詩篇",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "詩",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "诗篇",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Prov",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Proverbs",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "箴言",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "箴",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "箴言",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Eccl",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Ecclesiastes",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "傳道書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "傳",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "传道书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Song",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Song of Songs",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "雅歌",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "歌",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "雅歌",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Isa",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Isaiah",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "以賽亞書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "賽",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "以赛亚书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Jer",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Jeremiah",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "耶利米書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "耶",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "耶利米书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Lam",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Lamentations",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "耶利米哀歌",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "哀",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "耶利米哀歌",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Ezek",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Ezekiel",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "以西結書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "結",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "以西结书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Dan",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Daniel",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "但以理書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "但",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "但以理书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Hos",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Hosea",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "何西阿書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "何",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "何西阿书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Joel",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Joel",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "約珥書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "珥",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "约珥书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Amos",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Amos",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "阿摩司書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "摩",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "阿摩司书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Obad",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Obadiah",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "俄巴底亞書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "俄",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "俄巴底亚书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Jonah",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Jonah",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "約拿書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "拿",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "约拿书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Mic",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Micah",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "彌迦書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "彌",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "弥迦书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Nah",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Nahum",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "那鴻書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "鴻",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "那鸿书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Hab",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Habakkuk",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "哈巴谷書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "哈",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "哈巴谷书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Zeph",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Zephaniah",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "西番雅書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "番",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "西番雅书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Hag",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Haggai",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "哈該書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "該",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "哈该书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Zech",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Zechariah",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "撒迦利亞書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "亞",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "撒迦利亚书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Mal",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Malachi",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "瑪拉基書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "瑪",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "玛拉基书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Matt",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Matthew",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "馬太福音",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "太",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "马太福音",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Mark",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Mark",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "馬可福音",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "可",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "马可福音",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Luke",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Luke",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "路加福音",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "路",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "路加福音",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "John",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "John",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "約翰福音",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "約",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "约翰福音",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Acts",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Acts",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "使徒行傳",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "徒",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "使徒行传",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Rom",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Romans",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "羅馬書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "羅",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "罗马书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "1Cor",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "1 Corinthians",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "哥林多前書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "歌林多前書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "林前",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "哥林多前书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        },
+        {
+          "Name": "歌林多前书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "2Cor",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "2 Corinthians",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "哥林多後書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "歌林多後書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "林後",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "哥林多后书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        },
+        {
+          "Name": "歌林多后书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Gal",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Galatians",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "加拉太書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "加",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "加拉太书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Eph",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Ephesians",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "以弗所書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "弗",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "以弗所书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Phil",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Philippians",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "腓立比書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "腓",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "腓立比书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Col",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Colossians",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "歌羅西書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "西",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "歌罗西书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "1Thess",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "1 Thessalonians",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "帖撒羅尼迦前書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "帖前",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "帖撒罗尼迦前书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "2Thess",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "2 Thessalonians",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "帖撒羅尼迦後書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "帖後",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "帖撒罗尼迦后书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "1Tim",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "1 Timothy",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "提摩太前書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "提前",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "提摩太前书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "2Tim",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "2 Timothy",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "提摩太後書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "提後",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "提摩太后书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Titus",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Titus",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "提多書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "多",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "提多书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Phlm",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Philemon",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "腓利門書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "門",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "腓利门书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Heb",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Hebrews",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "Hebrew",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "希伯來書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "來",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "希伯来书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Jas",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "James",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "雅各書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "雅",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "雅各书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "1Pet",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "1 Peter",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "彼得前書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "彼前",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "彼得前书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "2Pet",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "2 Peter",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "彼得後書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "彼後",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "彼得后书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "1John",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "1 John",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "約翰一書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "約一",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "约翰一书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "2John",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "2 John",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "約翰二書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "約二",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "约翰二书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "3John",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "3 John",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "約翰三書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "約三",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "约翰三书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Jude",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Jude",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "猶太書",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "猶",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "犹太书",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "Rev",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "Revelation",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "啟示錄",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "啓示錄",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "啟",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "启示录",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    }
+  ]
+}

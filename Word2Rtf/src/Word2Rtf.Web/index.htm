@@ -20,6 +20,10 @@
             #output {
                 border: 1px dotted rgba(47, 85, 150, 0.651);
             }
+            .error {
+                color: red;
+                font-weight: bold;
+            }
         </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138949702-1"></script>
@@ -48,7 +52,10 @@
         <script>
             $(function() {
                 $("#submit").click(function() {
-                    $("#output").empty();
+                    
+                    var $output = $("#output");
+                    $output.empty();
+                    
                     $.ajax({
                         type: "POST",
                         url: "https://1db54ls3q1.execute-api.ap-southeast-2.amazonaws.com/PROD/Word2Rtf", 
@@ -56,17 +63,32 @@
                         dataType: "json",
                         contentType: "application/json;charset=utf-8",
                         success: function(data){
-                            data.program.forEach(function (element) {
-                                element.verses.forEach(function (verse) {
-                                    var content = verse.Content.replace(/(?:\r\n|\r|\n)/g, '<br>');
-                                    if (verse.Language == 1) {
-                                        $("#output").append("<h1>" + content + "</h1>");
-                                    } else if (verse.Language == 0)
-                                    {
-                                        $("#output").append("<h2>" + content + "</h2>");
-                                    }
+                            if (!!data.errorType) {
+                                switch(data.errorType) {
+                                    case "IndexOutOfRangeException":
+                                        $output.append("<div class='error'>中英文沒有成對出現。</div>");
+                                        break;
+                                    default:
+                                        $output.append("<div class='error'>" + data.errorMessage + "</div>");
+                                        break;
+                                }
+                            }
+                            else {
+                                data.program.forEach(function (element) {
+                                    element.verses.forEach(function (verse) {
+                                        var content = verse.Content.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                                        if (verse.Language == 1) {
+                                            $output.append("<h1>" + content + "</h1>");
+                                        } else if (verse.Language == 0)
+                                        {
+                                            $output.append("<h2>" + content + "</h2>");
+                                        }
+                                    });
                                 });
-                            });
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            $output.append("<div class='error'>" + xhr.responseText +"</div>");
                         }
                     });
                 })

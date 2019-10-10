@@ -1,19 +1,19 @@
-using System.Threading.Tasks;
-
 using Xunit;
-using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
-using System.IO;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using Word2Rtf.Models;
+using static Word2Rtf.Function;
 
 namespace Word2Rtf.Tests
 {
     public class FunctionTest
     {
-        public FunctionTest()
-        {
-        }
-
         [Fact]
         public async void Snap_0_Title_Only()
         {
@@ -76,6 +76,22 @@ namespace Word2Rtf.Tests
             string expected = await jsonSerializer.GetJsonString(o);
             
             Assert.Equal(expected, actual);
-        }    
+        }
+        
+        [Fact]
+        public async void Snap_9_Responsive_Reading()
+        {
+            var jsonSerializer = new Amazon.Lambda.Serialization.Json.JsonSerializer();
+            string input = await "samples/sample-9.txt".LoadAsync();
+            // Invoke the lambda function and confirm the string was upper cased.
+            var json = new Function().FunctionHandler(new Models.Payload { Input = input }, new TestLambdaContext());
+            string actual = await jsonSerializer.GetJsonString(json);
+
+            string snap = await "snaps/snap-9.json".LoadAsync();
+            object o = jsonSerializer.GetJsonObject(snap.Replace("\\n", Environment.NewLine));
+            string expected = await jsonSerializer.GetJsonString(o);
+            
+            Assert.Equal(expected, actual);
+        }
     }
 }

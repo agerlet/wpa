@@ -1,4 +1,4 @@
-using System.ComponentModel;
+using System;
 
 namespace Word2Rtf.Models
 {
@@ -9,13 +9,25 @@ namespace Word2Rtf.Models
         Mixed,
     }
 
-    public enum ElementType
+    public enum Chinese
     {
-        Title,
-        Content,
-        Lyrics,
-        BibleVerses,
-        YouTubeLink,
+        Simplified,
+        Traditional,
     }
 
+    [Flags]
+    public enum ElementType
+    {
+        Title = 0,
+        Content = 1,
+        Lyrics = 1 << 1,
+        BibleVerses = 1 << 2,
+        YouTubeLink = 1 << 3,
+    }
+
+    public enum NameFormat
+    {
+        Full,
+        Short,
+    }
 }

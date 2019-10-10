@@ -1,0 +1,335 @@
+{
+  "sections": [
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Silent Prayer"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "默禱"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Welcome"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "歡迎"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Praise & Prayer"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "讚美禱告"
+      }
+    ]
+  },
+  {
+    "SectionType": "BibleVerses",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Proclaim"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "宣告經文"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "宣告"
+      }
+    ]
+  },
+  {
+    "SectionType": "BibleVerses",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Call To worship"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "宣召經文"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "宣召"
+      }
+    ]
+  },
+  {
+    "SectionType": "Lyrics",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Hymn"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "詩歌"
+      }
+    ]
+  },
+  {
+    "SectionType": "Lyrics",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Song"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "唱詩"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Prayer"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "禱告"
+      }
+    ]
+  },
+  {
+    "SectionType": "BibleVerses",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Responsive Reading"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "啟應經文"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Thanksgiving Song"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "感恩讚美唱詩"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Thanksgiving"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "感恩讚美分享"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Thanksgiving"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "感恩讚美禱告"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Welcome New Friends"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "歡迎新朋友"
+      }
+    ]
+  },
+  {
+    "SectionType": "Lyrics",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Welcome Song"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "歡迎歌"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Announcements"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "報告"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Tithe"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "十一奉獻"
+      }
+    ]
+  },
+  {
+    "SectionType": "BibleVerses",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Generous Offering"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "慷慨奉獻"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Offering Prayer"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "奉獻禱告"
+      }
+    ]
+  },
+  {
+    "SectionType": "BibleVerses",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Scripture"
+      },
+      {
+        "Language": "English",
+        "Content": "Scripture Reading"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "證道經文"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "經文"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Message"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "證道"
+      }
+    ]
+  },
+  {
+    "SectionType": "Lyrics",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Mercy Seat Appeal"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "恩座呼召"
+      }
+    ]
+  },
+  {
+    "SectionType": "Lyrics",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Responding Song"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "回應詩歌"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Sending And Benediction"
+      },
+      {
+        "Language": "English",
+        "Content": "Benediction"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "差遣與祝福"
+      }
+    ]
+  },
+  {
+    "SectionType": "Title",
+    "Instances": [
+      {
+        "Language": "English",
+        "Content": "Prayer Group"
+      },
+      {
+        "Language": "Chinese",
+        "Content": "禱告會"
+      }
+    ]
+  }
+]}
