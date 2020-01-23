@@ -14,11 +14,5 @@ namespace Word2Rtf.Parsers
         {
             return true;
         }
-
-        public override void Parse(IGrouping<int, Element> group)
-        {
-            Elements.Clear();
-            Elements.AddRange(group);
-        }
     }
 }

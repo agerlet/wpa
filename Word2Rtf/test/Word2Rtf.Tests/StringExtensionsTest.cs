@@ -344,6 +344,16 @@ namespace Word2Rtf.Tests
             Assert.Equal("John 3:1-8,16", result[0]);
             Assert.Equal("2Cor 5:17", result[1]);
         }
+        
+        [Fact]
+        public void Should_return_1_john_names_with_verse_numbers()
+        {
+            var source = "【Scripture 經文】1 John約翰一書1：9";
+            var result = source.GetEnglishAndVerseNumber().ToArray();
+            Assert.Equal(2, result.Length);
+            Assert.Equal("Scripture", result[0]);
+            Assert.Equal("1 John 1:9", result[1]);
+        }
 
         [Fact]
         public void Should_deduplicate_verse_numbers()
@@ -354,6 +364,14 @@ namespace Word2Rtf.Tests
             Assert.Equal("5:17", result[1]);
         }
 
+        [Fact]
+        public void Should_avoid_break_1_John()
+        {
+            var result = "【Scripture 經文】1 John約翰一書1：9".GetVerseNumbers().ToArray();
+            Assert.Single(result);
+            Assert.Equal("1:9", result[0]);
+        }
+        
         [Fact]
         public void Should_throw_ImbalancedLanguagesException_When_part_language_is_missing()
         {

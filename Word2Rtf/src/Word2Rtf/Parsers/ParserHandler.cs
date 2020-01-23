@@ -17,7 +17,7 @@ namespace Word2Rtf.Parsers
             return new TitleParser(_mixerFactory);
         }
 
-        static IParser<IGrouping<int, Element>>[] _getContentParsers()
+        static IParser<IGrouping<int, Element>>[] GetContentParsers()
         {
             return new IParser<IGrouping<int, Element>>[]
             {
@@ -52,13 +52,14 @@ namespace Word2Rtf.Parsers
 
         internal static Element ParseTitle(this Element title)
         {
-            _getTitleParser().Flush();
-            _getTitleParser().Parse(title);
+            var titleParser = _getTitleParser();
+            titleParser.Flush();
+            titleParser.Parse(title);
             title.TitleId = title.GetHashCode();
             return title;
         }
 
-        internal static Element ParseContent(this Element content, int id)
+        internal static void ParseContent(this Element content, int id)
         {
             content.TitleId = id;
             content.ElementType = ElementType.Content;
@@ -73,7 +74,6 @@ namespace Word2Rtf.Parsers
                         Content = content.Input,
                     }
                 };
-            return content;
         }
 
         #endregion Element processes
@@ -82,15 +82,14 @@ namespace Word2Rtf.Parsers
 
         internal static IEnumerable<Element> ParseContent(this IGrouping<int, Element> group)
         {
-            var contentParsers = _getContentParsers();
+            var contentParsers = GetContentParsers();
             foreach (var parser in contentParsers)
             {
-                if (parser.CanHandle(group))
-                {
-                    parser.Flush();
-                    parser.Parse(group);
-                    return parser.Elements;
-                }
+                if (!parser.CanHandle(@group)) continue;
+                
+                parser.Flush();
+                parser.Parse(@group);
+                return parser.Elements;
             }
 
             throw new NotImplementedException($"Cannot handle this group {group.First().Input}.");

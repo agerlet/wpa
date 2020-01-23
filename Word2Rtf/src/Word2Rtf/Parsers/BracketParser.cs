@@ -12,7 +12,9 @@ namespace Word2Rtf.Parsers
     ///
     class BracketParser : ParserBase<string[]>
     {
-        public BracketParser(Mixers.MixerFactory mixerFactory) : base(mixerFactory) { }
+        public BracketParser(Mixers.MixerFactory mixerFactory) 
+            : base(mixerFactory) 
+        { }
 
         public override bool CanHandle(string[] input)
         {
@@ -32,7 +34,7 @@ namespace Word2Rtf.Parsers
                 else
                     element.ParseContent(titleId);
             }
-
+            
             var elements = Elements
                 .GroupBy(element => element.TitleId)
                 .SelectMany(group => 

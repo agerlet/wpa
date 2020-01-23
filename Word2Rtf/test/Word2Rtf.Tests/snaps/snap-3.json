@@ -1,0 +1,28 @@
+{
+  "program": [
+    {
+      "verses": [
+        {
+          "Language": 1,
+          "Content": "Scripture\n1 John 1:9"
+        },
+        {
+          "Language": 0,
+          "Content": "經文\n約翰一書 1:9"
+        }
+      ]
+    },
+    {
+      "verses": [
+        {
+          "Language": 1,
+          "Content": "9 If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness."
+        },
+        {
+          "Language": 0,
+          "Content": "9 我 們 若 認 自 己 的 罪 ， 神 是 信 實 的 ， 是 公 義 的 ， 必 要 赦 免 我 們 的 罪 ， 洗 淨 我 們 一 切 的 不 義 。"
+        }
+      ]
+    }
+  ]
+}

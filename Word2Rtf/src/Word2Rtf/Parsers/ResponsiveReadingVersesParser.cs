@@ -104,7 +104,7 @@ namespace Word2Rtf.Parsers
 
         protected override IEnumerable<Element> Adjust(IEnumerable<Element> elements)
         {
-            var list = elements.SelectMany(element => 
+            var list = base.Adjust(elements).SelectMany(element => 
                 element.Verses.SelectMany(verse => 
                     verse.Content
                         .Replace("(L)", $"{Environment.NewLine}(L)")

@@ -22,30 +22,6 @@ namespace Word2Rtf.Parsers
             return isBibleVerses && noVerseNumber;
         }
 
-        protected override IEnumerable<Element> Adjust(IEnumerable<Element> verses) 
-        { 
-            var lines = verses.ToList();
-
-            var lastLanguage = verses.First().Verses.First().Language;
-            var firstSameLanguageElement = verses.First();
-            for (int i = 1; i < verses.Count(); i++)
-            {
-                if (lines[i].Verses.First().Language != lastLanguage)
-                {
-                    lastLanguage = lines[i].Verses.First().Language;
-                    firstSameLanguageElement = lines[i];
-                }
-                else
-                {
-                    firstSameLanguageElement.Input += Environment.NewLine + lines[i].Input;
-                    firstSameLanguageElement.Verses.First().Content += Environment.NewLine + lines[i].Input;
-                    lines[i].Input = string.Empty;
-                }
-            }
-
-            return verses.Where(l => !string.IsNullOrWhiteSpace(l.Input)).ToList();
-        }
-
         protected override void Adjust(List<Element> elements) { }
     }
 }

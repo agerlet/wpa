@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Xunit;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
-
+using Newtonsoft.Json;
 using Word2Rtf.Parsers;
 using Word2Rtf.Models;
 
@@ -464,6 +464,57 @@ namespace Word2Rtf.Tests
             Assert.Equal("(L) Surely he took up our pain and bore our suffering, yet we considered him punished by God,  stricken by him, and afflicted.", elements[1].Verses.First().Content);
             Assert.Equal("(領) 他誠然擔當我們的憂患，背負我們的痛苦；我們卻以為他受責罰，被神擊打苦待了。", elements[1].Verses.Skip(1).First().Content);
 
+        }
+
+        [Fact]
+        public void Should_mix_same_languages_elements_when_same_language_broken_into_multilines()
+        {
+            var input = new [] {"【Abstract Title抽象標題】", "English1", "中文1", "English2.1", "English2.2", "中文2"};
+
+            var actual = ParserHandler.Parse(input);
+            var titleId = actual.First().TitleId;
+
+            var expected = new List<Element>
+            {
+                new Element
+                {
+                    TitleId = titleId,
+                    ElementType = ElementType.Title,
+                    Input = "【Abstract Title抽象標題】",
+                    Verses = new []
+                    {
+                        new Verse{Content = "Abstract Title", Language = Language.English},
+                        new Verse{Content = "抽象標題", Language = Language.Chinese},
+                    }
+                },
+                new Element
+                {
+                    TitleId = titleId,
+                    ElementType = ElementType.Content,
+                    Input = $"English1{Environment.NewLine}中文1",
+                    Verses = new []
+                    {
+                        new Verse{Content = $"English1",Language = Language.English},
+                        new Verse{Content = $"中文1",Language = Language.Chinese},
+                    },
+                },
+                new Element
+                {
+                    TitleId = titleId,
+                    ElementType = ElementType.Content,
+                    Input = $"English2.1{Environment.NewLine}English2.2{Environment.NewLine}中文2",
+                    Verses = new []
+                    {
+                        new Verse{Content = $"English2.1{Environment.NewLine}English2.2",Language = Language.English},
+                        new Verse{Content = $"中文2",Language = Language.Chinese},
+                    },
+                }
+            };
+            
+            Assert.Equal(
+                JsonConvert.SerializeObject(expected),
+                JsonConvert.SerializeObject(actual)
+            );
         }
     }
 }

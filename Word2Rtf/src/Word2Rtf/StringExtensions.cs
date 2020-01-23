@@ -328,7 +328,10 @@ namespace Word2Rtf
             }
 
             englishAndVerseNumbersLine.Replace($"Song of {Environment.NewLine}Songs", $"Song of Songs");
-            
+            englishAndVerseNumbersLine.Replace($"1 {Environment.NewLine}{Environment.NewLine}John", "1 John");
+            englishAndVerseNumbersLine.Replace($"2 {Environment.NewLine}{Environment.NewLine}John", "2 John");
+            englishAndVerseNumbersLine.Replace($"3 {Environment.NewLine}{Environment.NewLine}John", "3 John");
+
             var removeExtraSpaces = englishAndVerseNumbersLine.ToString().RemoveDuplicateSpaces();
             var splitedTitleAndBody = removeExtraSpaces.Split(new [] { '【', '】', ';', '；', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             var processed = splitedTitleAndBody.Select(phrase => phrase.Trim(' ', ',', ';'))

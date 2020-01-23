@@ -6,13 +6,13 @@ namespace Word2Rtf.Parsers
 {
     abstract class ParserBase<T> : IParser<T>
     {
-        protected Mixers.MixerFactory _mixerFactory;
-        public List<Element> Elements { get; private set; }
+        protected readonly Mixers.MixerFactory MixerFactory;
+        public List<Element> Elements { get; }
 
         public ParserBase(Mixers.MixerFactory mixerFactory)
         {
             Elements = new List<Element>();
-            _mixerFactory = mixerFactory;
+            MixerFactory = mixerFactory;
         }
 
         public abstract bool CanHandle(T input);

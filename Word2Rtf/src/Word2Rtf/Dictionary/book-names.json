@@ -1310,37 +1310,6 @@
     {
       "versions": [
         {
-          "Name": "John",
-          "Language": "English",
-          "Format": "Short"
-        },
-        {
-          "Name": "John",
-          "Language": "English",
-          "Format": "Full"
-        },
-        {
-          "Name": "約翰福音",
-          "Language": "Chinese",
-          "Format": "Full",
-          "Chinese": "Traditional"
-        },
-        {
-          "Name": "約",
-          "Language": "Chinese",
-          "Format": "Short"
-        },
-        {
-          "Name": "约翰福音",
-          "Language": "Chinese",
-          "Format": "Full",
-          "Chinese": "Simplified"
-        }
-      ]
-    },
-    {
-      "versions": [
-        {
           "Name": "Acts",
           "Language": "English",
           "Format": "Short"
@@ -2080,6 +2049,37 @@
         },
         {
           "Name": "启示录",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Simplified"
+        }
+      ]
+    },
+    {
+      "versions": [
+        {
+          "Name": "John",
+          "Language": "English",
+          "Format": "Short"
+        },
+        {
+          "Name": "John",
+          "Language": "English",
+          "Format": "Full"
+        },
+        {
+          "Name": "約翰福音",
+          "Language": "Chinese",
+          "Format": "Full",
+          "Chinese": "Traditional"
+        },
+        {
+          "Name": "約",
+          "Language": "Chinese",
+          "Format": "Short"
+        },
+        {
+          "Name": "约翰福音",
           "Language": "Chinese",
           "Format": "Full",
           "Chinese": "Simplified"

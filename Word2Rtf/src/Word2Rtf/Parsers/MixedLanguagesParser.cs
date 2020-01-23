@@ -25,7 +25,7 @@ namespace Word2Rtf.Parsers
 
         protected override IEnumerable<Element> Adjust(IEnumerable<Element> elements)
         {
-            return elements.SelectMany(element =>
+            return base.Adjust(elements).SelectMany(element =>
                 element.Verses.SelectMany(verse => 
                     verse.Content.SplitByLanguages()
                         .Select(line => line.Trim())
