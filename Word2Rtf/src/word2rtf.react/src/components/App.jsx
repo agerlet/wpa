@@ -1,4 +1,4 @@
-import React from "react";
+import React from "./node_modules/react";
 import "../App.css";
 import { Instruction } from "./Instruction";
 import { Input } from "./Input";
