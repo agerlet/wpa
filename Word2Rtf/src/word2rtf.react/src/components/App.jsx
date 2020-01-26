@@ -8,14 +8,23 @@ import { apiClient } from "../services/apiClient";
 class App extends React.Component {
   state = {
     input: "",
-    output: {}
+    output: {},
+    error: {}
   };
 
   convertHandler = async () => {
-    var program = await apiClient(this.state.input);
+    try {
+      var program = await apiClient(this.state.input);
       this.setState({
-        output: program
+        output: program,
+        error: {}
       });
+    } catch (ex) {
+      this.setState({
+        output: {},
+        error: ex
+      });
+    }
   };
 
   textareOnChange = e => {
@@ -31,7 +40,7 @@ class App extends React.Component {
           convertHandler={this.convertHandler}
           textareOnChange={this.textareOnChange}
         />
-        <Output program={this.state.output} />
+        <Output program={this.state.output} error={this.state.error} />
       </>
     );
   }
