@@ -2,8 +2,7 @@ import React from "react";
 import {
   render,
   fireEvent,
-  waitForElement,
-  findByText
+  waitForElement
 } from "@testing-library/react";
 import App from "./App";
 
