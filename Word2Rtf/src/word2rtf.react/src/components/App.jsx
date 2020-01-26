@@ -1,9 +1,9 @@
-import React from "./node_modules/react";
+import React from "react";
 import "../App.css";
 import { Instruction } from "./Instruction";
 import { Input } from "./Input";
 import { Output } from "./Output";
-import { apiClient } from "../services/apiClient";
+import { apiClient } from "../Services/apiClient";
 
 class App extends React.Component {
   state = {
