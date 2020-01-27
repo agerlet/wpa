@@ -22,7 +22,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Test_BracketParser_EnglishFirst_WithMultipleBibleVerses()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【宣告/Proclaim】《詩篇/Psalm 50:23》;《希伯來書/Hebrew 13:15b》"
             };
@@ -35,7 +35,7 @@ namespace Word2Rtf.Tests
             Assert.Equal($"Proclaim{Environment.NewLine}Psalm 50:23{Environment.NewLine}Hebrew 13:15b", element.Verses.First().Content);
             Assert.Equal(Language.English, element.Verses.First().Language);
             Assert.Equal($"宣告{Environment.NewLine}詩篇 50:23{Environment.NewLine}希伯來書 13:15b", element.Verses.Last().Content);
-            Assert.Equal(Language.Chinese, element.Verses.Last().Language);            
+            Assert.Equal(Language.Chinese, element.Verses.Last().Language);
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace Word2Rtf.Tests
             var title = "【Responsive Reading啟應讀經】詩篇 Psalm 29";
             var chinese = "1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。2. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。3. 耶和華的聲音發在水上，榮耀的神打雷，耶和華打雷在大水之上。4. 耶和華的聲音大有能力，耶和華的聲音滿有威嚴。5. 耶和華的聲音震破香柏樹，耶和華震碎利巴嫩的香柏樹。6. 他也使之跳躍如牛犢，使利巴嫩和西連跳躍如野牛犢。7. 耶和華的聲音使火焰分岔。8. 耶和華的聲音震動曠野，耶和華震動加低斯的曠野。9. 耶和華的聲音驚動母鹿落胎，樹木也脫落淨光。凡在他殿中的，都稱說他的榮耀。10. 洪水泛濫之時，耶和華坐著為王，耶和華坐著為王，直到永遠。11\"耶和華必賜力量給他的百姓，耶和華必賜平安的福給他的百姓。\"";
             var english = "1Ascribe to the LORD , O mighty ones, ascribe to the LORD glory and strength. 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.3The voice of the LORD is over the waters; the God of glory thunders, the LORD thunders over the mighty waters.4The voice of the LORD is powerful; the voice of the LORD is majestic.5	The voice of the LORD breaks the cedars; the LORD breaks in pieces the cedars of Lebanon.6He makes Lebanon skip like a calf, Sirion like a young wild ox.7	The voice of the LORD strikes with flashes of lightning.8The voice of the LORD shakes the desert; the LORD shakes the Desert of Kadesh.9The voice of the LORD twists the oaks and strips the forests bare. And in his temple all cry, \"Glory!\"10The LORD sits enthroned over the flood; the LORD is enthroned as King forever.11The LORD gives strength to his people; the LORD blesses his people with peace.";
-            var input = new [] { title, chinese, english };
+            var input = new[] { title, chinese, english };
 
             var elements = ParserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
@@ -110,16 +110,16 @@ namespace Word2Rtf.Tests
             Assert.Equal(2, elements[11].Verses.Count());
             Assert.Equal("(T) 11The LORD gives strength to his people; the LORD blesses his people with peace.", elements[11].Verses.First().Content);
             Assert.Equal("(合) 11\"耶和華必賜力量給他的百姓，耶和華必賜平安的福給他的百姓。\"", elements[11].Verses.Skip(1).First().Content);
-        } 
+        }
 
         [Fact]
         public void Test_BracketParser_BibleVerses_ResponsiveReading_already_marked()
         {
-            var input = new [] { 
-                "【Responsive Reading啟應讀經】詩篇 Psalm 29", 
+            var input = new[] {
+                "【Responsive Reading啟應讀經】詩篇 Psalm 29",
                 "(L) 1Ascribe to the LORD , O mighty ones, ascribe to the LORD glory and strength.",
                 "(C) 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.",
-                "（領） 1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。", 
+                "（領） 1神的眾子阿，你們要將榮耀能力，歸給耶和華，歸給耶和華。",
                 "（眾）2. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。"
                 };
 
@@ -145,9 +145,9 @@ namespace Word2Rtf.Tests
         }
 
         [Fact]
-        public void BibleVersesParser_WithUnknownVerseNumbers() 
+        public void BibleVersesParser_WithUnknownVerseNumbers()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Call To Worship宣告】Luke路2:10b-11,14",
                 "I bring you good news that will cause great joy for all the people. 11 Today in the town of David a Savior has been born to you; he is the Messiah, the Lord. “Glory to God in the highest heaven, and on earth peace to those on whom his favor rests.”",
@@ -169,11 +169,11 @@ namespace Word2Rtf.Tests
             Assert.Equal("I bring you good news that will cause great joy for all the people. 11 Today in the town of David a Savior has been born to you; he is the Messiah, the Lord. “Glory to God in the highest heaven, and on earth peace to those on whom his favor rests.”", elements[1].Verses.First().Content);
             Assert.Equal("我報給你們大喜的信息、 是關乎萬民的.因今天在大衛的城裡、 為你們生了救主、 就是主基督。在至高之處榮耀歸與上帝!在地上平安歸 與祂所喜悅的人!", elements[1].Verses.Skip(1).First().Content);
         }
-        
+
         [Fact]
         public void LyricsWithVersesParagraphsParser()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Hymn唱詩】Be Still,For the Presence of the Lord《靜默在至聖主跟前》",
                 "Be still, for the presence of the Lord, the Holy one is here. ",
@@ -206,11 +206,11 @@ namespace Word2Rtf.Tests
             Assert.Equal($"你當尊他為聖，向他屈膝敬拜，{Environment.NewLine}肅靜在至聖的主跟前，主今親臨同在。", elements[2].Verses.Skip(1).First().Content);
 
         }
-        
+
         [Fact]
         public void LyricsWithLanguageParagraphsParser()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Hymn唱詩】Be Still,For the Presence of the Lord《靜默在至聖主跟前》",
                 "Be still, for the presence of the Lord, the Holy one is here.",
@@ -253,11 +253,11 @@ namespace Word2Rtf.Tests
             Assert.Equal("肅靜在至聖的主跟前，主今親臨同在。", elements[4].Verses.Skip(1).First().Content);
 
         }
-        
+
         [Fact]
         public void YouTubeLink_After_Title()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Mercy Seat Appeal恩座呼召】A Gift《一件禮物》",
                 "https://www.youtube.com/watch?v=_Ayo8Yjuj88"
@@ -281,7 +281,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void BibleVerses_BibleReading()
         {
-            var input = new []
+            var input = new[]
             {
                 "【Bible Reading 讀經】Hebrews希伯來書 1:1-4",
                 "In the past God spoke to our ancestors through the prophets at many times and in various ways, 2 but in these last days he has spoken to us by his Son, whom he appointed heir of all things, and through whom also he made the universe. 3 The Son is the radiance of God’s glory and the exact representation of his being, sustaining all things by his powerful word. After he had provided purification for sins, he sat down at the right hand of the Majesty in heaven. 4 So he became as much superior to the angels as the name he has inherited is superior to theirs.",
@@ -292,10 +292,10 @@ namespace Word2Rtf.Tests
             Assert.Equal(2, elements.Count());
         }
 
-        [Fact]
+        [Fact(Skip = "Decided to ignore this scenario.")]
         public void Special_bible_verses_booking_info_in_second_line()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Offering for Kenya's Ambulance Project為肯尼亞購買救護車項目捐獻】",
                 "2 Corinthians 9:6-9/哥林多後書9:6-9",
@@ -310,7 +310,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Lyrics_with_multiline_matching_issue()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Hymn唱詩】SASB82 Joy To The World《普世歡騰》",
                 "Joy to the world!",
@@ -328,31 +328,31 @@ namespace Word2Rtf.Tests
                 "諸天萬物歌唱，",
                 "諸天，諸天萬物歌唱。",
                 "Joy to the world!",
-                "The Saviour reigns;", 
-                "Let men their songs employ,", 
-                "普世歡勝！主治萬方，", 
-                "萬民高聲歌唱；", 
-                "While fields and floods,", 
-                "Rocks, hills and plains", 
-                "Repeat the sounding joy,", 
-                "Repeat the sounding joy,", 
-                "Repeat, repeat the sounding joy.", 
-                "沃野、洪濤、山谷、平原，", 
-                "響應歌聲嘹亮，", 
-                "響應歌聲嘹亮，", 
-                "響應，響應歌聲嘹亮。", 
-                "He rules the world", 
-                "With truth and grace,", 
-                "And makes the nations prove", 
-                "主藉真理恩治萬方，", 
-                "要使萬邦證明；", 
-                "The glories of His righteousness", 
-                "And wonders of His love,", 
-                "And wonders of His love,", 
-                "And wonders, wonders of His love.", 
-                "上主公義無限榮光，", 
-                "主愛奇妙莫名，", 
-                "主愛奇妙莫名，", 
+                "The Saviour reigns;",
+                "Let men their songs employ,",
+                "普世歡勝！主治萬方，",
+                "萬民高聲歌唱；",
+                "While fields and floods,",
+                "Rocks, hills and plains",
+                "Repeat the sounding joy,",
+                "Repeat the sounding joy,",
+                "Repeat, repeat the sounding joy.",
+                "沃野、洪濤、山谷、平原，",
+                "響應歌聲嘹亮，",
+                "響應歌聲嘹亮，",
+                "響應，響應歌聲嘹亮。",
+                "He rules the world",
+                "With truth and grace,",
+                "And makes the nations prove",
+                "主藉真理恩治萬方，",
+                "要使萬邦證明；",
+                "The glories of His righteousness",
+                "And wonders of His love,",
+                "And wonders of His love,",
+                "And wonders, wonders of His love.",
+                "上主公義無限榮光，",
+                "主愛奇妙莫名，",
+                "主愛奇妙莫名，",
                 "主愛，主愛奇妙莫名。"
             };
             var elements = ParserHandler.Parse(input).ToArray();
@@ -368,7 +368,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Scripture_with_multiline_matching_issue()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Scripture證道經文】Isaiah 以賽亞書9:2-7",
                 "The people walking in darkness have seen a great light; on those living in the land of deep darkness a light has dawned. You have enlarged the nation and increased their joy; they rejoice before you as people rejoice at the harvest,",
@@ -395,7 +395,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Verses_mixed_languages()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Call To Worshi宣告】Psalm詩篇118：21-29",
                 "I will give you thanks, for you answered me; you have become my salvation. 我要稱謝你，因為你已經應允我，又成了我的拯救！The stone the builders rejected has become the cornerstone; 匠人所棄的石頭已成了房角的頭塊石頭。",
@@ -413,7 +413,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Scripture_mixed_languages_with_verse_number()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Scripture證道經文】Matthew 馬太福音 26：6-13",
                 "6 While Jesus was in Bethany in the home of Simon the Leper, 6耶穌在伯大尼長大痲瘋的西門家裡，"
@@ -430,7 +430,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Verses_mixed_languages_in_one_line()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Call To Worshi宣告】Psalm詩篇118：21-29",
                 "21 I will give you thanks, for you answered me; you have become my salvation. 21我要稱謝你，因為你已經應允我，又成了我的拯救！22 The stone the builders rejected has become the cornerstone; 22匠人所棄的石頭已成了房角的頭塊石頭。23 the Lord has done this, and it is marvelous in our eyes.23這是耶和華所作的，在我們眼中看為希奇。24 The Lord has done it this very day; let us rejoice today and be glad. 24這是耶和華所定的日子，我們在其中要高興歡喜！",
@@ -449,7 +449,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Verses_mixed_languages_in_responsive_reading()
         {
-            var input = new [] 
+            var input = new[]
             {
                 "【Responsive Reading啓應讀經】Isaiah以賽亞書53：4-6，Romans羅馬書5：6、8，2 Corinthians哥林多後書5：21，1 Peter彼得前書2：24-25",
                 "(L) Surely he took up our pain and bore our suffering, yet we considered him punished by God,  stricken by him, and afflicted.（領）他誠然擔當我們的憂患，背負我們的痛苦；我們卻以為他受責罰，被神擊打苦待了。",
@@ -469,7 +469,7 @@ namespace Word2Rtf.Tests
         [Fact]
         public void Should_mix_same_languages_elements_when_same_language_broken_into_multilines()
         {
-            var input = new [] {"【Abstract Title抽象標題】", "English1", "中文1", "English2.1", "English2.2", "中文2"};
+            var input = new[] { "【Abstract Title抽象標題】", "English1", "中文1", "English2.1", "English2.2", "中文2" };
 
             var actual = ParserHandler.Parse(input);
             var titleId = actual.First().TitleId;
@@ -510,11 +510,41 @@ namespace Word2Rtf.Tests
                     },
                 }
             };
-            
+
             Assert.Equal(
                 JsonConvert.SerializeObject(expected),
                 JsonConvert.SerializeObject(actual)
             );
         }
+
+        [Fact]
+        public void Should_resolve_psalms_issue()
+        {
+            var input = new[] { "【Call To Worship宣告】Psalms 詩篇 98:4-6" };
+            var actual = ParserHandler.Parse(input);
+            var titleId = actual.First().TitleId;
+
+            var expected = new List<Element>
+            {
+                new Element
+                {
+                    TitleId = titleId,
+                    ElementType = ElementType.Title,
+                    Input = "【Call To Worship宣告】Psalms 詩篇 98:4-6",
+                    Verses = new []
+                    {
+                        new Verse {Content = "Call To Worship\nPsalms 98:4-6", Language = Language.English},
+                        new Verse {Content="宣告\n詩篇 98:4-6", Language = Language.Chinese}
+                    }
+                }
+            };
+
+            Assert.Equal(
+                JsonConvert.SerializeObject(expected),
+                JsonConvert.SerializeObject(actual)
+            );
+        }
+
+
     }
 }

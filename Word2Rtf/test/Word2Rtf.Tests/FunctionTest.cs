@@ -1,14 +1,6 @@
 using Xunit;
 using Amazon.Lambda.TestUtilities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
-using Word2Rtf.Models;
-using static Word2Rtf.Function;
 
 namespace Word2Rtf.Tests
 {
