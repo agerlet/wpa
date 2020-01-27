@@ -13,7 +13,7 @@
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
 
-    <ProjectReference Include="..\..\src\Word2Rtf\Word2Rtf.csproj" />
+    <ProjectReference Include="..\Word2Rtf\Word2Rtf.csproj" />
 
     <None Include="samples/sample-0.txt" CopyToOutputDirectory="Always" />
     <None Include="snaps/snap-0.json" CopyToOutputDirectory="Always" />
