@@ -1,5 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import "jest-styled-components";
 import { Output } from "./Output";
 
 describe("Output", () => {
@@ -69,7 +70,9 @@ describe("Output", () => {
 
     it("should display copiedToClipboard message", () => {
       let copiedToClipboard = false;
-      const eventHandler = jest.fn(() => {copiedToClipboard = true;});
+      const eventHandler = jest.fn(() => {
+        copiedToClipboard = true;
+      });
       const { getByTestId } = render(
         <Output
           program={[{ verses: [{ Language: 0, Content: "test\ntest" }] }]}
@@ -80,6 +83,31 @@ describe("Output", () => {
       const outputElement = getByTestId("output");
       outputElement.click();
       expect(copiedToClipboard).toBe(true);
+    });
+
+    it("should display copiedToClipboard message", () => {
+      const { getByTestId } = render(
+        <Output
+          program={[{ verses: [{ Language: 0, Content: "test\ntest" }] }]}
+          copiedToClipboard={true}
+        />
+      );
+      const ctcElement = getByTestId("copiedToClipboard");
+      expect(ctcElement).toBeVisible();
+    });
+
+    it("copiedToClipboard message should be displayed with style", () => {
+      const { getByTestId } = render(
+        <Output
+          program={[{ verses: [{ Language: 0, Content: "test\ntest" }] }]}
+          copiedToClipboard={true}
+        />
+      );
+      const ctcElement = getByTestId("copiedToClipboard");
+      expect(ctcElement).toHaveStyleRule({
+        background: "rgba(51, 153, 51, 0.91)",
+        color: "#fff"
+      });
     });
   });
 });

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CopiedToClipboard = styled.span`
-  background: #339933;
+  background: rgba(51, 153, 51, 0.91);
   color: #fff;
 `;
 
