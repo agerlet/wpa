@@ -16,6 +16,7 @@ h2 {
 }
 #output {
     border: 1px dotted rgba(47, 85, 150, 0.651);
+    min-height: 1em;
 }
 .error {
     color: red;
