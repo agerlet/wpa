@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word2Rtf", "Word2Rtf\src\Wo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7D1CBCAD-1DA1-4167-8B5D-F15D25EECF04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word2Rtf.Tests", "Word2Rtf\test\Word2Rtf.Tests\Word2Rtf.Tests.csproj", "{065A816C-C041-4294-9837-614632AB9C21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Word2Rtf.Tests", "Word2Rtf\src\Word2Rtf.Tests\Word2Rtf.Tests.csproj", "{065A816C-C041-4294-9837-614632AB9C21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

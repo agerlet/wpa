@@ -1,4 +1,5 @@
 using System.IO;
+using System.Reflection;
 using Microsoft.Extensions.Configuration;
 
 namespace Word2Rtf
@@ -16,8 +17,9 @@ namespace Word2Rtf
 
         public IConfiguration GetConfiguration()
         {
+            var fullpath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ;
             return new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(fullpath)
                 .AddJsonFile("dictionary/sections.json", optional: false, reloadOnChange: true)
                 .AddJsonFile("dictionary/book-names.json", false, true)
                 .Build();

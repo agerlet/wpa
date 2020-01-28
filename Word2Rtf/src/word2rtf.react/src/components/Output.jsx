@@ -55,6 +55,12 @@ export class Output extends React.Component {
                     )) ||
                     (verse.Language === 0 && (
                       <h2 key={i}>{convertLineBreak(verse.Content)}</h2>
+                    )) ||
+                    (verse.language === 1 && (
+                      <h1 key={i}>{convertLineBreak(verse.content)}</h1>
+                    )) ||
+                    (verse.language === 0 && (
+                      <h2 key={i}>{convertLineBreak(verse.content)}</h2>
                     ))
                   );
                 })

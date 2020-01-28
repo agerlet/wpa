@@ -8,7 +8,7 @@ import App from "./App";
 
 describe("App", () => {
   describe("when click on convert button after input", () => {
-    it("should all api to convert", async () => {
+    it("should call api to convert", async () => {
       const { getByTestId, getByText } = render(<App />);
       const inputBox = getByTestId("input");
       fireEvent.change(inputBox, { target: { value: "【宣告/Proclaim】" } });
