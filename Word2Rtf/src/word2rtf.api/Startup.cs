@@ -31,7 +31,9 @@ namespace word2rtf.api
                 builder =>
                 {
                     builder.WithOrigins("http://localhost",
-                                        "http://localhost:3000");
+                                        "http://localhost:3000")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
                 });
             });
             services.AddControllers();
