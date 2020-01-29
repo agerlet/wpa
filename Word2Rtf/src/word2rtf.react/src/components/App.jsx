@@ -16,14 +16,15 @@ class App extends React.Component {
   convertHandler = async () => {
     let program = [];
     let errors = [];
-    try {
-      const result = await apiClient(this.state.input);
-      result.map(_ => {
-        program.push(_);
-      });
-    } catch (ex) {
-      errors.push(ex);
-    }
+    const inputs = this.state.input.split("\n【");
+    await Promise.all(inputs.map(async _ => {
+      try {
+        const result = await apiClient(`【${_}`);
+        program = program.concat(result);
+      } catch (ex) {
+        errors.push(ex);
+      }
+    }));
     this.setState({
       program: program,
       errors: errors,
