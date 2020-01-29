@@ -8,26 +8,27 @@ import { apiClient } from "../Services/apiClient";
 class App extends React.Component {
   state = {
     input: "",
-    output: {},
-    error: {},
+    program: [],
+    errors: [],
     copiedToClipboard: false
   };
 
   convertHandler = async () => {
+    let program = [];
+    let errors = [];
     try {
-      var program = await apiClient(this.state.input);
-      this.setState({
-        output: program,
-        error: {},
-        copiedToClipboard: false
+      const result = await apiClient(this.state.input);
+      result.map(_ => {
+        program.push(_);
       });
     } catch (ex) {
-      this.setState({
-        output: {},
-        error: ex,
-        copiedToClipboard: false
-      });
+      errors.push(ex);
     }
+    this.setState({
+      program: program,
+      errors: errors,
+      copiedToClipboard: false
+    });
   };
 
   textareOnChange = e => {
@@ -36,14 +37,14 @@ class App extends React.Component {
 
   clipBoard = e => {
     if (JSON.stringify(this.state.output) === JSON.stringify({})) return;
-    
+
     let range = document.createRange();
     range.selectNode(e.currentTarget);
     const selection = document.getSelection();
     selection.removeAllRanges();
     selection.addRange(range);
     document.execCommand("copy");
-    this.setState({copiedToClipboard: true});
+    this.setState({ copiedToClipboard: true });
   };
 
   render() {
@@ -56,8 +57,8 @@ class App extends React.Component {
           textareOnChange={this.textareOnChange}
         />
         <Output
-          program={this.state.output}
-          error={this.state.error}
+          program={this.state.program}
+          errors={this.state.errors}
           clipBoard={this.clipBoard}
           copiedToClipboard={this.state.copiedToClipboard}
         />

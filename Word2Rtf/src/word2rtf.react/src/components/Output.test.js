@@ -17,25 +17,21 @@ describe("Output", () => {
   });
 
   it("should be the same as props.output", () => {
-    const { getByTestId } = render(
-      <Output program={[{ verses: [{ Language: 0, Content: "test" }] }]} />
-    );
+    const program = [{ verses: [{ Language: 0, Content: "test" }] }];
+    const { getByTestId } = render(<Output program={program} />);
     const outputElement = getByTestId("output");
     expect(outputElement.textContent).toBe("test");
   });
 
   it("should render \\n into multiple lines", () => {
-    const { getByTestId } = render(
-      <Output
-        program={[{ verses: [{ Language: 0, Content: "test\ntest" }] }]}
-      />
-    );
+    const program = [{ verses: [{ Language: 0, Content: "test\ntest" }] }];
+    const { getByTestId } = render(<Output program={program} />);
     const outputElement = getByTestId("output");
     expect(outputElement.innerHTML).toBe("<h2>test<br>test</h2>");
   });
 
   it("should render error message", () => {
-    const error = {
+    const errors = [{
       errorType: "ImbalancedLanguagesException",
       errorMessage:
         '中英文沒有成對: "【Generous Offering慷慨奉獻】奉獻是對神愛的回應，如不明白奉獻的意義,無需參與。"',
@@ -48,8 +44,8 @@ describe("Output", () => {
         "at Word2Rtf.Function.FunctionHandler(Payload input, ILambdaContext context) in /Users/xiaomingfeng/OneDrive/TSA/worship-program-assistance/Word2Rtf/src/Word2Rtf/Function.cs:line 49",
         "at lambda_method(Closure , Stream , Stream , LambdaContextInternal )"
       ]
-    };
-    const { getByTestId } = render(<Output error={error} />);
+    }];
+    const { getByTestId } = render(<Output errors={errors} />);
     const errorElement = getByTestId("error");
     expect(errorElement).toBeInTheDocument();
   });

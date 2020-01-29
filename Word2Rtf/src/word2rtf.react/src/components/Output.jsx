@@ -7,14 +7,16 @@ const CopiedToClipboard = styled.span`
 `;
 
 export class Output extends React.Component {
+
   render() {
     const {
       clipBoard,
       copiedToClipboard,
-      error,
+      errors,
       isProcessing,
       program
     } = this.props;
+
     return (
       <>
         <label htmlFor="output">
@@ -66,11 +68,13 @@ export class Output extends React.Component {
                 })
             )}
         </div>
-        {error && (
-          <div className="error" data-testid="error">
-            {error.errorMessage}
-          </div>
-        )}
+        <div className="error" data-testid="error">
+          {errors && errors.map((_, idx) => 
+            <div key={idx}>
+              {_.errorMessage}
+            </div>
+          )}
+        </div>
         {isProcessing && <div>Processing</div>}{" "}
       </>
     );
