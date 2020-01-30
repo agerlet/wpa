@@ -12,7 +12,6 @@ export class Output extends React.Component {
     const {
       clipBoard,
       copiedToClipboard,
-      errors,
       isProcessing,
       program
     } = this.props;
@@ -53,27 +52,44 @@ export class Output extends React.Component {
                   };
                   return (
                     (verse.Language === 1 && (
-                      <h1 key={i}>{convertLineBreak(verse.Content)}</h1>
+                      <h1
+                        key={i}
+                        data-testid={i}
+                        data-error={verse.Error && verse.Error.errorMessage}
+                      >
+                        {convertLineBreak(verse.Content)}
+                      </h1>
                     )) ||
                     (verse.Language === 0 && (
-                      <h2 key={i}>{convertLineBreak(verse.Content)}</h2>
+                      <h2
+                        key={i}
+                        data-testid={i}
+                        data-error={verse.Error && verse.Error.errorMessage}
+                      >
+                        {convertLineBreak(verse.Content)}
+                      </h2>
                     )) ||
                     (verse.language === 1 && (
-                      <h1 key={i}>{convertLineBreak(verse.content)}</h1>
+                      <h1
+                        key={i}
+                        data-testid={i}
+                        data-error={verse.error && verse.error.errorMessage}
+                      >
+                        {convertLineBreak(verse.content)}
+                      </h1>
                     )) ||
                     (verse.language === 0 && (
-                      <h2 key={i}>{convertLineBreak(verse.content)}</h2>
+                      <h2
+                        key={i}
+                        data-testid={i}
+                        data-error={verse.error && verse.error.errorMessage}
+                      >
+                        {convertLineBreak(verse.content)}
+                      </h2>
                     ))
                   );
                 })
             )}
-        </div>
-        <div className="error" data-testid="error">
-          {errors && errors.map((_, idx) => 
-            <div key={idx}>
-              {_.errorMessage}
-            </div>
-          )}
         </div>
         {isProcessing && <div>Processing</div>}{" "}
       </>

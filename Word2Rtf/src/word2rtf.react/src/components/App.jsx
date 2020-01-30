@@ -9,7 +9,6 @@ class App extends React.Component {
   state = {
     input: "",
     program: [],
-    errors: [],
     copiedToClipboard: false
   };
 
@@ -19,15 +18,22 @@ class App extends React.Component {
     const inputs = this.state.input.split("\n【");
     await Promise.all(inputs.map(async _ => {
       try {
-        const result = await apiClient(`【${_}`);
+        const query = _.startsWith("【") ? _ : `【${_}`;
+        const result = await apiClient(query);
         program = program.concat(result);
       } catch (ex) {
-        errors.push(ex);
+        const error = {
+          verses: [{
+            Language: 1,
+            Content: _,
+            Error: ex
+          }]
+        };
+        program.push(error);
       }
     }));
     this.setState({
       program: program,
-      errors: errors,
       copiedToClipboard: false
     });
   };
@@ -59,7 +65,6 @@ class App extends React.Component {
         />
         <Output
           program={this.state.program}
-          errors={this.state.errors}
           clipBoard={this.clipBoard}
           copiedToClipboard={this.state.copiedToClipboard}
         />
