@@ -13,23 +13,19 @@ class App extends React.Component {
   };
 
   convertHandler = async () => {
-    let program = [];
-    let errors = [];
     const inputs = this.state.input.split("\n【");
-    await Promise.all(inputs.map(async _ => {
+    const [program] = await Promise.all(inputs.map(async _ => {
       try {
         const query = _.startsWith("【") ? _ : `【${_}`;
-        const result = await apiClient(query);
-        program = program.concat(result);
+        return await apiClient(query);
       } catch (ex) {
-        const error = {
+        return [{
           verses: [{
             Language: 1,
             Content: _,
             Error: ex
           }]
-        };
-        program.push(error);
+        }];
       }
     }));
     this.setState({
