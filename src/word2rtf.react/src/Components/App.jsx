@@ -14,18 +14,18 @@ class App extends React.Component {
 
   convertHandler = async () => {
     const inputs = this.state.input.split("\n【");
+    const getQuery = q => q.startsWith("【") ? q : `【${q}`;
     const program = await Promise.all(
       inputs.map(async _ => {
         try {
-          const query = _.startsWith("【") ? _ : `【${_}`;
-          return await apiClient(query);
+          return await apiClient(getQuery(_));
         } catch (ex) {
           return [
             {
               verses: [
                 {
                   Language: 1,
-                  Content: _,
+                  Content: getQuery(_),
                   Error: ex
                 }
               ]
