@@ -14,22 +14,28 @@ class App extends React.Component {
 
   convertHandler = async () => {
     const inputs = this.state.input.split("\n【");
-    const [program] = await Promise.all(inputs.map(async _ => {
-      try {
-        const query = _.startsWith("【") ? _ : `【${_}`;
-        return await apiClient(query);
-      } catch (ex) {
-        return [{
-          verses: [{
-            Language: 1,
-            Content: _,
-            Error: ex
-          }]
-        }];
-      }
-    }));
+    const program = await Promise.all(
+      inputs.map(async _ => {
+        try {
+          const query = _.startsWith("【") ? _ : `【${_}`;
+          return await apiClient(query);
+        } catch (ex) {
+          return [
+            {
+              verses: [
+                {
+                  Language: 1,
+                  Content: _,
+                  Error: ex
+                }
+              ]
+            }
+          ];
+        }
+      })
+    );
     this.setState({
-      program: program,
+      program: program.map(_ => _[0]),
       copiedToClipboard: false
     });
   };
