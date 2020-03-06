@@ -15,7 +15,7 @@ class App extends React.Component {
   convertHandler = async () => {
     const inputs = this.state.input.split("\n【");
     const getQuery = q => q.startsWith("【") ? q : `【${q}`;
-    const program = await Promise.all(
+    const programs = await Promise.all(
       inputs.map(async _ => {
         try {
           return await apiClient(getQuery(_));
@@ -35,7 +35,7 @@ class App extends React.Component {
       })
     );
     this.setState({
-      program: program.map(_ => _[0]),
+      programs: programs,
       copiedToClipboard: false
     });
   };
@@ -66,7 +66,7 @@ class App extends React.Component {
           textareOnChange={this.textareOnChange}
         />
         <Output
-          program={this.state.program}
+          programs={this.state.programs}
           clipBoard={this.clipBoard}
           copiedToClipboard={this.state.copiedToClipboard}
         />

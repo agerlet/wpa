@@ -13,8 +13,10 @@ export class Output extends React.Component {
       clipBoard,
       copiedToClipboard,
       isProcessing,
-      program
+      programs
     } = this.props;
+    
+    console.log(programs)
 
     return (
       <>
@@ -27,69 +29,75 @@ export class Output extends React.Component {
           )}
         </label>
         <div id="output" data-testid="output" onClick={clipBoard}>
-          {program &&
-            program.length > 0 &&
-            program.map(
-              (_, index) =>
-                _.verses &&
-                _.verses.length > 0 &&
-                _.verses.map((verse, i) => {
-                  const convertLineBreak = line => {
-                    const fragments = line.split("\n");
-                    return fragments.map((_, j) => {
-                      if (j === fragments.length - 1) {
-                        return (
-                          <React.Fragment key={`${i}-${j}`}>{_}</React.Fragment>
-                        );
-                      }
+          {programs &&
+            programs.length > 0 &&
+            programs.map(
+            program => 
+              program &&
+              program.length > 0 &&
+              program.map(
+                (_, index) =>
+                  _.verses &&
+                  _.verses.length > 0 &&
+                  _.verses.map((verse, i) => {
+                      const convertLineBreak = line => {
+                          const fragments = line.split("\n");
+                          return fragments.map((_, j) => {
+                              if (j === fragments.length - 1) {
+                                  return (
+                                      <React.Fragment key={`${i}-${j}`}>{_}</React.Fragment>
+                                  );
+                              }
+                              return (
+                                  <React.Fragment key={`${i}-${j}`}>
+                                      {_}
+                                      <br />
+                                  </React.Fragment>
+                              );
+                          });
+                      };
                       return (
-                        <React.Fragment key={`${i}-${j}`}>
-                          {_}
-                          <br />
-                        </React.Fragment>
+                          (verse.Language === 1 && (
+                              <h1
+                                  key={i}
+                                  data-testid={i}
+                                  data-error={verse.Error && verse.Error.errorMessage}
+                              >
+                                  {convertLineBreak(verse.Content)}
+                              </h1>
+                          )) ||
+                          (verse.Language === 0 && (
+                              <h2
+                                  key={i}
+                                  data-testid={i}
+                                  data-error={verse.Error && verse.Error.errorMessage}
+                              >
+                                  {convertLineBreak(verse.Content)}
+                              </h2>
+                          )) ||
+                          (verse.language === 1 && (
+                              <h1
+                                  key={i}
+                                  data-testid={i}
+                                  data-error={verse.error && verse.error.errorMessage}
+                              >
+                                  {convertLineBreak(verse.content)}
+                              </h1>
+                          )) ||
+                          (verse.language === 0 && (
+                              <h2
+                                  key={i}
+                                  data-testid={i}
+                                  data-error={verse.error && verse.error.errorMessage}
+                              >
+                                  {convertLineBreak(verse.content)}
+                              </h2>
+                          ))
                       );
-                    });
-                  };
-                  return (
-                    (verse.Language === 1 && (
-                      <h1
-                        key={i}
-                        data-testid={i}
-                        data-error={verse.Error && verse.Error.errorMessage}
-                      >
-                        {convertLineBreak(verse.Content)}
-                      </h1>
-                    )) ||
-                    (verse.Language === 0 && (
-                      <h2
-                        key={i}
-                        data-testid={i}
-                        data-error={verse.Error && verse.Error.errorMessage}
-                      >
-                        {convertLineBreak(verse.Content)}
-                      </h2>
-                    )) ||
-                    (verse.language === 1 && (
-                      <h1
-                        key={i}
-                        data-testid={i}
-                        data-error={verse.error && verse.error.errorMessage}
-                      >
-                        {convertLineBreak(verse.content)}
-                      </h1>
-                    )) ||
-                    (verse.language === 0 && (
-                      <h2
-                        key={i}
-                        data-testid={i}
-                        data-error={verse.error && verse.error.errorMessage}
-                      >
-                        {convertLineBreak(verse.content)}
-                      </h2>
-                    ))
-                  );
-                })
-            )}
+                  })
+              )
+            )
+          }
         </div>
         {isProcessing && <div>Processing</div>}{" "}
       </>
