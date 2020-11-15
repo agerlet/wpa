@@ -38,12 +38,11 @@ If already installed check if new version is available.
 
 Execute unit tests
 ```
-    cd "BlueprintBaseName/test/BlueprintBaseName.Tests"
     dotnet test
 ```
 
 Deploy function to AWS Lambda
 ```
-    cd "BlueprintBaseName/src/BlueprintBaseName"
-    dotnet lambda deploy-function
+    cd "src/Word2Rtf/"
+    dotnet lambda deploy-function Word2Rtf
 ```

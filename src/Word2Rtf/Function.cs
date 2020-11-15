@@ -13,7 +13,7 @@ namespace Word2Rtf
     {
         public Function()
         {
-            object locker = new object(), innerLocker = new object();
+            object locker = new object();
             lock (locker)
             {
                 if (C.Sections == null || C.Books == null)
