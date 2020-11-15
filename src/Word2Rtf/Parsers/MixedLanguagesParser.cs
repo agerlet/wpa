@@ -9,7 +9,8 @@ namespace Word2Rtf.Parsers
 {
     class MixedLanguagesParser : GroupingParserBase
     {
-        public MixedLanguagesParser(MixerFactory mixerFactory) : base(mixerFactory)
+        public MixedLanguagesParser(MixerFactory mixerFactory, ParserHandler parserHandler) 
+            : base(mixerFactory, parserHandler)
         {
         }
 

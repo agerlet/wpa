@@ -7,7 +7,10 @@ namespace Word2Rtf.Parsers
 {
     class LyricsParser : GroupingParserBase
     {
-        public LyricsParser(Mixers.MixerFactory mixerFactory) : base(mixerFactory) { }
+        public LyricsParser(Mixers.MixerFactory mixerFactory, ParserHandler parserHandler)
+            : base(mixerFactory, parserHandler)
+        {
+        }
 
         public override bool CanHandle(IGrouping<int, Element> group)
         {

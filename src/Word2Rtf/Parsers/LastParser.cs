@@ -6,7 +6,8 @@ namespace Word2Rtf.Parsers
 {
     class LastParser : GroupingParserBase
     {
-        public LastParser(MixerFactory mixerFactory) : base(mixerFactory)
+        public LastParser(MixerFactory mixerFactory, ParserHandler parserHandler) 
+            : base(mixerFactory, parserHandler)
         {
         }
 

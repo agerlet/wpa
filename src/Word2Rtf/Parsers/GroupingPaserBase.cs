@@ -8,18 +8,23 @@ namespace Word2Rtf.Parsers
 {
     abstract class GroupingParserBase : ParserBase<IGrouping<int, Element>>
     {
-        public GroupingParserBase(Mixers.MixerFactory mixerFactory) 
-            : base(mixerFactory) { }
+        private readonly ParserHandler _parserHandler;
+
+        public GroupingParserBase(Mixers.MixerFactory mixerFactory, ParserHandler parserHandler) 
+            : base(mixerFactory)
+        {
+            _parserHandler = parserHandler;
+        }
 
         public override void Parse(IGrouping<int, Element> group)
         {
-            var title = group.Get(ElementType.Title);
-            var content = group.Get(ElementType.Content);
+            var title = _parserHandler.Get(group, ElementType.Title);
+            var content = _parserHandler.Get(group, ElementType.Content);
 
             content = Adjust(content);
 
-            var main = content.Get(Language.English).ToList();
-            var overlay = content.Get(Language.Chinese).ToList();
+            var main = _parserHandler.Get(content, Language.English).ToList();
+            var overlay = _parserHandler.Get(content, Language.Chinese).ToList();
 
             Adjust(main);
             Adjust(overlay);
@@ -71,9 +76,9 @@ namespace Word2Rtf.Parsers
         
         protected List<Language> GetLanguagePattern(IGrouping<int, Element> group)
         {
-            return group
-                .Get(ElementType.Content)
-                .Select(element => element.Verses.First().Language).ToList();
+            return _parserHandler.Get(group, ElementType.Content)
+                .Select(element => element.Verses.First().Language)
+                .ToList();
         }
 
         protected int LanguageChanged(IEnumerable<Language> pattern)

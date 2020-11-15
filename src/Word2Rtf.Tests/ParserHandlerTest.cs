@@ -1,12 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 using Xunit;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Word2Rtf.Analysers;
+using Word2Rtf.Mixers;
 using Word2Rtf.Parsers;
 using Word2Rtf.Models;
 
@@ -14,9 +19,26 @@ namespace Word2Rtf.Tests
 {
     public class ParserHandlerTests
     {
+        private readonly ParserHandler _parserHandler;
         public ParserHandlerTests()
         {
-            new Function();
+            var mixers = new IMixer[]
+            {
+                new EqualLengthMixer(), 
+                new SingleVerseNumberMixer(), 
+                new LastMixer(), 
+            };
+            
+            var booksJson = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Dictionary", "book-names.json"));
+            var booksSettings = JsonConvert.DeserializeObject<BooksSettings>(booksJson);
+            var books = Options.Create(booksSettings);
+            
+            var sectionsJson = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Dictionary", "sections.json"));
+            var sectionsSettings = JsonConvert.DeserializeObject<SectionsSettings>(sectionsJson);
+            var sections = Options.Create(sectionsSettings);
+            
+            var bibleAnalyser = new BibleAnalyser(new Bible(books, sections));
+            _parserHandler = new ParserHandler(new MixerFactory(mixers), bibleAnalyser);
         }
 
         [Fact]
@@ -26,7 +48,7 @@ namespace Word2Rtf.Tests
             {
                 "【宣告/Proclaim】《詩篇/Psalm 50:23》;《希伯來書/Hebrew 13:15b》"
             };
-            var element = ParserHandler.Parse(input).FirstOrDefault();
+            var element = _parserHandler.Parse(input).FirstOrDefault();
             Assert.NotNull(element);
             Assert.Equal(input.First(), element.Input);
             Assert.True(element.Pass);
@@ -46,7 +68,7 @@ namespace Word2Rtf.Tests
             var english = "1Ascribe to the LORD , O mighty ones, ascribe to the LORD glory and strength. 2Ascribe to the LORD the glory due his name; worship the LORD in the splendor of his holiness.3The voice of the LORD is over the waters; the God of glory thunders, the LORD thunders over the mighty waters.4The voice of the LORD is powerful; the voice of the LORD is majestic.5	The voice of the LORD breaks the cedars; the LORD breaks in pieces the cedars of Lebanon.6He makes Lebanon skip like a calf, Sirion like a young wild ox.7	The voice of the LORD strikes with flashes of lightning.8The voice of the LORD shakes the desert; the LORD shakes the Desert of Kadesh.9The voice of the LORD twists the oaks and strips the forests bare. And in his temple all cry, \"Glory!\"10The LORD sits enthroned over the flood; the LORD is enthroned as King forever.11The LORD gives strength to his people; the LORD blesses his people with peace.";
             var input = new[] { title, chinese, english };
 
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(12, elements.Count());
 
@@ -123,7 +145,7 @@ namespace Word2Rtf.Tests
                 "（眾）2. 要將耶和華的名所當得的榮耀歸給他，以聖潔的妝飾敬拜耶和華。"
                 };
 
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(3, elements.Count());
 
@@ -153,7 +175,7 @@ namespace Word2Rtf.Tests
                 "I bring you good news that will cause great joy for all the people. 11 Today in the town of David a Savior has been born to you; he is the Messiah, the Lord. “Glory to God in the highest heaven, and on earth peace to those on whom his favor rests.”",
                 "我報給你們大喜的信息、 是關乎萬民的.因今天在大衛的城裡、 為你們生了救主、 就是主基督。在至高之處榮耀歸與上帝!在地上平安歸 與祂所喜悅的人!"
             };
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(2, elements.Count());
 
@@ -186,7 +208,7 @@ namespace Word2Rtf.Tests
                 "肅靜在至聖的主跟前，主今親臨同在。"
             };
 
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(3, elements.Count());
 
@@ -223,7 +245,7 @@ namespace Word2Rtf.Tests
                 "肅靜在至聖的主跟前，主今親臨同在。"
             };
 
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(5, elements.Count());
 
@@ -263,7 +285,7 @@ namespace Word2Rtf.Tests
                 "https://www.youtube.com/watch?v=_Ayo8Yjuj88"
             };
 
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(2, elements.Count());
 
@@ -287,7 +309,7 @@ namespace Word2Rtf.Tests
                 "In the past God spoke to our ancestors through the prophets at many times and in various ways, 2 but in these last days he has spoken to us by his Son, whom he appointed heir of all things, and through whom also he made the universe. 3 The Son is the radiance of God’s glory and the exact representation of his being, sustaining all things by his powerful word. After he had provided purification for sins, he sat down at the right hand of the Majesty in heaven. 4 So he became as much superior to the angels as the name he has inherited is superior to theirs.",
                 "古時候，上帝藉着眾先知多次多方向列祖說話，末世，藉着 祂兒子向我們說話，又立祂為承受萬有的，也藉着祂創造宇 宙。祂是上帝榮耀的光輝，是上帝本體的真像，常用祂大能 的命令托住萬有。祂洗淨了人的罪，就坐在高天至大者的右 邊。祂所承受的名比天使的名更尊貴，所以祂遠比天使崇高。 "
             };
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(2, elements.Count());
         }
@@ -302,7 +324,7 @@ namespace Word2Rtf.Tests
                 "Remember this: Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver. And God is able to bless you abundantly, so that in all things at all times, having all that you need, you will abound in every good work.As it is written: “They have freely scattered their gifts to the poor; their righteousness endures forever.”",
                 "還有，少種的少收，多種的多收。 各人要照著心裡所決定的捐輸，不要為難，不必勉強，因為捐得樂意的人，是　神所喜愛的。 神能把各樣的恩惠多多地加給你們，使你們凡事常常充足，多作各樣的善事。 如經上所說：“他廣施錢財，賙濟窮人；他的仁義，存到永遠。”"
             };
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(4, elements.Count());
         }
@@ -355,7 +377,7 @@ namespace Word2Rtf.Tests
                 "主愛奇妙莫名，",
                 "主愛，主愛奇妙莫名。"
             };
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(7, elements.Count());
 
@@ -382,7 +404,7 @@ namespace Word2Rtf.Tests
                 "7 Of the greatness of his government and peace there will be no end. He will reign on David’s throne and over his kingdom, establishing and upholding it with justice and righteousness  from that time on and forever. The zeal of the Lord Almighty will accomplish this.",
                 "7 他 的 政 權 與 平 安 必 加 增 無 窮 。 他 必 在 大 衛 的 寶 座 上 治 理 他 的 國 ， 以 公 平 公 義 使 國 堅 定 穩 固 ， 從 今 直 到 永 遠 。 萬 軍 之 耶 和 華 的 熱 心 必 成 就 這 事 。"
             };
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(5, elements.Count());
 
@@ -400,7 +422,7 @@ namespace Word2Rtf.Tests
                 "【Call To Worshi宣告】Psalm詩篇118：21-29",
                 "I will give you thanks, for you answered me; you have become my salvation. 我要稱謝你，因為你已經應允我，又成了我的拯救！The stone the builders rejected has become the cornerstone; 匠人所棄的石頭已成了房角的頭塊石頭。",
             };
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(3, elements.Count());
 
@@ -418,7 +440,7 @@ namespace Word2Rtf.Tests
                 "【Scripture證道經文】Matthew 馬太福音 26：6-13",
                 "6 While Jesus was in Bethany in the home of Simon the Leper, 6耶穌在伯大尼長大痲瘋的西門家裡，"
             };
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(2, elements.Count());
 
@@ -436,7 +458,7 @@ namespace Word2Rtf.Tests
                 "21 I will give you thanks, for you answered me; you have become my salvation. 21我要稱謝你，因為你已經應允我，又成了我的拯救！22 The stone the builders rejected has become the cornerstone; 22匠人所棄的石頭已成了房角的頭塊石頭。23 the Lord has done this, and it is marvelous in our eyes.23這是耶和華所作的，在我們眼中看為希奇。24 The Lord has done it this very day; let us rejoice today and be glad. 24這是耶和華所定的日子，我們在其中要高興歡喜！",
                 "25 Lord, save us! Lord, grant us success!25耶和華啊，求你拯救！耶和華啊，求你使我們亨通！26 Blessed is he who comes in the name of the Lord. From the house of the Lord we bless you.26奉耶和華名來的是應當稱頌的！我們從耶和華的殿中為你們祝福！27 The Lord is God, and he has made his light shine on us. With boughs in hand, join in the festal procession up to the horns of the altar. 27耶和華是神；他光照了我們。理當用繩索把祭牲拴住，牽到壇角那裡。28 You are my God, and I will praise you; ou are my God, and I will exalt you.28你是我的神，我要稱謝你！你是我的神，我要尊崇你！29 Give thanks to the Lord, for he is good; his love endures forever.29你們要稱謝耶和華，因他本為善；他的慈愛永遠長存！"
             };
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(10, elements.Count());
 
@@ -455,7 +477,7 @@ namespace Word2Rtf.Tests
                 "(L) Surely he took up our pain and bore our suffering, yet we considered him punished by God,  stricken by him, and afflicted.（領）他誠然擔當我們的憂患，背負我們的痛苦；我們卻以為他受責罰，被神擊打苦待了。",
                 "(C) But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed.（眾）哪知他為我們的過犯受害，為我們的罪孽壓傷。因他受的刑罰，我們得平安；因他受的鞭傷，我們得醫治。"
             };
-            var elements = ParserHandler.Parse(input).ToArray();
+            var elements = _parserHandler.Parse(input).ToArray();
             Assert.NotNull(elements);
             Assert.Equal(3, elements.Count());
 
@@ -471,7 +493,7 @@ namespace Word2Rtf.Tests
         {
             var input = new[] { "【Abstract Title抽象標題】", "English1", "中文1", "English2.1", "English2.2", "中文2" };
 
-            var actual = ParserHandler.Parse(input);
+            var actual = _parserHandler.Parse(input);
             var titleId = actual.First().TitleId;
 
             var expected = new List<Element>
@@ -521,7 +543,7 @@ namespace Word2Rtf.Tests
         public void Should_resolve_psalms_issue()
         {
             var input = new[] { "【Call To Worship宣告】Psalms 詩篇 98:4-6" };
-            var actual = ParserHandler.Parse(input);
+            var actual = _parserHandler.Parse(input);
             var titleId = actual.First().TitleId;
 
             var expected = new List<Element>

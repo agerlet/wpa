@@ -3,7 +3,7 @@ using Word2Rtf.Models;
 
 namespace Word2Rtf.Mixers
 {
-    internal interface IMixer
+    public interface IMixer
     {
         bool CanHandle(List<Element> main, List<Element> addon);
         void Mix(List<Element> main, List<Element> addon);

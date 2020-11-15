@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Word2Rtf.Tests")]
 namespace Word2Rtf.Models
 {
-    internal class Element
+    public class Element
     {
         public string Input { get; set; }
         public int TitleId { get; set; }

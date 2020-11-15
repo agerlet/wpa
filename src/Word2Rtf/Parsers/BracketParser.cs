@@ -12,9 +12,13 @@ namespace Word2Rtf.Parsers
     ///
     class BracketParser : ParserBase<string[]>
     {
-        public BracketParser(Mixers.MixerFactory mixerFactory) 
-            : base(mixerFactory) 
-        { }
+        private readonly ParserHandler _parserHandler;
+
+        public BracketParser(Mixers.MixerFactory mixerFactory, ParserHandler parserHandler) 
+            : base(mixerFactory)
+        {
+            _parserHandler = parserHandler;
+        }
 
         public override bool CanHandle(string[] input)
         {
@@ -29,10 +33,10 @@ namespace Word2Rtf.Parsers
 
             foreach(var element in Elements)
             {
-                if (element.IsTitle()) 
-                    titleId = element.ParseTitle().TitleId; 
+                if (_parserHandler.IsTitle(element)) 
+                    titleId = _parserHandler.ParseTitle(element).TitleId; 
                 else
-                    element.ParseContent(titleId);
+                    _parserHandler.ParseContent(element, titleId);
             }
             
             var elements = Elements
@@ -42,7 +46,7 @@ namespace Word2Rtf.Parsers
                     if (group.All(g => g.ElementType == ElementType.Title))
                         return group;
                     
-                    return group.ParseContent();
+                    return _parserHandler.ParseContent(group);
                 })
                 .ToList();
 

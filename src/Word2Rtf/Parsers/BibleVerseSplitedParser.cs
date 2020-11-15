@@ -8,7 +8,8 @@ namespace Word2Rtf.Parsers
 {
     class BibleVerseSplitedParser : BibleVerseParser
     {
-        public BibleVerseSplitedParser(MixerFactory mixerFactory) : base(mixerFactory)
+        public BibleVerseSplitedParser(MixerFactory mixerFactory, ParserHandler parserHandler) 
+            : base(mixerFactory, parserHandler)
         {
         }
 

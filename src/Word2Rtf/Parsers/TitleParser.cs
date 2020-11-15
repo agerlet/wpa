@@ -1,13 +1,20 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Word2Rtf.Analysers;
 using Word2Rtf.Models;
 
 namespace Word2Rtf.Parsers
 {
     class TitleParser : ParserBase<Element>
     {
-        public TitleParser(Mixers.MixerFactory mixerFactory) : base(mixerFactory) { }
+        private readonly BibleAnalyser _bibleAnalyser;
+
+        public TitleParser(Mixers.MixerFactory mixerFactory, BibleAnalyser bibleAnalyser) 
+            : base(mixerFactory)
+        {
+            _bibleAnalyser = bibleAnalyser;
+        }
 
         public override bool CanHandle(Element input)
         {
@@ -17,7 +24,7 @@ namespace Word2Rtf.Parsers
         public override void Parse(Element input)
         {
             input.ElementType = ElementType.Title;
-            input.Verses = input.Input.FilterByLanguages();
+            input.Verses = _bibleAnalyser.FilterByLanguages(input.Input);
             Elements.Add(input);
         }
     }

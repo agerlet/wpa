@@ -1,6 +1,7 @@
 using Amazon.Lambda.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Word2Rtf.Models;
 using Word2Rtf.Parsers;
 
@@ -11,42 +12,30 @@ namespace Word2Rtf
 {
     public class Function
     {
-        public Function()
-        {
-            object locker = new object();
-            lock (locker)
-            {
-                if (C.Sections == null || C.Books == null)
-                {
-                    // Set up Dependency Injection
-                    var serviceCollection = new ServiceCollection();
-                    ConfigureServices(serviceCollection);
-                    var serviceProvider = serviceCollection.BuildServiceProvider();
-                    var configService = serviceProvider.GetService<IConfigurationService>();
-                    var config = configService.GetConfiguration();
-                
-                    C.Sections = config.GetSection("sections").Get<Section[]>();
-                    C.Books = config.GetSection("books").Get<Book[]>();
-                }
-            }
-        }
+        private IConfigurationRoot _configuration;
 
         /// <summary>
-        /// A simple function that takes a string and does a ToUpper
+        /// The function to convert the input payload into sections in json
         /// </summary>
-        /// <param name="input"></param>
-        /// <param name="context"></param>
-        /// <returns></returns>
         [LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
         public object FunctionHandler(Payload input, ILambdaContext context)
         {
-            var json = input.Input.Break().Parse().Combine();
+            var host = Host
+                    .CreateDefaultBuilder()
+                    .ConfigureAppConfiguration((_, config) =>
+                        _configuration = config.AddConfiguration().Build())
+                    .ConfigureServices(services =>
+                        services.AddDependencyInjections(_configuration))
+                    .Build()
+                    ;
+
+            using var serviceScope = host.Services.CreateScope();
+            var serviceProvider = serviceScope.ServiceProvider;
+
+            var handler = serviceProvider.GetService<ParserHandler>();
+            var elements = handler.Parse(input.Input.Break());
+            var json = elements.Combine();
             return json;
-        }
-        
-        private void ConfigureServices(IServiceCollection serviceCollection)
-        {
-            serviceCollection.AddTransient<IConfigurationService, ConfigurationService>();
         }
     }
 }

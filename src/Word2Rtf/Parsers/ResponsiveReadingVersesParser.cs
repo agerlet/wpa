@@ -8,7 +8,8 @@ namespace Word2Rtf.Parsers
 {
     class ResponsiveReadingVersesParser : BibleVerseParser
     {
-        public ResponsiveReadingVersesParser(Mixers.MixerFactory mixerFactory) : base(mixerFactory) { }
+        public ResponsiveReadingVersesParser(Mixers.MixerFactory mixerFactory, ParserHandler parserHandler) 
+            : base(mixerFactory, parserHandler) { }
         
         public override bool CanHandle(IGrouping<int, Element> group)
         {

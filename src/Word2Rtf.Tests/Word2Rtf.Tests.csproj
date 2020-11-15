@@ -8,6 +8,7 @@
 
     <PackageReference Include="Amazon.Lambda.Core" Version="1.0.0" />
     <PackageReference Include="Amazon.Lambda.TestUtilities" Version="1.0.0" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
 
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
@@ -33,6 +34,15 @@
     <None Include="samples/sample-9.txt" CopyToOutputDirectory="Always" />
     <None Include="snaps/snap-9.json" CopyToOutputDirectory="Always" />
     
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Word2Rtf\Dictionary\book-names.json">
+      <Link>Dictionary\book-names.json</Link>
+    </Content>
+    <Content Include="..\Word2Rtf\Dictionary\sections.json">
+      <Link>Dictionary\sections.json</Link>
+    </Content>
   </ItemGroup>
 
 </Project>

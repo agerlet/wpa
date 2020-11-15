@@ -26,14 +26,14 @@ namespace Word2Rtf.Tests
         public async void Snap_1_Title_With_Bible_Verses()
         {
             var jsonSerializer = new Amazon.Lambda.Serialization.Json.JsonSerializer();
-            string input = await "samples/sample-1.txt".LoadAsync();
+            var input = await "samples/sample-1.txt".LoadAsync();
             // Invoke the lambda function and confirm the string was upper cased.
             var json = new Function().FunctionHandler(new Models.Payload { Input = input }, new TestLambdaContext());
-            string actual = await jsonSerializer.GetJsonString(json);
+            var actual = await jsonSerializer.GetJsonString(json);
 
-            string snap = await "snaps/snap-1.json".LoadAsync();
-            object o = jsonSerializer.GetJsonObject(snap.Replace("\\n", Environment.NewLine));
-            string expected = await jsonSerializer.GetJsonString(o);
+            var snap = await "snaps/snap-1.json".LoadAsync();
+            var o = jsonSerializer.GetJsonObject(snap.Replace("\\n", Environment.NewLine));
+            var expected = await jsonSerializer.GetJsonString(o);
             
             Assert.Equal(expected, actual);
         }
